@@ -1,0 +1,80 @@
+import { SNSshare } from "@/components/SNSshare";
+import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+export default function ResultGrammar() {
+  const [explainBox, setExplainBox] = useState(false);
+
+  // const [correctButton, setCorrect] = useState(false);
+  const router = useRouter();
+
+  const { score, userAnswer, connectID, ids, correctAnswer } = router.query;
+  let nextID = ids.indexOf(connectID[0]) + 1;
+  if (nextID >= ids.length) {
+    nextID = 0;
+  }
+
+  return (
+    <>
+      {" "}
+      <div
+        className="flex flex-col h-screen justify-center items-center"
+        style={{ background: "linear-gradient(to bottom, #4F3A8B, #00008B)" }}
+      >
+        <div className="text-white font-bold text-6xl mb-4">
+          Your Score: {score}/3{" "}
+          {score >= 3 ? <div> 天才！!全問正解！</div> : null}
+        </div>
+        <div className="text-white font-bold text-2xl mb-4 my-20">
+          Congratulations! You are a grammar master.
+        </div>
+        <div className="text-white font-bold text-2xl">
+          <p className="flex gap-8 ">
+            1 :<span className="text-sm">解答</span>
+            {userAnswer[0]}
+            <span className="text-sm">正解</span>
+            {correctAnswer[0]}
+          </p>
+          <p className="flex gap-8">
+            {" "}
+            2:
+            <span className="text-sm">解答</span>
+            {userAnswer[1]}
+            <span className="text-sm">正解</span> {correctAnswer[1]}
+          </p>{" "}
+          <p className="flex gap-8">
+            {" "}
+            3:
+            <span className="text-sm">解答</span>
+            {userAnswer[2]}
+            <span className="text-sm">正解</span> {correctAnswer[2]}
+            <Link
+              href={`/blog/${connectID[1]}`}
+              className="px-8 py-3   ml-10 -translate-y-5 text-gray-500 rounded-sm text-lg font-bold shadow-lg hover:bg-gray-200 hover:text-gray-800 transition duration-300"
+            >
+              解説を見る
+            </Link>
+          </p>
+        </div>
+        <div className="mt-10">
+          <SNSshare />
+        </div>
+        <div className="flex gap-8 mt-20">
+          <Link
+            href={`/blog/${connectID[0]}`}
+            className="px-8 py-3 bg-white text-gray-900 rounded-full text-lg font-bold shadow-lg hover:bg-gray-200 transition duration-300"
+          >
+            もう一度
+          </Link>
+          <Link
+            href={`/blog/${ids[nextID]}`}
+            className="px-8 py-3 bg-white text-gray-900 rounded-full text-lg font-bold shadow-lg hover:bg-gray-200 transition duration-300"
+          >
+            次の文法問題
+          </Link>
+        </div>
+      </div>
+    </>
+  );
+}

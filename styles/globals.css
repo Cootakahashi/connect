@@ -7,6 +7,19 @@
   display: none;
 }
 
+.textfont {
+  font-family: "Anton", sans-serif;
+}
+.engfont {
+  font-family: "Pacifico", cursive;
+  font-size: 26px;
+  font-weight: bold;
+  color: #333333;
+}
+.japanfont {
+  /* font-family: "Noto Sans JP", "Kosugi", sans-serif; */
+  font-family: "MS Pゴシック";
+}
 /* ボタンのスタイル */
 /* #playBtn {
   background-color: #1a1a1a;
