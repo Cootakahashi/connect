@@ -1,4 +1,3 @@
-// import { Francois_One } from "@next/font/google";
 import { client } from "../../libs/client";
 // import { renderToc } from "../../libs/render-toc"; // 追加
 import { TableOfContents } from "../../components/TableOfContents"; // TableOfContentsをインポートする
@@ -9,7 +8,7 @@ import Layout from "../../components/Layout";
 import Link from "next/link";
 
 export default function BlogId({ blog, ids, category, recommend }) {
-  const microCMSLoader = ({ src, width, quality }) => {
+  const microCMSLoader = ({ src, width, quality, hello }) => {
     return `${src}?auto=format&fit=max&w=${width}`;
   };
   const pathimage = blog?.eyecatch?.url ? blog?.eyecatch?.url : `/wide/1.png`;
