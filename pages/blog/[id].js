@@ -5,7 +5,7 @@ import { TableOfContents } from "../../components/TableOfContents"; // TableOfCo
 import styles from "../../styles/id.module.scss";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import Layout from "@/components/Layout";
+import Layout from "../../components/Layout";
 import Link from "next/link";
 
 export default function BlogId({ blog, ids, category, recommend }) {
