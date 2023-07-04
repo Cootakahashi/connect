@@ -1,4 +1,4 @@
-import { Francois_One } from "@next/font/google";
+// import { Francois_One } from "@next/font/google";
 import { client } from "../../../libs/client";
 // import { renderToc } from "../../libs/render-toc"; // 追加
 import { TableOfContents } from "../../../components/TableOfContents"; // TableOfContentsをインポートする
