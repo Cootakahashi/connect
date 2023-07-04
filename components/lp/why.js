@@ -3,17 +3,18 @@ import Image from "next/image";
 export default function Why() {
   return (
     <>
-      <div className="text-center bg-slate-100 w-[900px] mx-auto -translate-y-20">
-        <h1 className="font-bold text-center text-3xl p-20">
-          なぜ日本人は英語が喋れないのか？
-          第二言語習得論を活用すれば私たちの未来も変わる
+      <div className="text-center bg-slate-100 w-[900px] mx-auto -translate-y-20 rounded-xl">
+        <h1 className="font-bold text-center text-3xl p-16 whitespace-pre-line">
+          {`なぜ日本人は英語が喋れないのか？
+          第二言語習得論を活用すれば私たちの未来も変わる`}
         </h1>
+
         <p className="text-center w-[555px] mx-auto">
           日本語と英語は文法的に大きく異なります。また、日本の学校教育では一般的に読み書きに重点が置かれ、
           会話スキルの訓練が不足しています。さらに、日本社会での英語使用の機会は限られており、実際のコミュニケーションにおいて英語を使う練習が少ないのも一因です。
         </p>
-        <button className="my-20 mx-auto flex justify-center items-center bg-gray-500 w-80 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md inline-flex items-center transition-all duration-200 transform hover:translate-x-1">
-          詳しく見る{" "}
+        <button className="my-16 w-full h-20 shadow-xl hover:shadow-2xl text-xl mx-auto flex justify-center items-center bg-gray-300 w-80 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md inline-flex items-center transition-all duration-200 transform hover:translate-x-1">
+          対談:日本人は何をすれば英語を喋れるようになるか。{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -58,18 +59,18 @@ export default function Why() {
           </button>
         </div>
         <Image
-          src="/canva/1.png"
-          height={450}
+          src="/canvaverticle/3.png"
+          height={550}
           width={450}
-          className="ml-auto"
+          className="ml-auto rounded-md"
         />
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center my-20">
         <Image
-          src="/canva/1.png"
+          src="/canvaverticle/16.png"
           height={450}
           width={450}
-          className="mr-auto"
+          className="mr-auto rounded-md"
         />
         <div className="mr-auto">
           <div className="h-0.5 w-12 bg-black mb-2"></div>
@@ -126,10 +127,10 @@ export default function Why() {
           </button>
         </div>
         <Image
-          src="/canva/22.png"
+          src="/canvaverticle/8.png"
           height={450}
           width={450}
-          className="ml-auto"
+          className="ml-auto rounded-md"
         />
       </div>
     </>

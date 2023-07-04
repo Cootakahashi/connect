@@ -1,81 +1,178 @@
-import { Francois_One } from "@next/font/google";
+// import { Francois_One } from "@next/font/google";
 import { client } from "../../libs/client";
 // import { renderToc } from "../../libs/render-toc"; // 追加
 import { TableOfContents } from "../../components/TableOfContents"; // TableOfContentsをインポートする
 import styles from "../../styles/id.module.scss";
-import { Sidebar } from "../../components/sidebar";
 import Image from "next/image";
-import { QuizQuestion } from "../../components/quiz";
 import { useState, useEffect } from "react";
-import { Gptbox } from "../../components/gptbox";
+import Layout from "@/components/Layout";
+import Link from "next/link";
 
-export default function BlogId({ blog, ids }) {
+export default function BlogId({ blog, ids, category, recommend }) {
   const microCMSLoader = ({ src, width, quality }) => {
     return `${src}?auto=format&fit=max&w=${width}`;
   };
-  const pathimage = blog.eyecatch?.url ? blog.eyecatch.url : `/wide/1.png`;
+  const pathimage = blog?.eyecatch?.url ? blog?.eyecatch?.url : `/wide/1.png`;
+  const schemaNames = ["head", "content", "images"];
+
+  // const htmlText = marked(blog.content3);
+
   const [visible, setVisible] = useState(true);
-  const question = [blog.quiz1, blog.quiz2, blog.quiz3];
-  const pinyin = [blog.pinyin1, blog.pinyin2, blog.pinyin3];
-  const connectID = [blog.id, blog.connectID];
-  const answers = [
-    [blog.answer1, blog.answer2, blog.answer3, blog.answer4],
-    [blog.answer5, blog.answer6, blog.answer7, blog.answer8],
-    [blog.answer9, blog.answer10, blog.answer11, blog.answer12],
-  ];
-  const grammarPractice = blog.grammarPractice;
-  const correctAnswer = [blog.answer1, blog.answer5, blog.answer9];
-  console.log(ids);
-  console.log(typeof ids);
+  console.log(blog?.images?.[3]);
   return (
     <>
-      {grammarPractice ? (
-        <div className="col-span-full -mt-5 bg-gradient-to-br from-green-400 via-green-500 to-green-600 h-screen">
-          <QuizQuestion
-            answers={answers}
-            question={question}
-            visible={visible}
-            pinyin={pinyin}
-            setVisible={setVisible}
-            connectID={connectID}
-            ids={ids}
-            correctAnswer={correctAnswer}
-          />
-        </div>
-      ) : (
-        <div
-          className={`${styles.main} grid grid-cols-5 grid-row-2 md:grid-rows-1 bg-gradient-to-br from-green-400 via-green-500 to-green-600 h-screen`}
-        >
-          <main className="row-start-1 md:col-start-1 text-center col-span-full md:col-span-4 my-10 p-5 bg-slate-100 text-gray-800 w- md:w-full">
-            <div className="bg-gray-100 col-span-4">
-              <div className="flex p-8 text-blue-300">
-                <p className="ml-auto">{blog.publishedAt}</p>
+      <Layout>
+        <div className="flex">
+          <div className="flex-grow" style={{ flexBasis: "61.8%" }}>
+            {/* Main content goes here */}
+
+            <div className={`${styles.m}`}>
+              <main className="">
+                <div className="text-slate-800">
+                  <div className="mt-8 mb-6">
+                    <span className="text-sm">
+                      {" "}
+                      {new Date(blog?.publishedAt)
+                        .toLocaleDateString("ja-JP", {
+                          year: "numeric",
+                          month: "numeric",
+                          day: "numeric",
+                        })
+                        .replace(/\//g, ".")}
+                    </span>
+                    <span className="ml-5 text-slate-100 bg-blue-800 text-sm px-3 py-1">
+                      {blog?.category?.name}
+                    </span>
+                  </div>
+                  <h1 className=" text-2xl pb-8  text-blue-800 text-left font-san font-bold	">
+                    {blog?.title}
+                    <br />
+                    {blog?.title2}
+                  </h1>
+                </div>
+                <div className="">
+                  <Image
+                    className="w-full"
+                    loader={microCMSLoader}
+                    src={pathimage}
+                    height={500}
+                    width={500}
+                    alt="thumbnail"
+                    priority
+                  />
+                </div>
+                <div className="mt-20">
+                  {blog?.toc_visible && <TableOfContents toc={toc} />}
+                </div>
+                <div
+                  className={`${styles.post} `}
+                  dangerouslySetInnerHTML={{ __html: `${blog.content}` }}
+                ></div>
+              </main>
+            </div>
+            <div className="">
+              {Array.from({ length: 4 }, (_, index) => (
+                <section className="mb-8" key={index}>
+                  <h1 className="text-xl font-bold bg-gray-100 py-4 pl-4 border-l-4 border-blue-400 mt-10 mb-6">
+                    {blog?.[schemaNames[0] + (index + 1)]}
+                  </h1>
+                  <Image
+                    src={blog?.[schemaNames[2]]?.[index]?.url}
+                    className="w-full"
+                    height={500}
+                    width={500}
+                    alt="head image"
+                    priority
+                    loader={microCMSLoader}
+                  />
+                  <div
+                    className={`${styles.content} my-20 leading-10 whitespace-pre-line`}
+                    dangerouslySetInnerHTML={{
+                      __html: blog?.[schemaNames[1] + (index + 1)],
+                    }}
+                  />
+                </section>
+              ))}
+            </div>
+          </div>
+          <div className="flex-grow" style={{ flexBasis: "38.2%" }}>
+            {/* Sidebar goes here */}
+            <div className="ml-20 text-gray-700 py-4 px-6">
+              <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3 text-blue-800 ">
+                カテゴリー
+              </h3>
+              <ul className="space-y-2 font-bold">
+                <Link href={`/category/${category.id}`}>
+                  ブログトップページ
+                </Link>
+                {category.map((category) => (
+                  <li
+                    key={category.id}
+                    className="border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2"
+                  >
+                    <Link href={`/category/${category.id}`}>
+                      {category.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="ml-20 text-gray-700 py-4 px-6">
+              <h3 className="mt-10 text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3 text-blue-800 ">
+                おすすめ記事
+              </h3>
+              <ul className="space-y-2 font-bold">
+                {recommend.map((blog) => (
+                  <li
+                    key={blog?.id}
+                    className="flex border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2"
+                  >
+                    {" "}
+                    <Image
+                      src={blog?.eyecatch?.url}
+                      alt="Profile Image"
+                      width={64}
+                      height={64}
+                      className="rounded-ful"
+                    />
+                    <Link href={`/blog/${blog?.id}`} className="mx-5 text-sm">
+                      {blog.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="ml-20 text-gray-700 py-4 px-6 font-bold mb-4 border-y-2 border-blue-900 pb-3 text-blue-800 mt-20">
+              <div className="mb-4 flex">
+                <Image
+                  src="/canva/1.png"
+                  alt="Profile Image"
+                  width={64}
+                  height={64}
+                  className="rounded-full"
+                />{" "}
+                <h3 className="text-xl font-bold mb-2 text-blue-900 mt-auto">
+                  Restart運営
+                </h3>
               </div>
-              <h1 className=" text-5xl pb-8 md:ml-10 text-gray-900 text-left font-sans font-light">
-                {blog.title}
-              </h1>
+              <div>
+                <p className="mb-4 whitespace-pre-line">
+                  {`私の人生はこんな筈じゃない。。\nそんな人が人生を再出発させることが\nできるのが英語！ \n やっぱり英語は喋らないと喋れない \n 英語イベントにポチッとワンクリックで参加してください。`}
+                </p>
+                <p className="mb-8 mt-12">
+                  <Link
+                    href="/event"
+                    className="text-blue-700  bg-yellow-400 px-8 py-4 border-2 border-yellow-400 rounded-md transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
+                  >
+                    無料英会話イベント
+                  </Link>
+                </p>
+              </div>
             </div>
-            <div className="my-10">
-              <Image
-                className="h-80"
-                loader={microCMSLoader}
-                src={pathimage}
-                height={500}
-                width={500}
-                alt="thumbnail"
-                priority
-              />
-            </div>
-            <div className="mt-20">
-              {blog.toc_visible && <TableOfContents toc={toc} />}
-            </div>
-            <div
-              className={`${styles.post}`}
-              dangerouslySetInnerHTML={{ __html: `${blog.content}` }}
-            ></div>
-          </main>
+          </div>
         </div>
-      )}
+      </Layout>
     </>
   );
 }
@@ -87,11 +184,16 @@ export const getStaticProps = async (context) => {
     .filter((content) => content.grammarPractice)
     .map((content) => `${content.id}`);
   const data = await client.get({ endpoint: "blogs", contentId: id });
-
+  const categoryData = await client.get({ endpoint: "categories" });
+  const recommendBlogs = datas.contents.filter(
+    (content) => content.recommend === true
+  );
   return {
     props: {
       blog: data,
       ids: grammarPracticeIds,
+      category: categoryData.contents,
+      recommend: recommendBlogs,
     },
   };
 };

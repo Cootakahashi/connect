@@ -5,7 +5,7 @@ export default function Fixback() {
         <div className="relative">
           <div
             style={{
-              backgroundImage: "url('/canva/1.png')",
+              backgroundImage: "url('/canvawide/1.png')",
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",

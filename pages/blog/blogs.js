@@ -1,6 +1,7 @@
 import { client } from "@/libs/client";
 import Link from "next/link";
 import Image from "next/image";
+import Voicetes from "../voicetes";
 export default function allblog({ blog }) {
   const monthNames = [
     "Jan",
@@ -19,14 +20,15 @@ export default function allblog({ blog }) {
   return (
     <>
       {" "}
-      <Image
+      {/* <Image
         className="h-96 w-full"
         src="/wide/6.png"
         width={500}
         height={500}
         alt="head"
         priority
-      ></Image>
+      ></Image> */}
+      <Voicetes />
       <ul>
         <div className=" mt-10">
           {blog.map((blog) => {

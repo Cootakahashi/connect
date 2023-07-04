@@ -27,7 +27,7 @@ export function Top() {
           <span className="whitespace-nowrap flex">
             {" "}
             <p className="bg-red-700 h-6 w-1 mr-2"></p>
-            Chat GPTと学ぶ
+            AIと学ぶ
           </span>
         </div>
         <h1 className="text-4xl text-slate-800 font-semibold hidden md:block md:whitespace-normal md:text-slate-800">

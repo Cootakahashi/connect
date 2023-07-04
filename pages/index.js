@@ -48,7 +48,7 @@ export default function Home({ blog, totalCount }) {
       </Head>
       <NavBar />
       <Top />
-      <Pagination totalCount={totalCount} />
+      {/* <Pagination totalCount={totalCount} /> */}
 
       <h2 className="m-10 p-10 text-center font-sans font-thin text-5xl">
         Newest Article

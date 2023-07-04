@@ -4,7 +4,7 @@ async function textToSpeech(text, apiKey) {
   const chinesevoice = "cmn-CN";
   const chinesename = "cmn-CN-Wavenet-A";
   const englishvoice = "en-US";
-  const englishname = "en-US-Wavenet-A";
+  const englishname = "en-US-Wavenet-C";
   const url =
     "https://texttospeech.googleapis.com/v1/text:synthesize?key=" + apiKey;
 
@@ -32,7 +32,7 @@ async function textToSpeech(text, apiKey) {
 
 import { useState } from "react";
 
-export default function voicetes() {
+export default function Voicetes() {
   const [text, setText] = useState("");
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 
@@ -45,7 +45,8 @@ export default function voicetes() {
   };
 
   return (
-    <div>
+    <div className="bg-green-200 h-80">
+      aaaa
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}

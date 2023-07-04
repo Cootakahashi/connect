@@ -12,7 +12,7 @@ export function Event({ props }) {
   return (
     <section className="text-gray-600 body-font">
       <h1 className="text-center text-bold text-3xl py-20">
-        オンライン中国語交流会
+        オンライン英会話交流会
       </h1>
       {props.map((blog) => {})}
       <div className="container px-5 py-24 mx-auto ">
