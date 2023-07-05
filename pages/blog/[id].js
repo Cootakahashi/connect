@@ -100,7 +100,7 @@ export default function BlogId({ blog, ids, category, recommend }) {
                     loader={microCMSLoader}
                   />
                   <div
-                    className={`${styles.content} my-20 leading-10 whitespace-pre-line`}
+                    className={`${styles.content} my-20 leading-8 text-md whitespace-pre-line`}
                     dangerouslySetInnerHTML={{
                       __html: blog?.[schemaNames[1] + (index + 1)],
                     }}
