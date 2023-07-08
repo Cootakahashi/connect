@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <div className="relative mt-16 bg-deep-purple-accent-400 mt-80">
+    <div className="relative mt-16 bg-deep-purple-accent-400 mt-20">
       <svg
         className="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-blue-700"
         preserveAspectRatio="none"
@@ -140,7 +140,7 @@ export const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col justify-between pt-5 pb-10 border-t border-deep-purple-accent-200 sm:flex-row">
-          <p className="text-sm text-gray-100">© Connect World 2023</p>
+          <p className="text-sm text-gray-100">© Restart 2023</p>
           <div className="flex items-center mt-4 space-x-4 sm:mt-0">
             <a
               href="/"

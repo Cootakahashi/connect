@@ -1,18 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 import { Top } from "../components/top";
 import { NavBar } from "../components/nav";
 import Link from "next/link";
 import { client } from "../libs/client";
-import { Nav } from "../components/header";
 import { Footer } from "../components/footer";
 import { Event } from "../components/event";
-import { Pagination } from "@/components/Pagination";
-import { Category } from "@/components/Category";
-import Script from "next/script";
-import { useState, useEffect } from "react";
 
 export const getStaticProps = async () => {
   const data = await client.get({ endpoint: "blogs" });
@@ -50,8 +43,8 @@ export default function Home({ blog, totalCount }) {
       <Top />
       {/* <Pagination totalCount={totalCount} /> */}
       <div className="mx-3 md:mx-20">
-        <h2 className="m-10 p-10 text-center font-sans font-thin text-5xl">
-          Newest Article
+        <h2 className="m-5 p-5 text-center font-sans font-thin text-5xl">
+          {/* Newest Article */}
         </h2>
 
         <div className="md:grid grid-cols-3  gap-8 w-ful">
@@ -63,7 +56,12 @@ export default function Home({ blog, totalCount }) {
                 key={d.id}
                 className="mb-20 mb:mb-0 h-full bg-slate-20 rounded-xl md:px- border shadow-xl hover:shadow-2xl hover:scale-105 transition duration-500 ease-in-out"
               >
-                <Link key={d.id} href={`/blog/${d.id}`}>
+                <Link
+                  key={d.id}
+                  href={`/blog/${
+                    d.category?.name === "Phrasal verb" ? "idioms/" : ""
+                  }${d.id}`}
+                >
                   <div className="bg-blue-20 rounded-">
                     <div className="text-left z-20 absolute">
                       <span className="ml-3 text-slate-100 bg-blue-800 text-sm px-3 py-1">

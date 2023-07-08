@@ -1,13 +1,13 @@
 import { client } from "../../libs/client";
-// import { renderToc } from "../../libs/render-toc"; // 追加
 import { TableOfContents } from "../../components/TableOfContents"; // TableOfContentsをインポートする
 import styles from "../../styles/id.module.scss";
 import Image from "next/image";
 import Layoutwrap from "../../components/Layoutcomp";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import { Footer } from "../../components/footer";
 
-export default function BlogId({ blog, ids, category, recommend }) {
+export default function BlogId({ blog, category, recommend }) {
   const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
@@ -33,9 +33,22 @@ export default function BlogId({ blog, ids, category, recommend }) {
 
   const [visible, setVisible] = useState(true);
   console.log(blog?.images?.[3]);
+  console.log({ blog, category, recommend });
+
   return (
     <>
-      <Layoutwrap>
+      <Layoutwrap
+        metadata={{
+          title: blog?.title,
+          description: blog?.description,
+          ogTitle: blog?.title,
+          ogDescription: blog?.description,
+          ogImage: pathimage,
+          ogUrl: "https://beginrestart.com/",
+          twitterSite: "@Tokoenglish",
+          canonicalUrl: "https://beginrestart.com/",
+        }}
+      >
         <div className="md:flex">
           <div className="flex-grow " style={{ flexBasis: "61.8%" }}>
             {/* Main content goes here */}
@@ -189,6 +202,7 @@ export default function BlogId({ blog, ids, category, recommend }) {
             </div>
           </div>
         </div>
+        <Footer />
       </Layoutwrap>
     </>
   );

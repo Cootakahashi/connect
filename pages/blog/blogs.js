@@ -4,6 +4,7 @@ import Image from "next/image";
 import Layoutwrap from "../../components/Layoutcomp";
 import React, { useState, useEffect } from "react";
 import { Pagination } from "../../components/Pagination";
+import { Footer } from "../../components/footer";
 
 export default function allblog({ blog, category, recommend, totalCount }) {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -38,9 +39,22 @@ export default function allblog({ blog, category, recommend, totalCount }) {
     "November",
     "December",
   ];
+  const pathimage0 = blog.eyecatch?.url;
+
   return (
     <>
-      <Layoutwrap>
+      <Layoutwrap
+        metadata={{
+          title: blog?.title,
+          description: blog?.description,
+          ogTitle: blog?.title,
+          ogDescription: blog?.description,
+          ogImage: pathimage0,
+          ogUrl: "https://beginrestart.com/",
+          twitterSite: "@Tokoenglish",
+          canonicalUrl: "https://beginrestart.com/",
+        }}
+      >
         <div className="md:flex">
           <div className="flex-grow " style={{ flexBasis: "61.8%" }}>
             {" "}
@@ -197,6 +211,7 @@ export default function allblog({ blog, category, recommend, totalCount }) {
             </div>
           </div>
         </div>
+        <Footer />
       </Layoutwrap>
     </>
   );

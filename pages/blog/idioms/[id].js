@@ -5,8 +5,9 @@ import { useState, useEffect } from "react";
 import { onClickmake } from "../../../components/makesentense";
 import styled, { keyframes } from "styled-components";
 import { SNSshare } from "@/components/SNSshare";
-
-export default function BlogId({ blog, ids }) {
+import { Footer } from "../../../components/footer";
+import Link from "next/link";
+export default function BlogId({ blog, category, recommend }) {
   const microCMSLoader = ({ src, width, quality }) => {
     return `${src}?auto=format&fit=max&w=${width}`;
   };
@@ -24,7 +25,7 @@ export default function BlogId({ blog, ids }) {
   const handleClick = () => {
     let nextSectionNumber = sectionNumber + 1;
 
-    if (nextSectionNumber > 9) {
+    if (nextSectionNumber > 10) {
       nextSectionNumber = 0;
     }
 
@@ -53,7 +54,7 @@ export default function BlogId({ blog, ids }) {
   };
   return (
     <>
-      <div className="grid bg-gradient-to-br from-green-400 via-green-500 to-green-600 h-full ">
+      <div className="grid bg-gradient-to-br from-blue-800 via-blue-500 to-blue-900 h-full ">
         {" "}
         <main className="row-start-1 rounded md:col-start-1 text-center col-span-full md:col-span-4 mx-2 md:mx-20 md:px-20 bg-slate-100 text-gray-800 mt-8">
           <div className="h-screen section0 m-5 text-left">
@@ -79,7 +80,7 @@ export default function BlogId({ blog, ids }) {
             </div>
 
             <Image
-              className="w-full -translate-y-"
+              className="w-full -translate-y- w-auto h-auto"
               loader={microCMSLoader}
               src={pathimage}
               height={500}
@@ -171,6 +172,61 @@ export default function BlogId({ blog, ids }) {
               </h1>
             </div>
           </div>
+          <div className="section10 h-screen md:flex md:items-start md:justify-between md:px-6 border-y-2 border-blue-900 bg-gray-50">
+            {/* Recommended Posts */}
+            <div className="md:w-1/2 bg-white p-6">
+              <h3 className="text-blue-800 text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3">
+                おすすめ記事
+              </h3>
+              <ul className="mt-6 text-gray-700">
+                {recommend.map((blog) => (
+                  <li key={blog?.id} className="flex mb-4 items-center">
+                    <Image
+                      src={blog?.eyecatch?.url}
+                      alt="Profile Image"
+                      width={64}
+                      height={64}
+                      className="rounded-full"
+                    />
+                    <Link href={`/blog/${blog?.id}`} className="ml-4 text-lg">
+                      {blog.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {/* Profile */}
+            <div className="md:w-1/2 bg-white p-6 mt-6 md:mt-0 md:ml-6">
+              <div className="flex items-center mb-8">
+                <Image
+                  src="/canva/1.png"
+                  alt="Profile Image"
+                  width={64}
+                  height={64}
+                  className="rounded-full"
+                />
+                <h3 className="ml-4 text-blue-900 text-xl font-bold">
+                  Restart運営
+                </h3>
+              </div>
+              <p className="text-gray-700 mb-8 whitespace-pre-line">
+                {`私の人生はこんな筈じゃない。。\nそんな人が人生を再出発させることが\nできるのが英語！ \n やっぱり英語は喋らないと喋れない \n 英語イベントにポチッとワンクリックで参加してください。`}
+              </p>
+              <Link
+                href="/event"
+                className="inline-block bg-yellow-400 text-blue-700 px-8 py-4 border-2 border-yellow-400 rounded-md transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
+              >
+                無料英会話イベント
+              </Link>
+              {/* Add Line Button (Replace # with your line add URL) */}
+              <Link
+                href="#"
+                className="inline-block ml-4 bg-green-400 text-white px-8 py-4 border-2 border-green-400 rounded-md transition-colors duration-300 hover:bg-green-300 hover:text-black"
+              >
+                Line追加
+              </Link>
+            </div>
+          </div>
         </main>
         <div className="">
           <button
@@ -181,6 +237,7 @@ export default function BlogId({ blog, ids }) {
           </button>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
@@ -192,11 +249,16 @@ export const getStaticProps = async (context) => {
   const idiomIds = idiomDatas.map((content) => `${content.id}`);
 
   const data = await client.get({ endpoint: "blogs", contentId: id });
-
+  const categoryData = await client.get({ endpoint: "categories" });
+  const recommendBlogs = datas.contents.filter(
+    (content) => content.recommend === true
+  );
   return {
     props: {
       blog: data,
       ids: idiomIds,
+      category: categoryData.contents,
+      recommend: recommendBlogs,
     },
   };
 };

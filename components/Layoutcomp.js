@@ -1,11 +1,19 @@
 import Head from "next/head";
-export default function Layoutwrap({ children }) {
+
+export default function Layoutwrap({ children, metadata }) {
   return (
     <div>
-      {" "}
       <Head>
-        <title>Restart</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <meta property="og:title" content={metadata.ogTitle} />
+        <meta property="og:description" content={metadata.ogDescription} />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content={metadata.ogImage} />
+        <meta property="og:url" content={metadata.ogUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content={metadata.twitterSite} />
+        <link rel="canonical" href={metadata.canonicalUrl} />
       </Head>
       <main className="mx-4 md:mx-20">{children}</main>
     </div>
