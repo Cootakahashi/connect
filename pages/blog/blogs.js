@@ -1,7 +1,6 @@
 import { client } from "../../libs/client";
 import Link from "next/link";
 import Image from "next/image";
-import Voicetes from "../voicetes";
 import Layoutwrap from "../../components/Layoutcomp";
 import React, { useState, useEffect } from "react";
 import { Pagination } from "../../components/Pagination";

@@ -2,12 +2,9 @@ import { client } from "../../../libs/client";
 import styles from "../../../styles/idioms.module.scss";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Gptbox } from "../../../components/gptbox";
-import Voicetes from "../../voicetes";
-import Voice from "../../Voice";
-import { Play } from "next/font/google";
 import { onClickmake } from "../../../components/makesentense";
 import styled, { keyframes } from "styled-components";
+import { SNSshare } from "@/components/SNSshare";
 
 export default function BlogId({ blog, ids }) {
   const microCMSLoader = ({ src, width, quality }) => {
@@ -56,13 +53,13 @@ export default function BlogId({ blog, ids }) {
   };
   return (
     <>
-      <div className="grid grid-cols-5 grid-row-2 md:grid-rows-1 bg-gradient-to-br from-green-400 via-green-500 to-green-600 h-full">
+      <div className="grid bg-gradient-to-br from-green-400 via-green-500 to-green-600 h-full ">
         {" "}
-        <main className="row-start-1 rounded md:col-start-1 text-center col-span-full md:col-span-4 mx-2 md:mx-8 bg-slate-100 text-gray-800 mt-8">
-          <div className="h-screen section0 m-5">
-            <div className="bg-gray-100 col-span-4">
-              <div className="flex text-blue-300">
-                <p className="ml-10">
+        <main className="row-start-1 rounded md:col-start-1 text-center col-span-full md:col-span-4 mx-2 md:mx-20 md:px-20 bg-slate-100 text-gray-800 mt-8">
+          <div className="h-screen section0 m-5 text-left">
+            <div className="bg-gray-100 ">
+              <div className="mt-8 mb-6">
+                <span className="text-sm">
                   {" "}
                   {new Date(blog?.publishedAt)
                     .toLocaleDateString("ja-JP", {
@@ -71,9 +68,12 @@ export default function BlogId({ blog, ids }) {
                       day: "numeric",
                     })
                     .replace(/\//g, ".")}
-                </p>
+                </span>
+                <span className="ml-5 text-slate-100 bg-blue-800 text-sm px-3 py-1">
+                  {blog?.category?.name}
+                </span>
               </div>
-              <h1 className="text-4xl font-bold pb-8 md:ml-10 text-gray-900 text-left font-sans font-ligh md:whitespace-nowrap">
+              <h1 className="text-2xl pb-8  text-blue-800 text-left font-san font-bold">
                 {blog.title}
               </h1>
             </div>
@@ -91,7 +91,7 @@ export default function BlogId({ blog, ids }) {
           <div className="">
             {/* 答え 英訳 */}
             <div
-              className={`${styles.post} text-5xl h-screen flex items-center justify-center section1`}
+              className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section1`}
               dangerouslySetInnerHTML={{ __html: `${blog.content}` }}
             ></div>
             {/* <Voice inputText={plainText} /> */}
@@ -99,41 +99,44 @@ export default function BlogId({ blog, ids }) {
 
             {/* 例文 */}
             <div
-              className={`${styles.post} text-5xl h-screen flex items-center justify-center section2`}
+              className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section2`}
               dangerouslySetInnerHTML={{ __html: `${blog.head1}` }}
             ></div>
             {/* 例文２ */}
             <div
-              className={`${styles.post} text-5xl h-screen flex items-center justify-center section3`}
+              className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section3`}
               dangerouslySetInnerHTML={{ __html: `${blog.content1}` }}
             ></div>
 
             <div
-              className={`${styles.post} text-5xl h-screen flex items-center justify-center section4`}
+              className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section4`}
               dangerouslySetInnerHTML={{ __html: `${blog.head2}` }}
             ></div>
             {/* 別訳1日本 */}
             <div
-              className={`${styles.post} text-5xl h-screen flex items-center justify-center section5`}
+              className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section5`}
               dangerouslySetInnerHTML={{ __html: `${blog.content2}` }}
             ></div>
             {/* 答え　英訳 */}
             <div
-              className={`${styles.post} text-5xl h-screen flex items-center justify-center section6`}
+              className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section6`}
               dangerouslySetInnerHTML={{ __html: `${blog.head3}` }}
             ></div>
             {/* 別訳2日本 */}
             <div
-              className={`${styles.post} text-5xl h-screen flex items-center justify-center section7`}
+              className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section7`}
               dangerouslySetInnerHTML={{ __html: `${blog.content3}` }}
             ></div>
             {/* 答え　英訳 */}
             <div
-              className={`${styles.post} text-5xl h-screen flex items-center justify-center section8`}
+              className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section8`}
               dangerouslySetInnerHTML={{ __html: `${blog.content}` }}
             ></div>
             {/* 別訳3日本 */}
             <div className="flex flex-col items-center justify-center h-screen section9">
+              <h1 className="text-center my-5 mb-20 text-2xl font-semibold">
+                記憶するために例文を作ろう！
+              </h1>
               <textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -146,13 +149,23 @@ export default function BlogId({ blog, ids }) {
               >
                 Submit
               </button>
-              <p className="mt-4 text-lg">{text}</p>
+              <p className="mt-4 text-lg">
+                自分が使いたい単語を入れて、{text}の例文をつくろう
+              </p>
               <h1 className="text-lg md:text-xl font-bold mb-8 text-center px-8">
                 {isLoading ? (
                   "Loading... for make a sentence..."
                 ) : str ? (
                   <Text>
                     <div className="whitespace-pre-line">{`${str}`}</div>
+                    <div className="flex gap-4">
+                      <SNSshare
+                        sentense={data?.choices[0].text}
+                        url={`${text}という単語を使って例文を作ってみたよ！！`}
+                        title="restart english"
+                        result="result"
+                      />
+                    </div>
                   </Text>
                 ) : null}
               </h1>
