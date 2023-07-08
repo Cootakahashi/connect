@@ -71,57 +71,32 @@ export function Top() {
       </div>
 
       <div className="hidden md:grid  grid-cols-2 items-center">
-        <div className="hidden md:block col-span-2 col-start-1 row-start-1 ">
+        <div className="hidden md:block relative col-span-2 col-start-1 row-start-1">
           <Image
             className=""
-            src="/wide/1.png"
+            src="/wide/7.png"
             width={1920}
             height={1080}
             alt="logo"
             priority
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black to-transparent opacity-30"></div>
         </div>
-        <div className="md:hidden col-span-2 col-start-1 row-start-1 ">
-          <Image
-            className=""
-            src="/responsive/9.png"
-            width={1080}
-            height={1920}
-            alt="logo"
-            priority
-          />
-        </div>
-        <div className="col-span-1 col-start-2 row-start-1 text-slate-800 ml-10 pt-20">
-          <div className="text-slate-800 flex">
-            <span className="whitespace-nowrap flex">
-              {" "}
-              <p className="bg-red-700 h-6 w-1 mr-2"></p>
-              AIと学ぶ
-            </span>
-          </div>
-          <h1 className="text-4xl text-slate-800 font-semibold hidden md:block md:whitespace-normal md:text-slate-800">
-            {`新しい学び方`}
-          </h1>
-          <h1 className="text-4xl md:text-3xl md:hidden leading-9 text-slate-800 whitespace-pre font-serif font-bold mt-20 md:font-semibold md:text-slate-100">
-            {`英語で
-          人生を変える`}
-          </h1>
-          <p className="hidden md:block whitespace-pre-line pt-5 ">{`リスニングの練習,英作文、単語の勉強、全てを効率的にこれからもっと必要になる英語を今一緒に！`}</p>
-          {/* <p className="md:hidden whitespace-pre-line pt-5 text-slate-100 w-80 bg-black">
-          <span className="font-semibold">中国語学習 </span>{" "}
-          っててどうやればいい？0からでも大丈夫？{" "}
-          <span className="font-semibold">台湾人</span>
-          の優しい先生が丁寧に優しく教えてくれる{" "}
-          <span className="font-semibold"> 無料イベント</span>
-          もあるよ！
-        </p> */}
 
-          <div className="mt-40 md:mt-0btns pt-10 grid justify-start md:flex gap-4 bg-whit">
-            <button className="whitespace-nowrap md:self-end bg-red-600 text-slate-100 border hover:bg-red-700 hover:border-blue-500 hover:scale-110 transiton-all duration-500 rounded-sm px-12 py-3 mb-3 md:mb-10  font-semibold">
-              最新記事
+        <div className="col-span-full col-start-1 row-start-1 text-slate-800 ml-10 mt-20 z-20">
+          <h1 className="text-4xl text-slate-100 font-semibold hidden md:block md:text-slate-100 whitespace-pre-line w-3/5 tracking-wide	leading-normal	">
+            {`RESTART\n第二言語習得論とAIで \n 喋れる英語を\n 実践、効率的に学べる`}
+          </h1>
+          <p className="hidden md:block whitespace-pre-line pt-5 text-slate-100 font-semibold text-xl">
+            {`喋れない自分とはお別れ、もう時間もお金も無駄にしない。\n 無料英会話EVENTも毎週開催！`}
+          </p>
+
+          <div className="mt-10 md:mt-0btns pt- grid justify-start md:flex gap-8 bg-whit">
+            <button className="whitespace-nowrap md:self-end bg-orange-500 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out">
+              無料英会話EVENT
             </button>
-            <button className="md:self-end border rounded-sm px-8 py-3 mb-10 whitespace-nowrap font-semibold hover:scale-110 hover:border-blue-500 transiton-all duration-500">
-              Online交流会に参加
+            <button className="whitespace-nowrap md:self-end bg-blue-500 text-white font-semibold py-3 px-8 border border-blue-700 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-500 ease-in-out">
+              最新記事
             </button>
           </div>
         </div>

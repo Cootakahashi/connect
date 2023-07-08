@@ -188,9 +188,10 @@ export default function allblog({ blog, category, recommend, totalCount }) {
                 <p className="mb-8 mt-12">
                   <Link
                     href="/event"
-                    className="text-blue-700  bg-yellow-400 px-8 py-4 border-2 border-yellow-400 rounded-md transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
+                    className="whitespace-nowrap md:self-end bg-orange-500 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out"
                   >
-                    無料英会話イベント
+                    {" "}
+                    <button>無料英会話EVENT</button>
                   </Link>
                 </p>
               </div>

@@ -46,7 +46,6 @@ export default function Voicetes() {
 
   return (
     <div className="bg-green-200 h-80">
-      aaaa
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}

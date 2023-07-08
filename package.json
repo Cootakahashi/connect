@@ -17,7 +17,7 @@
     "mic-recorder-to-mp3": "^2.2.2",
     "microcms-js-sdk": "^2.3.2",
     "next": "^13",
-    "openai": "^3.2.1",
+    "openai": "^3.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
@@ -26,6 +26,7 @@
     "react-timer-hook": "^3.0.5",
     "recorder-js": "^1.0.7",
     "sass": "^1.61.0",
+    "styled-components": "^6.0.3",
     "three": "^0.152.2"
   },
   "devDependencies": {

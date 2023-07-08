@@ -119,10 +119,10 @@ export default function Home({ blog, totalCount }) {
         <div className="flex justify-center mt-20">
           {" "}
           <Link
-            href="/event"
-            className="font-semibold text-slate-200  w-full md:w-auto bg-blue-400 px-20 py-4 border-2 border-blue-400 rounded-md transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
+            href="/blog/blogs"
+            className="whitespace-nowrap md:self-end bg-blue-500 text-white font-semibold py-3 px-8 border border-blue-700 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-500 ease-in-out"
           >
-            記事一覧を見る
+            <button>記事一覧を見る</button>
           </Link>
         </div>
         <Event props={eventNames} />
