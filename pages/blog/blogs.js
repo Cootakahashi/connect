@@ -5,6 +5,7 @@ import Layoutwrap from "../../components/Layoutcomp";
 import React, { useState, useEffect } from "react";
 import { Pagination } from "../../components/Pagination";
 import { Footer } from "../../components/footer";
+import { Blogheader } from "../../components/header";
 
 export default function allblog({ blog, category, recommend, totalCount }) {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -43,6 +44,10 @@ export default function allblog({ blog, category, recommend, totalCount }) {
 
   return (
     <>
+      <div className="hidde z-50 mb-20">
+        <Blogheader />
+        aa
+      </div>
       <Layoutwrap
         metadata={{
           title: blog?.title,
@@ -98,7 +103,14 @@ export default function allblog({ blog, category, recommend, totalCount }) {
                           {blog.category?.name}
                         </span>
                       </div>
-                      <Link key={blog.id} href={`/blog/${blog.id}`}>
+                      <Link
+                        key={blog.id}
+                        href={`/blog/${
+                          blog.category?.name === "Phrasal verb"
+                            ? "idioms/"
+                            : ""
+                        }${blog.id}`}
+                      >
                         <div className="bg-blue-20 rounded-x">
                           <Image
                             className="w-full z-1"

@@ -118,7 +118,7 @@ export const Footer = () => {
               </ul>
             </div>
             <div>
-              <Link href="/">
+              <Link href="/prepare">
                 <p className="font-semibold tracking-wide text-teal-accent-400">
                   Company
                 </p>

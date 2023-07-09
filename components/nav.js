@@ -66,14 +66,14 @@ export function NavBar() {
               isMenuOpen ? "translate-x-0" : "-translate-x-ful"
             }`}
           >
-            <Link legacyBehavior href="/vocabulary">
+            <Link legacyBehavior href="/category/k8pvv7ov1lje">
               <a className="text-white relative group text-center">
                 Vocabulary
                 <p className="text-xs text-center opacity-70 pt-2">英単語</p>
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
               </a>
             </Link>
-            <Link legacyBehavior href="/blog">
+            <Link legacyBehavior href="/blog/blogs">
               <a className="text-white relative group text-center">
                 Blog
                 <p className="text-xs text-center opacity-70 pt-2">
@@ -91,14 +91,14 @@ export function NavBar() {
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
               </a>
             </Link>
-            <Link legacyBehavior href="/company">
+            <Link legacyBehavior href="/prepare">
               <a className="text-white relative group text-center">
                 Company
                 <p className="text-xs text-center opacity-70 pt-2">会社概要</p>
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
               </a>
             </Link>
-            <Link legacyBehavior href="/company">
+            <Link legacyBehavior href="/prepare">
               <a className="text-white relative group text-center">
                 FAQ
                 <p className="text-xs text-center opacity-70 pt-2">

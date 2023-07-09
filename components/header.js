@@ -69,7 +69,7 @@ export function Blogheader() {
                 isTop ? "-translate-x-16" : "opacity-0"
               }`}
             >
-              <Link legacyBehavior href="/vocabulary">
+              <Link legacyBehavior href="/category/k8pvv7ov1lje">
                 <a className="text-gray-800 relative group text-center">
                   Vocabulary
                   <p className="text-xs text-center opacity-70 pt-2">英単語</p>
@@ -94,7 +94,7 @@ export function Blogheader() {
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
                 </a>
               </Link>
-              <Link legacyBehavior href="/company">
+              <Link legacyBehavior href="/prepare">
                 <a className="text-gray-800 relative group text-center">
                   Company
                   <p className="text-xs text-center opacity-70 pt-2">
@@ -103,7 +103,7 @@ export function Blogheader() {
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
                 </a>
               </Link>
-              <Link legacyBehavior href="/company">
+              <Link legacyBehavior href="/prepare">
                 <a className="text-gray-800 relative group text-center">
                   FAQ
                   <p className="text-xs text-center opacity-70 pt-2">
@@ -190,7 +190,7 @@ export function Blogheader() {
                 />
               </a>
             </Link>
-            <Link legacyBehavior href="/vocabulary">
+            <Link legacyBehavior href="/category/k8pvv7ov1lje">
               <a onClick={handleMenuToggle}>Vocabulary</a>
             </Link>
             <Link legacyBehavior href="/blog/blogs">
@@ -199,7 +199,7 @@ export function Blogheader() {
             <Link legacyBehavior href="/category">
               <a onClick={handleMenuToggle}>Category</a>
             </Link>
-            <Link legacyBehavior href="/company">
+            <Link legacyBehavior href="/prepare">
               <a onClick={handleMenuToggle}>Company</a>
             </Link>
             <button

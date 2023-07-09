@@ -90,7 +90,12 @@ export default function CategoryId({ blog, category, recommend }) {
                         {blog.category?.name}
                       </span>
                     </div>
-                    <Link key={blog.id} href={`/blog/${blog.id}`}>
+                    <Link
+                      key={blog.id}
+                      href={`/blog/${
+                        blog.category?.name === "Phrasal verb" ? "idioms/" : ""
+                      }${blog.id}`}
+                    >
                       <div className="bg-blue-20 rounded-x">
                         <Image
                           className="w-full z-1"
