@@ -1,7 +1,7 @@
 import { TwitterShareButton } from "react-share";
 import { FacebookShareButton } from "react-share";
 export function SNSshare(props) {
-  const shareUrl = props.url;
+  const shareUrl = "https://beginrestart.com/";
   const title = props?.title + "\n" + props.result + "\n";
   const quote = props?.result;
   const sentense = props?.sentense;
