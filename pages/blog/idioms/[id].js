@@ -7,6 +7,7 @@ import styled, { keyframes } from "styled-components";
 import { SNSshare } from "@/components/SNSshare";
 import { Footer } from "../../../components/footer";
 import Link from "next/link";
+import Voice from "../../../components/aivoice";
 export default function BlogId({ blog, category, recommend }) {
   const microCMSLoader = ({ src, width, quality }) => {
     return `${src}?auto=format&fit=max&w=${width}`;
@@ -52,6 +53,18 @@ export default function BlogId({ blog, category, recommend }) {
     await onClickmake(newMakeword, setIsLoading, setData);
     setIsLoading(false);
   };
+
+  let blogContent = blog.content;
+  let blogHead1 = blog.head1;
+  let blogHead2 = blog.head2;
+  let blogHead3 = blog.head3;
+  let textsArray = [];
+
+  textsArray.push(removeHTMLTags(blogContent));
+  textsArray.push(removeHTMLTags(blogHead1));
+  textsArray.push(removeHTMLTags(blogHead2));
+  textsArray.push(removeHTMLTags(blogHead3));
+  console.log(textsArray);
   return (
     <>
       <div className="grid bg-gradient-to-br from-blue-800 via-blue-500 to-blue-900 h-full ">
@@ -95,7 +108,7 @@ export default function BlogId({ blog, category, recommend }) {
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section1`}
               dangerouslySetInnerHTML={{ __html: `${blog.content}` }}
             ></div>
-            {/* <Voice inputText={plainText} /> */}
+            <Voice inputText={textsArray[0]} />
             {/* <Gptbox inputText={plainText} /> */}
 
             {/* 例文 */}
@@ -103,6 +116,8 @@ export default function BlogId({ blog, category, recommend }) {
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section2`}
               dangerouslySetInnerHTML={{ __html: `${blog.head1}` }}
             ></div>
+            <Voice inputText={textsArray[1]} />
+
             {/* 例文２ */}
             <div
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section3`}
@@ -113,6 +128,8 @@ export default function BlogId({ blog, category, recommend }) {
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section4`}
               dangerouslySetInnerHTML={{ __html: `${blog.head2}` }}
             ></div>
+            <Voice inputText={textsArray[2]} />
+
             {/* 別訳1日本 */}
             <div
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section5`}
@@ -123,6 +140,8 @@ export default function BlogId({ blog, category, recommend }) {
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section6`}
               dangerouslySetInnerHTML={{ __html: `${blog.head3}` }}
             ></div>
+            <Voice inputText={textsArray[3]} />
+
             {/* 別訳2日本 */}
             <div
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section7`}
@@ -133,16 +152,18 @@ export default function BlogId({ blog, category, recommend }) {
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section8`}
               dangerouslySetInnerHTML={{ __html: `${blog.content}` }}
             ></div>
+            <Voice inputText={textsArray[0]} />
+
             {/* 別訳3日本 */}
             <div className="flex flex-col items-center justify-center h-screen section9">
               <h1 className="text-center my-5 mb-20 text-2xl font-semibold">
-                記憶するために例文を作ろう！
+                記憶するためにAIで例文を作ろう！
               </h1>
               <textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="w-64 h-24 p-3 mb-4 text-lg border rounded shadow"
-                placeholder="Write something..."
+                placeholder="自分の好きな単語を入れてみよう..."
               />
               <button
                 onClick={handleSubmit}
@@ -151,15 +172,19 @@ export default function BlogId({ blog, category, recommend }) {
                 Submit
               </button>
               <p className="mt-4 text-lg">
-                自分が使いたい単語を入れて、{text}の例文をつくろう
+                {/* 自分が使いたい単語を入れて、{text}の例文をつくろう */}
               </p>
               <h1 className="text-lg md:text-xl font-bold mb-8 text-center px-8">
                 {isLoading ? (
-                  "Loading... for make a sentence..."
+                  "例文をAIが作っています..."
                 ) : str ? (
                   <Text>
                     <div className="whitespace-pre-line">{`${str}`}</div>
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 mt-5">
+                      <div className="translate-y-72">
+                        <Voice inputText={data?.choices[0].text} />
+                      </div>
+
                       <SNSshare
                         sentense={data?.choices[0].text}
                         url={`${text}という単語を使って例文を作ってみたよ！！`}
@@ -174,7 +199,7 @@ export default function BlogId({ blog, category, recommend }) {
           </div>
           <div className="section10 h-screen md:flex md:items-start md:justify-between md:px-6 border-y-2 border-blue-900 bg-gray-50">
             {/* Recommended Posts */}
-            <div className="md:w-1/2 bg-white p-6">
+            <div className="md:w-1/2 bg-white p-6 ">
               <h3 className="text-blue-800 text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3">
                 おすすめ記事
               </h3>
@@ -196,7 +221,7 @@ export default function BlogId({ blog, category, recommend }) {
               </ul>
             </div>
             {/* Profile */}
-            <div className="md:w-1/2 bg-white p-6 mt-6 md:mt-0 md:ml-6">
+            <div className="md:w-1/2 bg-white p-6 mt-6 md:mt-0 md:ml-6 hidden md:block">
               <div className="flex items-center mb-8">
                 <Image
                   src="/canva/1.png"
@@ -205,16 +230,16 @@ export default function BlogId({ blog, category, recommend }) {
                   height={64}
                   className="rounded-full"
                 />
-                <h3 className="ml-4 text-blue-900 text-xl font-bold">
+                <h3 className="ml-4 text-blue-900 text-xl font-bold ">
                   Restart運営
                 </h3>
               </div>
-              <p className="text-gray-700 mb-8 whitespace-pre-line">
+              <p className="text-gray-700 mb-8 whitespace-pre-line text-xs md:text-base">
                 {`私の人生はこんな筈じゃない。。\nそんな人が人生を再出発させることが\nできるのが英語！ \n やっぱり英語は喋らないと喋れない \n 英語イベントにポチッとワンクリックで参加してください。`}
               </p>
               <Link
                 href="/event"
-                className="inline-block bg-yellow-400 text-blue-700 px-8 py-4 border-2 border-yellow-400 rounded-md transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
+                className="mb-5 inline-block bg-yellow-400 text-blue-700 px-8 py-4 border-2 border-yellow-400 rounded-md transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
               >
                 無料英会話イベント
               </Link>
@@ -237,7 +262,10 @@ export default function BlogId({ blog, category, recommend }) {
           </button>
         </div>
       </div>
-      <Footer />
+      <div className="mt-40">
+        {" "}
+        <Footer />
+      </div>
     </>
   );
 }
@@ -289,3 +317,7 @@ const Text = styled.span`
   animation: ${fadeIn} 2s ease-in-out;
   animation-fill-mode: forwards;
 `;
+
+function removeHTMLTags(str) {
+  return str.replace(/<[^>]*>?/gm, "");
+}

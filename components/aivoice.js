@@ -43,7 +43,7 @@ export default function Voice({ inputText }) {
   };
 
   return (
-    <div className="bg-green-200 h-80">
+    <div className="bg-green-00 -translate-y-60 flex justify-end mr-8">
       {/* <button onClick={handleTextToSpeech}>Play Text</button> */}
       <button
         onClick={handleTextToSpeech}
@@ -53,14 +53,14 @@ export default function Voice({ inputText }) {
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
+          strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 mr-2"
+          className="w-6 h-6"
         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
-            d="M11 5V3m2 16a9 9 0 0 1-2 .012M3 12a9.001 9.001 0 0 1 2-5.372A9.001 9.001 0 0 1 12 3a9.001 9.001 0 0 1 7 14.372A9.001 9.001 0 0 1 12 21z"
+            d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"
           />
         </svg>
         Play
