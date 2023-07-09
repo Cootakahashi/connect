@@ -1,235 +1,218 @@
-import React, { useState, useEffect } from "react";
-import { useCallback } from "react";
-// import styles from '../styles/nav.module.css'
 import Image from "next/image";
-export function Nav() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  let pageYoffset = 0;
-  const onScroll = useCallback((event) => {
-    const navitem = window.document.querySelector(".nav-item");
+import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
 
-    if (pageYoffset > pageYOffset) {
-      navitem.classList.add("show");
-    } else {
-      navitem.classList.remove("show");
-    }
-    pageYoffset = pageYOffset;
-  }, []);
+export function Blogheader() {
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [isTop, setIsTop] = useState(true);
+
+  const node = useRef(); // for clicking outside
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      setIsTop(currentScrollPos === 0);
+      setIsHeaderVisible(
+        prevScrollPos > currentScrollPos || currentScrollPos < 50
+      );
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    const handleClickOutside = (e) => {
+      if (node.current.contains(e.target)) {
+        // if inside click
+        return;
+      }
+      // outside click
+      setIsMenuOpen(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [prevScrollPos]);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
-    <div className="fixed nav-item bg-slate- opacity- -translate-y-40 pr- z-30 bg-blac">
-      <div className="relative flex items-center justify-between  w-full pr-8">
-        <div className="flex items-centr">
-          <a
-            href="/"
-            aria-label="Company"
-            title="Company"
-            className="inline-flex items-center mr-8"
-          >
-            {/* <Image
-                src="/canva/logo/transparent-logo.png"
-                alt="logo"
-                width={140}
-                height={140}
-                /> */}
-
-            <span className="w-40 whitespace-nowrap ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase"></span>
-          </a>
-          <div className="text-right ml-80 ">
-            <ul className="flex items-center py-10 pt-12ccccc hidde ml-60 space-x-12 lg:flex">
-              <li>
-                <a
-                  href="/"
-                  aria-label="Our product"
-                  title="Our product"
-                  className="font-medium tracking-wide text-slate-100 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                >
-                  Popular
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  aria-label="Our product"
-                  title="Our product"
-                  className="font-medium tracking-wide text-slate-100 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                >
-                  Articles
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  aria-label="Product pricing"
-                  title="Product pricing"
-                  className="font-medium tracking-wide text-slate-100 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                >
-                  Contact
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  aria-label="About us"
-                  title="About us"
-                  className="whitespace-nowrap mr-8 font-medium tracking-wide text-slate-100 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                >
-                  About us
-                </a>
-              </li>
-            </ul>
-          </div>
-          <ul className="flex items-center hidden space-x-8 lg:flex whitespace-nowrap ml-10 mb-2">
-            <li>
-              <a
-                href="/"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-slate-100 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline bg-gray-500 focus:outline-none"
-                aria-label="Booking"
-                title="Booking tour"
-              >
-                Book Webinar
+    <div ref={node}>
+      <header
+        className={`fixed top-0 left-0 right-0 z-10 transition-transform duration-500 ease-in-out transform bg-gray-100 ${
+          isTop ? "translate-y-0" : "hidden"
+        }`}
+      >
+        <div className="flex items-center justify-between py-4 px-8 shadow-lg transition duration-500 ease-in-out">
+          <div className="flex items-center space-x-4">
+            <Link legacyBehavior href="/">
+              <a>
+                <Image
+                  className={`-translate-x-2 ${isTop ? "scale-100" : "hidden"}`}
+                  src="/logo/logo-black1.png"
+                  width={90}
+                  height={90}
+                  alt="Logo"
+                />
               </a>
-            </li>
-          </ul>
+            </Link>
+          </div>
+          <div className="flex space-x-8">
+            <nav
+              className={`hidden md:flex space-x-7 transition-transform duration-500 ease-in-out ${
+                isTop ? "-translate-x-16" : "opacity-0"
+              }`}
+            >
+              <Link legacyBehavior href="/vocabulary">
+                <a className="text-gray-800 relative group text-center">
+                  Vocabulary
+                  <p className="text-xs text-center opacity-70 pt-2">英単語</p>
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
+                </a>
+              </Link>
+              <Link legacyBehavior href="/blog/blogs">
+                <a className="text-gray-800 relative group text-center">
+                  Blog
+                  <p className="text-xs text-center opacity-70 pt-2">
+                    ブログ記事
+                  </p>
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
+                </a>
+              </Link>
+              <Link legacyBehavior href="/category">
+                <a className="text-gray-800 relative group text-center">
+                  Category
+                  <p className="text-xs text-center opacity-70 pt-2">
+                    カテゴリー一覧
+                  </p>
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
+                </a>
+              </Link>
+              <Link legacyBehavior href="/company">
+                <a className="text-gray-800 relative group text-center">
+                  Company
+                  <p className="text-xs text-center opacity-70 pt-2">
+                    会社概要
+                  </p>
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
+                </a>
+              </Link>
+              <Link legacyBehavior href="/company">
+                <a className="text-gray-800 relative group text-center">
+                  FAQ
+                  <p className="text-xs text-center opacity-70 pt-2">
+                    よくある質問
+                  </p>
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
+                </a>
+              </Link>
+              <button className="whitespace-nowrap self-end bg-orange-500 text-gray-800 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out">
+                無料英会話EVENT
+              </button>
+            </nav>
+          </div>
+
+          <div className="md:hidden"></div>
         </div>
-        <div className="lg:hidden">
-          <button
-            aria-label="Open Menu"
-            title="Open Menu"
-            className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
-            onClick={() => setIsMenuOpen(true)}
-          >
-            <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
-              <path
-                fill="currentColor"
-                d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"
-              />
-              <path
-                fill="currentColor"
-                d="M23,6H1C0.4,6,0,5.6,0,5s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,6,23,6z"
-              />
-              <path
-                fill="currentColor"
-                d="M23,20H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,20,23,20z"
-              />
-            </svg>
-          </button>
-          {isMenuOpen && (
-            <div className="absolute top-0 left-0 w-full">
-              <div className="p-5 bg-white border rounded shadow-sm">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <a
-                      href="/"
-                      aria-label="Company"
-                      title="Company"
-                      className="inline-flex items-center"
-                    >
-                      <svg
-                        className="w-8 text-deep-purple-accent-400"
-                        viewBox="0 0 24 24"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeMiterlimit="10"
-                        stroke="currentColor"
-                        fill="none"
-                      >
-                        <rect x="3" y="1" width="7" height="12" />
-                        <rect x="3" y="17" width="7" height="6" />
-                        <rect x="14" y="1" width="7" height="6" />
-                        <rect x="14" y="11" width="7" height="12" />
-                      </svg>
-                      <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                        Company
-                      </span>
-                    </a>
-                  </div>
-                  <div>
-                    <button
-                      aria-label="Close Menu"
-                      title="Close Menu"
-                      className="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
-                        <path
-                          fill="currentColor"
-                          d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <nav>
-                  <ul className="space-y-4">
-                    <li>
-                      <a
-                        href="/"
-                        aria-label="Our product"
-                        title="Our product"
-                        className="font-medium tracking-wide text-slate-100 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                      >
-                        Product
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/"
-                        aria-label="Our product"
-                        title="Our product"
-                        className="font-medium tracking-wide text-slate-100 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                      >
-                        Features
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/"
-                        aria-label="Product pricing"
-                        title="Product pricing"
-                        className="font-medium tracking-wide text-slate-100 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                      >
-                        Pricing
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/"
-                        aria-label="About us"
-                        title="About us"
-                        className="font-medium tracking-wide text-slate-100 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                      >
-                        About us
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/"
-                        aria-label="Sign in"
-                        title="Sign in"
-                        className="font-medium tracking-wide text-slate-100 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                      >
-                        Sign in
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/"
-                        className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-slate-100 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                        aria-label="Sign up"
-                        title="Sign up"
-                      >
-                        Sign up
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
+      </header>
+      <button
+        onClick={handleMenuToggle}
+        className={`focus:outline-none text-gray-900 hover:text-gray-500 fixed top-3 right-4 p-4 md:hidde z-50 ${
+          isTop ? "-translate-y-2" : "opacity-"
+        }`}
+      >
+        <svg
+          className="h-6 w-6"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          {isMenuOpen ? (
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          ) : (
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
           )}
+        </svg>
+      </button>
+      {isMenuOpen && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-75 z-50 transition duration-500 ease-in-out">
+          <div className="absolute top-0 right-0 p-4">
+            <button
+              onClick={handleMenuToggle}
+              className="focus:outline-none text-white"
+            >
+              {" "}
+              <svg
+                className="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <nav className="flex flex-col justify-center items-center h-full text-center text-white text-2xl space-y-8">
+            {/* Links */}
+            <Link legacyBehavior href="/">
+              <a>
+                <Image
+                  className={`-translate-y-8 rounded-xl ${
+                    isTop ? "scale-100" : ""
+                  }`}
+                  src="/logo/logo3.png"
+                  width={190}
+                  height={190}
+                  alt="Logo"
+                />
+              </a>
+            </Link>
+            <Link legacyBehavior href="/vocabulary">
+              <a onClick={handleMenuToggle}>Vocabulary</a>
+            </Link>
+            <Link legacyBehavior href="/blog/blogs">
+              <a onClick={handleMenuToggle}>Blog</a>
+            </Link>
+            <Link legacyBehavior href="/category">
+              <a onClick={handleMenuToggle}>Category</a>
+            </Link>
+            <Link legacyBehavior href="/company">
+              <a onClick={handleMenuToggle}>Company</a>
+            </Link>
+            <button
+              className="mt-8 whitespace-nowrap self-center bg-orange-500 text-gray-800 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out"
+              onClick={handleMenuToggle}
+            >
+              無料英会話EVENT
+            </button>
+          </nav>
         </div>
-      </div>
+      )}
     </div>
   );
 }
+
+export default Blogheader;

@@ -1,29 +1,12 @@
 import Image from "next/image";
 import { useState } from "react";
-
-export function Top() {
+import Link from "next/link";
+export function Top({ newestBlog }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
       <div className="block md:hidden">
-        {/* Logo and Hamburger Menu */}
-        <div className="flex justify-between items-center px-4 py-2 fixed z-10 w-full">
-          <div className="text-xl font-bold">
-            {" "}
-            <Image
-              src="/logo/Dapper.png"
-              width={100}
-              height={100}
-              // layout="fill"
-              // objectFit="cover"
-              alt="background image"
-            />
-          </div>
-          <div></div>
-        </div>
-
-        {/* Hero Image */}
         <div className="relative h-[500px] md:h-[700px]">
           <Image
             src="/responsive/9.png"
@@ -95,9 +78,15 @@ export function Top() {
             <button className="whitespace-nowrap md:self-end bg-orange-500 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out">
               無料英会話EVENT
             </button>
-            <button className="whitespace-nowrap md:self-end bg-blue-500 text-white font-semibold py-3 px-8 border border-blue-700 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-500 ease-in-out">
-              最新記事
-            </button>
+            <Link
+              href={`/blog/${
+                newestBlog.category.name === "Phrasal verb" ? "idioms/" : ""
+              } ${newestBlog?.id}`}
+            >
+              <button className="whitespace-nowrap md:self-end bg-blue-500 text-white font-semibold py-3 px-8 border border-blue-700 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-500 ease-in-out">
+                最新記事
+              </button>
+            </Link>
           </div>
         </div>
       </div>

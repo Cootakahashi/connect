@@ -39,10 +39,16 @@ export default function Home({ blog, totalCount }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar />
-      <Top />
+      <div className="hidde z-50 mb-10 bg-blue-200">
+        <NavBar />
+      </div>
+
+      <div className="hidde">
+        {" "}
+        <Top newestBlog={blog[0]} />
+      </div>
       {/* <Pagination totalCount={totalCount} /> */}
-      <div className="mx-3 md:mx-20">
+      <div className="mx-3 md:mx-20 ">
         <h2 className="m-5 p-5 text-center font-sans font-thin text-5xl">
           {/* Newest Article */}
         </h2>

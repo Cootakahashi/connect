@@ -6,6 +6,7 @@ import Layoutwrap from "../../components/Layoutcomp";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { Footer } from "../../components/footer";
+import { Blogheader } from "../../components/header";
 
 export default function BlogId({ blog, category, recommend }) {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -37,6 +38,9 @@ export default function BlogId({ blog, category, recommend }) {
 
   return (
     <>
+      <div className="hidde z-50 mb-20">
+        <Blogheader />
+      </div>
       <Layoutwrap
         metadata={{
           title: blog?.title,
@@ -202,8 +206,8 @@ export default function BlogId({ blog, category, recommend }) {
             </div>
           </div>
         </div>
-        <Footer />
       </Layoutwrap>
+      <Footer />
     </>
   );
 }
