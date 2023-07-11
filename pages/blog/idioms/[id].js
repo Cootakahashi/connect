@@ -234,7 +234,12 @@ export default function BlogId({ blog, category, recommend }) {
                       height={64}
                       className="rounded-full"
                     />
-                    <Link href={`/blog/${blog?.id}`} className="ml-4 text-lg">
+                    <Link
+                      href={`/blog/${
+                        blog.category?.name === "Phrasal verb" ? "idioms/" : ""
+                      }${blog.id}`}
+                      className="ml-4 text-lg"
+                    >
                       {blog.title}
                     </Link>
                   </li>
