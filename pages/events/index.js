@@ -46,6 +46,8 @@ export default function allblog({
     "November",
     "December",
   ];
+  console.log(events);
+  console.log(events[0].id);
   const pathimage0 = events.image?.url;
 
   return (
@@ -66,24 +68,27 @@ export default function allblog({
         }}
       >
         <div className="md:flex">
-          <div className="flex-grow " style={{ flexBasis: "61.8%" }}>
+          <div className="flex-grow mt-10" style={{ flexBasis: "61.8%" }}>
             {" "}
             <ul>
-              <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-6 ">
+              <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-8 overflow-hidde">
                 {events.map((event, index) => (
-                  <div
+                  <Link
+                    href={`/events/${event.id}`}
                     key={index}
-                    className="h-[290px] flex bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-200 ease-in-out"
+                    className="md:h-[200p] md:h-auto flex bg-white rounded-lg shadow-lg overflow-hidd transform hover:scale-105 transition-transform duration-200 ease-in-out"
                   >
                     <Image
                       src={event.image.url}
                       alt={event.title}
                       width={200}
                       height={300}
-                      className="w-1/2 px-10 py-3"
+                      className="md:w-1/2 md:px-10 md:py-3 w-1/3"
                     />
-                    <div className="p-6">
-                      <h2 className="font-bold text-2xl mb-2">{event.title}</h2>
+                    <div className="p-3 md:p-6">
+                      <h2 className="font-bold md:text-2xl mb-2">
+                        {event.title}
+                      </h2>
                       <div className="flex gap-2">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +104,7 @@ export default function allblog({
                             d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                           />
                         </svg>
-                        <p className="text-gray-700 text-lg mb-2">
+                        <p className="text-gray-700 md:text-lg mb-2">
                           {event.date}
                         </p>
                       </div>
@@ -123,16 +128,8 @@ export default function allblog({
                       <p className="text-gray-700 text-sm mt-5">
                         {event.description}
                       </p>
-                      <a
-                        href={event.url}
-                        className="mt-8 inline-block w-full text-center whitespace-nowrap self-center bg-orange-500 text-slate-100 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        参加する
-                      </a>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </ul>

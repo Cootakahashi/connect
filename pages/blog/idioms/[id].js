@@ -47,6 +47,7 @@ export default function BlogId({ blog, category, recommend }) {
   const plainText =
     "Come up with something what are you feel? I would like to make something cool";
   const text = blog.content.replace(/<[^>]*>?/gm, "");
+
   const handleSubmit = async () => {
     const newMakeword = text + "," + input;
     setMakeword(newMakeword);
@@ -57,13 +58,21 @@ export default function BlogId({ blog, category, recommend }) {
     setIsLoading(false);
   };
 
-  let blogContent = blog.content;
+  // let blogContent = blog.content;
   let blogHead1 = blog.head1;
   let blogHead2 = blog.head2;
   let blogHead3 = blog.head3;
   let textsArray = [];
 
-  textsArray.push(removeHTMLTags(blogContent));
+  const blogContent = blog.content.replace(/<[^>]*>?/gm, "");
+  // const blogHead1 = blog.head1.replace(/<[^>]*>?/gm, "");
+  // const blogHead2 = blog.head2.replace(/<[^>]*>?/gm, "");
+  // const blogHead3 = blog.head3.replace(/<[^>]*>?/gm, "");
+  const blogContent1 = blog.content1.replace(/<[^>]*>?/gm, "");
+  const blogContent2 = blog.content2.replace(/<[^>]*>?/gm, "");
+  const blogContent3 = blog.content3.replace(/<[^>]*>?/gm, "");
+  console.log(blogContent1);
+  // textsArray.push(removeHTMLTags(blogContent));
   textsArray.push(removeHTMLTags(blogHead1));
   textsArray.push(removeHTMLTags(blogHead2));
   textsArray.push(removeHTMLTags(blogHead3));
@@ -123,76 +132,105 @@ export default function BlogId({ blog, category, recommend }) {
               priority
             />
           </div>
+          {/* その他のコード */}
           <div className="">
             {/* 答え 英訳 */}
+            <div className="h-0 text-3xl translate-y-40 opacity-30">
+              意味を想像しながら発音を聞いてみよう!
+            </div>
             <div
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section1`}
-              dangerouslySetInnerHTML={{ __html: `${blog.content}` }}
-            ></div>
+            >
+              {blogContent}
+            </div>
             <Voice inputText={textsArray[0]} />
-            {/* <Gptbox inputText={plainText} /> */}
 
             {/* 例文 */}
+            <div className="h-0 text-3xl translate-y-40 opacity-30">
+              例文で確認しよう!
+            </div>
             <div
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section2`}
-              dangerouslySetInnerHTML={{ __html: `${blog.head1}` }}
-            ></div>
+            >
+              {blogHead1}
+            </div>
             <Voice inputText={textsArray[1]} />
 
             {/* 例文２ */}
+            <div className="h-0 text-3xl translate-y-40 opacity-30">
+              意味を確認しよう!
+            </div>
             <div
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section3`}
-              dangerouslySetInnerHTML={{ __html: `${blog.content1}` }}
-            ></div>
-
+            >
+              {blogContent1}
+            </div>
+            <div className="h-0 text-3xl translate-y-40 opacity-30">
+              更に理解を深めよう!
+            </div>
             <div
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section4`}
-              dangerouslySetInnerHTML={{ __html: `${blog.head2}` }}
-            ></div>
+            >
+              {blogHead2}
+            </div>
             <Voice inputText={textsArray[2]} />
-
+            <div className="h-0 text-3xl translate-y-40 opacity-30">
+              意味を理解しよう!
+            </div>
             {/* 別訳1日本 */}
             <div
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section5`}
-              dangerouslySetInnerHTML={{ __html: `${blog.content2}` }}
-            ></div>
+            >
+              {blogContent2}
+            </div>
+            <div className="h-0 text-3xl translate-y-40 opacity-30">
+              最後の例文だよ!
+            </div>
             {/* 答え　英訳 */}
             <div
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section6`}
-              dangerouslySetInnerHTML={{ __html: `${blog.head3}` }}
-            ></div>
+            >
+              {blogHead3}
+            </div>
             <Voice inputText={textsArray[3]} />
-
+            <div className="h-0 text-3xl translate-y-40 opacity-30">
+              イメージできたかな?
+            </div>
             {/* 別訳2日本 */}
             <div
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section7`}
-              dangerouslySetInnerHTML={{ __html: `${blog.content3}` }}
-            ></div>
+            >
+              {blogContent3}
+            </div>
+            <div className="h-0 text-3xl translate-y-40 opacity-30">
+              Listen up!
+            </div>
             {/* 答え　英訳 */}
             <div
               className={`${styles.post} text-3xl md:text-5xl h-screen flex items-center justify-center section8`}
-              dangerouslySetInnerHTML={{ __html: `${blog.content}` }}
-            ></div>
+            >
+              {blogContent}
+            </div>
             <Voice inputText={textsArray[0]} />
 
             {/* 別訳3日本 */}
             <div className="flex flex-col items-center justify-center h-screen section9">
-              <h1 className="text-center my-5 mb-20 text-2xl font-semibold">
-                記憶するためにAIで例文を作ろう！
+              <h1 className="text-center my-5 mb-20 text-2xl font-semibold text-blue-600">
+                好きな単語を使ってAIに例文を作ってもらおう！
               </h1>
               <textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                className="w-64 h-24 p-3 mb-4 text-lg border rounded shadow"
-                placeholder="自分の好きな単語を入れてみよう..."
+                className="w-72 h-32 p-3 mb-4 text-lg rounded-lg shadow-lg bg-gray-100 border-2 border-blue-500 focus:border-blue-600 focus:outline-none"
+                placeholder="BLACKPINK, Justin Bieber, Yakiniku, Manga など好きな単語をここに入れてね! 複数の単語を入れる場合は,(カンマ)で区切ってね..."
               />
               <button
                 onClick={handleSubmit}
-                className="px-6 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+                className="px-6 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 shadow-md transform hover:scale-105 transition-all duration-300"
               >
                 Submit
               </button>
-              <p className="mt-4 text-lg">
+              <p className="mt-4 text-lg text-gray-600">
                 {/* 自分が使いたい単語を入れて、{text}の例文をつくろう */}
               </p>
               <h1 className="text-lg md:text-xl font-bold mb-8 text-center px-8">
