@@ -8,8 +8,8 @@ import { SNSshare } from "@/components/SNSshare";
 import { Footer } from "../../../components/footer";
 import Link from "next/link";
 import Voice from "../../../components/aivoice";
- import Layoutwrap from "../../../components/Layoutcomp";
- import Head from 'next/head'
+import Layoutwrap from "../../../components/Layoutcomp";
+import Head from "next/head";
 
 export default function BlogId({ blog, category, recommend }) {
   const microCMSLoader = ({ src, width, quality }) => {
@@ -70,24 +70,23 @@ export default function BlogId({ blog, category, recommend }) {
   console.log(textsArray);
   return (
     <>
+      <Head>
+        <title>{blog?.title}</title>
+        <meta name="description" content={blog?.description} />
 
-<Head>
-      <title>{blog?.title}</title>
-      <meta name="description" content={blog?.description} />
+        <meta property="og:title" content={blog?.title} />
+        <meta property="og:description" content={blog?.description} />
+        <meta property="og:image" content={pathimage} />
+        <meta property="og:url" content="https://beginrestart.com/" />
 
-      <meta property="og:title" content={blog?.title} />
-      <meta property="og:description" content={blog?.description} />
-      <meta property="og:image" content={pathimage} />
-      <meta property="og:url" content="https://beginrestart.com/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@Tokoenglish" />
+        <meta name="twitter:title" content={blog?.title} />
+        <meta name="twitter:description" content={blog?.description} />
+        <meta name="twitter:image" content={pathimage} />
 
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@Tokoenglish" />
-      <meta name="twitter:title" content={blog?.title} />
-      <meta name="twitter:description" content={blog?.description} />
-      <meta name="twitter:image" content={pathimage} />
-
-      <link rel="canonical" href="https://beginrestart.com/" />
-    </Head>
+        <link rel="canonical" href="https://beginrestart.com/" />
+      </Head>
 
       <div className="grid bg-gradient-to-br from-blue-800 via-blue-500 to-blue-900 h-full ">
         {" "}
