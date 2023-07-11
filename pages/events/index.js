@@ -7,7 +7,13 @@ import { Pagination } from "../../components/Pagination";
 import { Footer } from "../../components/footer";
 import { Blogheader } from "../../components/header";
 
-export default function allblog({ blog, category, recommend, totalCount }) {
+export default function allblog({
+  blog,
+  category,
+  recommend,
+  totalCount,
+  events,
+}) {
   const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
@@ -40,7 +46,7 @@ export default function allblog({ blog, category, recommend, totalCount }) {
     "November",
     "December",
   ];
-  const pathimage0 = blog.eyecatch?.url;
+  const pathimage0 = events.image?.url;
 
   return (
     <>
@@ -63,24 +69,29 @@ export default function allblog({ blog, category, recommend, totalCount }) {
           <div className="flex-grow " style={{ flexBasis: "61.8%" }}>
             {" "}
             <ul>
-              <div className=" mt-10">
-                {blog.map((blog) => {
-                  const datetime = new Date(blog.createdAt);
-                  const pathimage = blog.eyecatch?.url;
-
-                  return (
-                    <div
-                      key={blog.id}
-                      className="mb-20 mb:mb-0 h-full bg-slate-20 rounded-xl md:px-5 border shadow-xl hover:shadow-2xl transition duration-500 ease-in-out"
-                    >
-                      <div className="text-slate-700  opacity-80 pt-6  flex justify-center mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-6 ">
+                {events.map((event, index) => (
+                  <div
+                    key={index}
+                    className="h-[290px] flex bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-200 ease-in-out"
+                  >
+                    <Image
+                      src={event.image.url}
+                      alt={event.title}
+                      width={200}
+                      height={300}
+                      className="w-1/2 px-10 py-3"
+                    />
+                    <div className="p-6">
+                      <h2 className="font-bold text-2xl mb-2">{event.title}</h2>
+                      <div className="flex gap-2">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
                           strokeWidth={1.5}
                           stroke="currentColor"
-                          className="w-4 h-4 mt-1 mr-2"
+                          className="w-5 h-5 mt-1"
                         >
                           <path
                             strokeLinecap="round"
@@ -88,55 +99,41 @@ export default function allblog({ blog, category, recommend, totalCount }) {
                             d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                           />
                         </svg>
-
-                        <p>{datetime.getFullYear()}.</p>
-                        <p>{datetime.getMonth() + 1}.</p>
-                        <p>{datetime.getDate()}</p>
+                        <p className="text-gray-700 text-lg mb-2">
+                          {event.date}
+                        </p>
                       </div>
-                      <h1 className="text-2xl pt-3 pb-5  text-blue-800 text-center font-san font-bold ">
-                        {" "}
-                        {blog.title}
-                      </h1>
-                      <div className="text-center mb-5">
-                        <span className="ml-3 text-slate-100 bg-blue-800 text-sm px-3 py-1">
-                          {blog.category?.name}
-                        </span>
-                      </div>
-                      <Link
-                        key={blog.id}
-                        href={`/blog/${
-                          blog.category?.name === "Phrasal verb"
-                            ? "idioms/"
-                            : ""
-                        }${blog.id}`}
-                      >
-                        <div className="bg-blue-20 rounded-x">
-                          <Image
-                            className="w-full z-1"
-                            loader={microCMSLoader}
-                            src={pathimage}
-                            height={500}
-                            width={500}
-                            alt="thumbnail"
-                            priority
-                          />
-                        </div>
-
-                        <div className=" mx-3">
-                          <h2 className="font-light text-center　flex opacity-70 px-5 pt-7 pb-5">
-                            {blog?.description?.substring(0, 111)}...
-                          </h2>
-                        </div>
-                        <button
-                          href="/event"
-                          className="mx-auto mb-10 flex justify-center text-blue-700  bg-gray-00 px-12 py-4 border-2   transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
+                      <div className="flex gap-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-5 h-5"
                         >
-                          Read More
-                        </button>
-                      </Link>
+                          <path
+                            strokeLinecap="round"
+                            d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"
+                          />
+                        </svg>
+                        <p className="text-xs opacity-80">Google Meet</p>
+                      </div>
+
+                      <p className="text-gray-700 text-sm mt-5">
+                        {event.description}
+                      </p>
+                      <a
+                        href={event.url}
+                        className="mt-8 inline-block w-full text-center whitespace-nowrap self-center bg-orange-500 text-slate-100 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        参加する
+                      </a>
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </div>
             </ul>
             <Pagination totalCount={totalCount} />
@@ -230,11 +227,11 @@ export default function allblog({ blog, category, recommend, totalCount }) {
 
 export const getStaticProps = async () => {
   const data = await client.get({
-    endpoint: "blogs",
+    endpoint: "event",
     queries: { offset: 0, limit: 5 },
   });
   const datas = await client.get({
-    endpoint: "blogs",
+    endpoint: "event",
     queries: { offset: 0, limit: 5 },
   });
 
@@ -245,7 +242,7 @@ export const getStaticProps = async () => {
   );
   return {
     props: {
-      blog: data.contents,
+      events: data.contents,
       blogs: datas.contents,
       totalCount: datas.totalCount,
       category: categoryData.contents,

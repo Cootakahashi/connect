@@ -11,7 +11,12 @@ import Head from "next/head";
 import Forwho from "../components/lp/forwho";
 import Fixback from "@/components/lp/fixback";
 import Why from "../components/lp/why";
-export default function landing() {
+import { Blogheader } from "../components/header";
+
+export default function meetup({ events }) {
+  const microCMSLoader = ({ src, width, quality }) => {
+    return `${src}?auto=format&fit=max&w=${width}`;
+  };
   return (
     <>
       <Head>
@@ -20,52 +25,42 @@ export default function landing() {
           rel="stylesheet"
         />
       </Head>
-
-      <div className="relative h-[500px] sm:h-[600px] lg:h-[800px] xl:h-[900px] 2xl:h-[1000px]">
-        <Image
-          src={"/canvawide/18.png"}
-          height={500}
-          width={1300}
-          className="ml-auto"
-        />
-        <div className="absolute top-80 w-full left-20  ">
-          <p className="font-bold text-[200px] text-orange-400 textfont tracking-wide">
-            GOGAKU
-          </p>
-          <p className="font-bold text-[50px] text-slate-300 textfont -translate-y-20 underline">
-            English Meet UP
-          </p>
-        </div>
-        {/* <div className="absolute top-1/2 w-full text-center">
-          <button className="text-sm sm:text-base text-white bg-orange-500 px-10 py-4 shadow-md rounded-full font-bold my-3 hover:shadow-xl active:scale-90 transition duration-150">
-            参加する
-          </button>
-        </div> */}
-        <div className="absolute top-1/2 left-48 w-full text-center">
-          {/* <Image
-            src="/canva/triangle.png"
-            height={350}
-            width={350}
-            className="absolute ml-[400px] "
-          /> */}
-          <div className=" relative -left-[200px] top-52">
-            <h1 className="text-orange-400 text-5xl textfont ml-[555px] ">
-              {" "}
-              ABOUT
-            </h1>
+      <div>
+        <Blogheader className="mb-20" />
+        <div className="relative h-screen md:h-[600px] lg:h-[800px] xl:h-[900px] 2xl:h-[1000px]">
+          <Image
+            src={"/wide/11.png"}
+            layout="fill"
+            objectFit="cover"
+            className="absolute z-0 hidden md:block"
+          />
+          <Image
+            src={"/responsive/8.png"}
+            layout="fill"
+            objectFit="cover"
+            className="absolute z-0 block md:hidden h-screen"
+          />
+          {/* <div className="absolute inset-0 bg-black opacity-50 z-10" /> */}
+          <div className="absolute inset-0 md:flex items-center md:justify-between z-20 px-4 md:px-8">
+            <div className="w-full md:w-1/2 md:pl-8">
+              <p className="font-bold text-white text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] tracking-wide">
+                Restart
+              </p>
+              <p className="font-bold text-white text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[3rem] underline">
+                English Meet UP
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div className="">
-        <Videocomp />
-      </div>
-
+      {/* 
+      <Videocomp />
       <Forwho />
 
       <Features />
       <Why />
       <Fixback />
-      <Pricing />
+      <Pricing /> */}
       {/* 
       <Testimonials />
       // <Pricing />
