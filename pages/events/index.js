@@ -67,6 +67,7 @@ export default function allblog({
           canonicalUrl: "https://beginrestart.com/",
         }}
       >
+        <>EVENT</>
         <div className="md:flex">
           <div className="flex-grow mt-10" style={{ flexBasis: "61.8%" }}>
             {" "}
