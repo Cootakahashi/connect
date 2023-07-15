@@ -1,7 +1,7 @@
 import BlogId from "@/pages/blog/[id]";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
+import Image from "next/legacy/image";
 export function IdiomQuestion({
   question,
   pinyin,

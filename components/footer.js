@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 export const Footer = () => {
   return (
     <div className="relative mt-16 bg-deep-purple-accent-400 mt-20">

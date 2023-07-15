@@ -1,5 +1,5 @@
 import { ArrowRight } from "@heroicons/react/solid"; // For solid icons in v2
-import Image from "next/image";
+import Image from "next/legacy/image";
 export default function Why() {
   return (
     <>

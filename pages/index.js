@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Top } from "../components/top";
 import { NavBar } from "../components/nav";
 import Link from "next/link";

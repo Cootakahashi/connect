@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Pagination } from "../../../components/Pagination";
 import { client } from "../../../libs/client";
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 const PER_PAGE = 5;
 
 // pages/blog/[id].js
