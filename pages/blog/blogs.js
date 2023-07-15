@@ -110,13 +110,13 @@ export default function allblog({ blog, category, recommend, totalCount }) {
                             : ""
                         }${blog.id}`}
                       >
-                        <div className="bg-blue-20 rounded-x">
+                        <div className="bg-blue-20 rounded-x mx-auto m-full">
                           <Image
                             className="w-full z-1"
                             loader={microCMSLoader}
                             src={pathimage}
-                            height={500}
-                            width={500}
+                            height={400}
+                            width={750}
                             alt="thumbnail"
                             priority
                           />

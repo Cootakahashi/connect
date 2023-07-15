@@ -56,8 +56,8 @@ export function Blogheader() {
                 <Image
                   className={`-translate-x-2 ${isTop ? "scale-100" : "hidden"}`}
                   src="/logo/logo-black1.png"
-                  width={90}
-                  height={90}
+                  width={120}
+                  height={50}
                   alt="Logo"
                 />
               </a>
@@ -180,12 +180,12 @@ export function Blogheader() {
             <Link legacyBehavior href="/">
               <a>
                 <Image
-                  className={`-translate-y-8 rounded-xl ${
+                  className={`-translate-y- rounded-xl ${
                     isTop ? "scale-100" : ""
                   }`}
                   src="/logo/logo3.png"
-                  width={190}
-                  height={190}
+                  width={120}
+                  height={50}
                   alt="Logo"
                 />
               </a>

@@ -79,7 +79,7 @@ export default function Home({ blog, totalCount }) {
                       className="w-full z-1 rounded-t-xl"
                       loader={microCMSLoader}
                       src={pathimage}
-                      height={500}
+                      height={300}
                       width={500}
                       alt="thumbnail"
                       priority

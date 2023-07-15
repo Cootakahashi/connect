@@ -22,8 +22,8 @@ export const Footer = () => {
                 <Image
                   className={`-translate-y- inline-flex items-center rounded-xl`}
                   src="/logo/logo-black1.png"
-                  width={190}
-                  height={190}
+                  width={170}
+                  height={90}
                   alt="Logo"
                 />
               </a>

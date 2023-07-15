@@ -36,178 +36,180 @@ export default function BlogId({ blog, category, recommend }) {
   console.log(blog?.images?.[3]);
   console.log({ blog, category, recommend });
 
-  return <>
-    <div className="hidde z-50 mb-20">
-      <Blogheader />
-    </div>
-    <Layoutwrap
-      metadata={{
-        title: blog?.title,
-        description: blog?.description,
-        ogTitle: blog?.title,
-        ogDescription: blog?.description,
-        ogImage: pathimage,
-        ogUrl: "https://beginrestart.com/",
-        twitterSite: "@Tokoenglish",
-        canonicalUrl: "https://beginrestart.com/",
-      }}
-    >
-      <div className="md:flex">
-        <div className="flex-grow " style={{ flexBasis: "61.8%" }}>
-          {/* Main content goes here */}
-
-          <div className={`${styles.m}`}>
-            <main className="">
-              <div className="text-slate-800">
-                <div className="mt-8 mb-6">
-                  <span className="text-sm">
-                    {" "}
-                    {new Date(blog?.publishedAt)
-                      .toLocaleDateString("ja-JP", {
-                        year: "numeric",
-                        month: "numeric",
-                        day: "numeric",
-                      })
-                      .replace(/\//g, ".")}
-                  </span>
-                  <span className="ml-5 text-slate-100 bg-blue-800 text-sm px-3 py-1">
-                    {blog?.category?.name}
-                  </span>
-                </div>
-                <h1 className=" text-2xl pb-8  text-blue-800 text-left font-san font-bold	">
-                  {blog?.title}
-                  <br />
-                  {blog?.title2}
-                </h1>
-              </div>
-              <div className="">
-                <Image
-                  className="w-full"
-                  loader={microCMSLoader}
-                  src={pathimage}
-                  height={500}
-                  width={500}
-                  alt="thumbnail"
-                  priority
-                />
-              </div>
-              <div className="mt-20">
-                {blog?.toc_visible && <TableOfContents toc={toc} />}
-              </div>
-              <div
-                className={`${styles.post} `}
-                dangerouslySetInnerHTML={{ __html: `${blog.content}` }}
-              ></div>
-            </main>
-          </div>
-          <div className="">
-            {Array.from({ length: 4 }, (_, index) => (
-              <section className="mb-8" key={index}>
-                <h1 className="text-xl font-bold bg-gray-100 py-4 pl-4 border-l-4 border-blue-400 mt-10 mb-6">
-                  {blog?.[schemaNames[0] + (index + 1)]}
-                </h1>
-                <Image
-                  src={blog?.[schemaNames[2]]?.[index]?.url}
-                  className="w-full"
-                  height={500}
-                  width={500}
-                  alt="head image"
-                  priority
-                  loader={microCMSLoader}
-                />
-                <div
-                  className={`${styles.content} my-20 leading-8 text-md whitespace-pre-line`}
-                  dangerouslySetInnerHTML={{
-                    __html: blog?.[schemaNames[1] + (index + 1)],
-                  }}
-                />
-              </section>
-            ))}
-          </div>
-        </div>
-        <div
-          className="flex-grow"
-          style={{ flexBasis: windowWidth <= 768 ? "100%" : "38.2%" }}
-        >
-          {/* Sidebar goes here */}
-          <div className="md:ml-20 text-gray-700 py-4 md:px-6">
-            <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3 text-blue-800 ">
-              カテゴリー
-            </h3>
-            <ul className="space-y-2 font-bold">
-              <Link href={`/category/${category.id}`}>
-                ブログトップページ
-              </Link>
-              {category.map((category) => (
-                <li
-                  key={category.id}
-                  className="border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 md:px-3 py-2"
-                >
-                  <Link href={`/category/${category.id}`}>
-                    {category.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="md:ml-20 text-gray-700 py-4 md:px-6">
-            <h3 className="mt-10 text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3 text-blue-800 ">
-              おすすめ記事
-            </h3>
-            <ul className="space-y-2 font-bold">
-              {recommend.map((blog) => (
-                <li
-                  key={blog?.id}
-                  className="flex border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2"
-                >
-                  {" "}
-                  <Image
-                    src={blog?.eyecatch?.url}
-                    alt="Profile Image"
-                    width={64}
-                    height={64}
-                    className="rounded-ful"
-                  />
-                  <Link href={`/blog/${blog?.id}`} className="mx-5 text-sm">
-                    {blog.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="md:ml-20 text-gray-700 py-4 md:px-6 font-bold mb-4 border-y-2 border-blue-900 pb-3 text-blue-800 mt-20">
-            <div className="mb-4 flex">
-              <Image
-                src="/canva/1.png"
-                alt="Profile Image"
-                width={64}
-                height={64}
-                className="rounded-full"
-              />{" "}
-              <h3 className="text-xl font-bold mb-2 text-blue-900 mt-auto">
-                Restart運営
-              </h3>
-            </div>
-            <div>
-              <p className="mb-4 whitespace-pre-line">
-                {`私の人生はこんな筈じゃない。。\nそんな人が人生を再出発させることが\nできるのが英語！ \n やっぱり英語は喋らないと喋れない \n 英語イベントにポチッとワンクリックで参加してください。`}
-              </p>
-              <p className="mb-8 mt-12">
-                <Link
-                  href="/event"
-                  className="text-blue-700  bg-yellow-400 px-8 py-4 border-2 border-yellow-400 rounded-md transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
-                >
-                  無料英会話イベント
-                </Link>
-              </p>
-            </div>
-          </div>
-        </div>
+  return (
+    <>
+      <div className="hidde z-50 mb-20">
+        <Blogheader />
       </div>
-    </Layoutwrap>
-    <Footer />
-  </>;
+      <Layoutwrap
+        metadata={{
+          title: blog?.title,
+          description: blog?.description,
+          ogTitle: blog?.title,
+          ogDescription: blog?.description,
+          ogImage: pathimage,
+          ogUrl: "https://beginrestart.com/",
+          twitterSite: "@Tokoenglish",
+          canonicalUrl: "https://beginrestart.com/",
+        }}
+      >
+        <div className="md:flex">
+          <div className="flex-grow " style={{ flexBasis: "61.8%" }}>
+            {/* Main content goes here */}
+
+            <div className={`${styles.m}`}>
+              <main className="">
+                <div className="text-slate-800">
+                  <div className="mt-8 mb-6">
+                    <span className="text-sm">
+                      {" "}
+                      {new Date(blog?.publishedAt)
+                        .toLocaleDateString("ja-JP", {
+                          year: "numeric",
+                          month: "numeric",
+                          day: "numeric",
+                        })
+                        .replace(/\//g, ".")}
+                    </span>
+                    <span className="ml-5 text-slate-100 bg-blue-800 text-sm px-3 py-1">
+                      {blog?.category?.name}
+                    </span>
+                  </div>
+                  <h1 className=" text-2xl pb-8  text-blue-800 text-left font-san font-bold	">
+                    {blog?.title}
+                    <br />
+                    {blog?.title2}
+                  </h1>
+                </div>
+                <div className="">
+                  <Image
+                    className="w-full"
+                    loader={microCMSLoader}
+                    src={pathimage}
+                    height={500}
+                    width={500}
+                    alt="thumbnail"
+                    priority
+                  />
+                </div>
+                <div className="mt-20">
+                  {blog?.toc_visible && <TableOfContents toc={toc} />}
+                </div>
+                <div
+                  className={`${styles.post} `}
+                  dangerouslySetInnerHTML={{ __html: `${blog.content}` }}
+                ></div>
+              </main>
+            </div>
+            <div className="">
+              {Array.from({ length: 4 }, (_, index) => (
+                <section className="mb-8" key={index}>
+                  <h1 className="text-xl font-bold bg-gray-100 py-4 pl-4 border-l-4 border-blue-400 mt-10 mb-6">
+                    {blog?.[schemaNames[0] + (index + 1)]}
+                  </h1>
+                  <Image
+                    src={blog?.[schemaNames[2]]?.[index]?.url}
+                    className="w-full"
+                    height={500}
+                    width={500}
+                    alt="head image"
+                    priority
+                    loader={microCMSLoader}
+                  />
+                  <div
+                    className={`${styles.content} my-20 leading-8 text-md whitespace-pre-line`}
+                    dangerouslySetInnerHTML={{
+                      __html: blog?.[schemaNames[1] + (index + 1)],
+                    }}
+                  />
+                </section>
+              ))}
+            </div>
+          </div>
+          <div
+            className="flex-grow"
+            style={{ flexBasis: windowWidth <= 768 ? "100%" : "38.2%" }}
+          >
+            {/* Sidebar goes here */}
+            <div className="md:ml-20 text-gray-700 py-4 md:px-6">
+              <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3 text-blue-800 ">
+                カテゴリー
+              </h3>
+              <ul className="space-y-2 font-bold">
+                <Link href={`/category/${category.id}`}>
+                  ブログトップページ
+                </Link>
+                {category.map((category) => (
+                  <li
+                    key={category.id}
+                    className="border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 md:px-3 py-2"
+                  >
+                    <Link href={`/category/${category.id}`}>
+                      {category.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="md:ml-20 text-gray-700 py-4 md:px-6">
+              <h3 className="mt-10 text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3 text-blue-800 ">
+                おすすめ記事
+              </h3>
+              <ul className="space-y-2 font-bold">
+                {recommend.map((blog) => (
+                  <li
+                    key={blog?.id}
+                    className="flex border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2"
+                  >
+                    {" "}
+                    <Image
+                      src={blog?.eyecatch?.url}
+                      alt="Profile Image"
+                      width={64}
+                      height={64}
+                      className="rounded-ful"
+                    />
+                    <Link href={`/blog/${blog?.id}`} className="mx-5 text-sm">
+                      {blog.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="md:ml-20 text-gray-700 py-4 md:px-6 font-bold mb-4 border-y-2 border-blue-900 pb-3 text-blue-800 mt-20">
+              <div className="mb-4 flex">
+                <Image
+                  src="/canva/1.png"
+                  alt="Profile Image"
+                  width={64}
+                  height={64}
+                  className="rounded-full"
+                />{" "}
+                <h3 className="text-xl font-bold mb-2 text-blue-900 mt-auto">
+                  Restart運営
+                </h3>
+              </div>
+              <div>
+                <p className="mb-4 whitespace-pre-line">
+                  {`私の人生はこんな筈じゃない。。\nそんな人が人生を再出発させることが\nできるのが英語！ \n やっぱり英語は喋らないと喋れない \n 英語イベントにポチッとワンクリックで参加してください。`}
+                </p>
+                <p className="mb-8 mt-12">
+                  <Link
+                    href="/event"
+                    className="text-blue-700  bg-yellow-400 px-8 py-4 border-2 border-yellow-400 rounded-md transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
+                  >
+                    無料英会話イベント
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Layoutwrap>
+      <Footer />
+    </>
+  );
 }
 
 export const getStaticProps = async (context) => {

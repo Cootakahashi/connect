@@ -54,8 +54,8 @@ export function NavBar() {
                 <Image
                   className="-translate-x-2"
                   src="/logo/logo3.png"
-                  width={90}
-                  height={90}
+                  width={120}
+                  height={50}
                   alt="Logo"
                 />
               </a>
