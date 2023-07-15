@@ -85,6 +85,7 @@ export default function allblog({
                       width={200}
                       height={300}
                       className="md:w-1/2 md:px-10 md:py-3 w-1/3"
+                      priority
                     />
                     <div className="p-3 md:p-6">
                       <h2 className="font-bold md:text-2xl mb-2">
