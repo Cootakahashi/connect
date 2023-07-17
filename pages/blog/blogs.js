@@ -139,7 +139,7 @@ export default function allblog({ blog, category, recommend, totalCount }) {
                 })}
               </div>
             </ul>
-            <Pagination totalCount={totalCount} />
+            <Pagination totalCount={2} />
           </div>
           <div
             className="flex-grow"
@@ -174,17 +174,22 @@ export default function allblog({ blog, category, recommend, totalCount }) {
                 {recommend.map((blog) => (
                   <li
                     key={blog?.id}
-                    className="flex border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2"
+                    className=" flex border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2"
                   >
                     {" "}
-                    <Image
-                      src={blog?.eyecatch?.url}
-                      alt="Profile Image"
-                      width={64}
-                      height={64}
-                      className="rounded-ful"
-                    />
-                    <Link href={`/blog/${blog?.id}`} className="mx-5 text-sm">
+                    <div className="relative w-[100px] h-[50px] ">
+                      <Image
+                        src={blog?.eyecatch?.url}
+                        alt="Profile Image"
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-ful w-"
+                      />
+                    </div>
+                    <Link
+                      href={`/blog/${blog?.id}`}
+                      className="mx-5 text-sm w-[150px]"
+                    >
                       {blog.title}
                     </Link>
                   </li>

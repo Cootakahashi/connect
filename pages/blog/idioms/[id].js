@@ -71,12 +71,12 @@ export default function BlogId({ blog, category, recommend }) {
   const blogContent1 = blog.content1.replace(/<[^>]*>?/gm, "");
   const blogContent2 = blog.content2.replace(/<[^>]*>?/gm, "");
   const blogContent3 = blog.content3.replace(/<[^>]*>?/gm, "");
-  console.log(blogContent1);
+  // console.log(blogContent1);
   // textsArray.push(removeHTMLTags(blogContent));
   textsArray.push(removeHTMLTags(blogHead1));
   textsArray.push(removeHTMLTags(blogHead2));
   textsArray.push(removeHTMLTags(blogHead3));
-  console.log(textsArray);
+  console.log(textsArray[0]);
   return (
     <>
       <Head>
@@ -143,7 +143,7 @@ export default function BlogId({ blog, category, recommend }) {
             >
               {blogContent}
             </div>
-            <Voice inputText={textsArray[0]} />
+            <Voice inputText={blogContent} />
 
             {/* 例文 */}
             <div className="h-0 text-3xl translate-y-40 opacity-30">
@@ -154,7 +154,7 @@ export default function BlogId({ blog, category, recommend }) {
             >
               {blogHead1}
             </div>
-            <Voice inputText={textsArray[1]} />
+            <Voice inputText={textsArray[0]} />
 
             {/* 例文２ */}
             <div className="h-0 text-3xl translate-y-40 opacity-30">
@@ -173,7 +173,7 @@ export default function BlogId({ blog, category, recommend }) {
             >
               {blogHead2}
             </div>
-            <Voice inputText={textsArray[2]} />
+            <Voice inputText={textsArray[1]} />
             <div className="h-0 text-3xl translate-y-40 opacity-30">
               意味を理解しよう!
             </div>
@@ -192,7 +192,7 @@ export default function BlogId({ blog, category, recommend }) {
             >
               {blogHead3}
             </div>
-            <Voice inputText={textsArray[3]} />
+            <Voice inputText={textsArray[2]} />
             <div className="h-0 text-3xl translate-y-40 opacity-30">
               イメージできたかな?
             </div>
@@ -211,7 +211,7 @@ export default function BlogId({ blog, category, recommend }) {
             >
               {blogContent}
             </div>
-            <Voice inputText={textsArray[0]} />
+            <Voice inputText={blogContent} />
 
             {/* 別訳3日本 */}
             <div className="flex flex-col items-center justify-center h-screen section9">

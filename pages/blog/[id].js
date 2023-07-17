@@ -86,8 +86,8 @@ export default function BlogId({ blog, category, recommend }) {
                     className="w-full"
                     loader={microCMSLoader}
                     src={pathimage}
-                    height={500}
-                    width={800}
+                    height={550}
+                    width={1000}
                     alt="thumbnail"
                     priority
                   />
@@ -110,8 +110,8 @@ export default function BlogId({ blog, category, recommend }) {
                   <Image
                     src={blog?.[schemaNames[2]]?.[index]?.url}
                     className="w-full"
-                    height={500}
-                    width={800}
+                    height={550}
+                    width={1000}
                     alt="head image"
                     priority
                     loader={microCMSLoader}
@@ -162,14 +162,20 @@ export default function BlogId({ blog, category, recommend }) {
                     className="flex border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2"
                   >
                     {" "}
-                    <Image
-                      src={blog?.eyecatch?.url}
-                      alt="Profile Image"
-                      width={64}
-                      height={64}
-                      className="rounded-ful"
-                    />
-                    <Link href={`/blog/${blog?.id}`} className="mx-5 text-sm">
+                    <div className="bg-black md:w-[75px] md:h-[65px] lg:w-[100px] lg:h-[90px] relative">
+                      <Image
+                        src={blog?.eyecatch?.url}
+                        alt="Profile Image"
+                        layout="fill"
+                        objectFit="cover" // width={250}
+                        // height={300}
+                        className=""
+                      />
+                    </div>
+                    <Link
+                      href={`/blog/${blog?.id}`}
+                      className="mx-5 text-sm md:w-[105px] lg:w-[190px] flex items-center"
+                    >
                       {blog.title}
                     </Link>
                   </li>
@@ -196,7 +202,7 @@ export default function BlogId({ blog, category, recommend }) {
                 </p>
                 <p className="mb-8 mt-12">
                   <Link
-                    href="/event"
+                    href="/events"
                     className="text-blue-700  bg-yellow-400 px-8 py-4 border-2 border-yellow-400 rounded-md transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
                   >
                     無料英会話イベント

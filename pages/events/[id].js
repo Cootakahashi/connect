@@ -62,8 +62,8 @@ export default function Event({
                   src={event.image.url}
                   alt={event.title}
                   width={300}
-                  height={300}
-                  className="md:w-full md:px-10 md:py-3 "
+                  height={200}
+                  className="w-1/2 md:px-10 md:py-3 "
                 />
                 <div className="p-3 md:p-6">
                   <h2 className="font-bold md:text-2xl mb-2">{event.title}</h2>
