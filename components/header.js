@@ -112,9 +112,11 @@ export function Blogheader() {
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
                 </a>
               </Link>
-              <button className="whitespace-nowrap self-end bg-orange-500 text-gray-800 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out">
-                無料英会話EVENT
-              </button>
+              <Link legacyBehavior href="/events">
+                <button className="whitespace-nowrap self-end bg-orange-500 text-gray-800 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out">
+                  無料英会話EVENT
+                </button>
+              </Link>
             </nav>
           </div>
 

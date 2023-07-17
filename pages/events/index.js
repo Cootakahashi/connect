@@ -82,8 +82,8 @@ export default function allblog({
                     <Image
                       src={event.image.url}
                       alt={event.title}
-                      width={200}
-                      height={300}
+                      width={300}
+                      height={200}
                       className="md:w-1/2 md:px-10 md:py-3 w-1/3"
                       priority
                     />

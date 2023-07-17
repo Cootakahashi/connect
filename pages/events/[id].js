@@ -61,7 +61,7 @@ export default function Event({
                 <Image
                   src={event.image.url}
                   alt={event.title}
-                  width={200}
+                  width={300}
                   height={300}
                   className="md:w-full md:px-10 md:py-3 "
                 />
@@ -161,10 +161,10 @@ export default function Event({
             <p className="font-semibold items-center flex">FREE</p>
 
             <Link
-              href="/event"
+              href="/evenst"
               className="whitespace-nowrap text-slate-900 md:self-end text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out"
             >
-              <button>Share</button>
+              <button className="text-slate-900">Share</button>
             </Link>
             <Link
               href="/event"

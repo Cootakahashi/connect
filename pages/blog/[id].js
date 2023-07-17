@@ -87,7 +87,7 @@ export default function BlogId({ blog, category, recommend }) {
                     loader={microCMSLoader}
                     src={pathimage}
                     height={500}
-                    width={500}
+                    width={800}
                     alt="thumbnail"
                     priority
                   />
@@ -111,7 +111,7 @@ export default function BlogId({ blog, category, recommend }) {
                     src={blog?.[schemaNames[2]]?.[index]?.url}
                     className="w-full"
                     height={500}
-                    width={500}
+                    width={800}
                     alt="head image"
                     priority
                     loader={microCMSLoader}
