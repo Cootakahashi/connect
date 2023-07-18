@@ -33,8 +33,6 @@ export default function BlogId({ blog, category, recommend }) {
   // const htmlText = marked(blog.content3);
 
   const [visible, setVisible] = useState(true);
-  console.log(blog?.images?.[3]);
-  console.log({ blog, category, recommend });
 
   return (
     <>
@@ -97,7 +95,7 @@ export default function BlogId({ blog, category, recommend }) {
                 </div>
                 <div
                   className={`${styles.post} `}
-                  dangerouslySetInnerHTML={{ __html: `${blog.content}` }}
+                  dangerouslySetInnerHTML={{ __html: `${blog?.content}` }}
                 ></div>
               </main>
             </div>
@@ -136,10 +134,10 @@ export default function BlogId({ blog, category, recommend }) {
                 カテゴリー
               </h3>
               <ul className="space-y-2 font-bold">
-                <Link href={`/category/${category.id}`}>
+                <Link href={`/category/${category?.id}`}>
                   ブログトップページ
                 </Link>
-                {category.map((category) => (
+                {category?.map((category) => (
                   <li
                     key={category.id}
                     className="border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 md:px-3 py-2"
@@ -156,7 +154,7 @@ export default function BlogId({ blog, category, recommend }) {
                 おすすめ記事
               </h3>
               <ul className="space-y-2 font-bold">
-                {recommend.map((blog) => (
+                {recommend?.map((blog) => (
                   <li
                     key={blog?.id}
                     className="flex border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2"
@@ -164,7 +162,7 @@ export default function BlogId({ blog, category, recommend }) {
                     {" "}
                     <div className="bg-black md:w-[75px] md:h-[65px] lg:w-[100px] lg:h-[90px] relative">
                       <Image
-                        src={blog?.eyecatch?.url}
+                        src={blog?.eyecatch?.url ?? "/canva/1.png"}
                         alt="Profile Image"
                         layout="fill"
                         objectFit="cover" // width={250}
@@ -244,6 +242,6 @@ export const getStaticPaths = async () => {
   return {
     paths,
     // fallbackでpathがなければ404を返す
-    fallback: false,
+    fallback: true,
   };
 };

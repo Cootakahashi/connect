@@ -68,8 +68,8 @@ export function NavBar() {
           >
             <Link legacyBehavior href="/category/k8pvv7ov1lje">
               <a className="text-white relative group text-center">
-                Vocabulary
-                <p className="text-xs text-center opacity-70 pt-2">英単語</p>
+                Phrasal verb{" "}
+                <p className="text-xs text-center opacity-70 pt-2">フレーズ</p>
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
               </a>
             </Link>
@@ -147,12 +147,12 @@ export function NavBar() {
           {isMenuOpen && (
             <div className="md:hidden transition duration-500 ease-in-out">
               <nav className="mt-4 space-y-4">
-                <Link legacyBehavior href="/vocabulary">
+                <Link legacyBehavior href="/category/k8pvv7ov1lje">
                   <a className="block text-white hover:text-gray-200 underline-hover">
-                    Vocabulary
+                    Phrasal verb
                   </a>
                 </Link>
-                <Link legacyBehavior href="/blog">
+                <Link legacyBehavior href="/blog/blogs">
                   <a className="block text-white hover:text-gray-200 underline-hover">
                     Blog
                   </a>
@@ -162,7 +162,12 @@ export function NavBar() {
                     Category
                   </a>
                 </Link>
-                <Link legacyBehavior href="/company">
+                <Link legacyBehavior href="/events">
+                  <a className="block text-white hover:text-gray-200 underline-hover">
+                    Event
+                  </a>
+                </Link>
+                <Link legacyBehavior href="/prepare">
                   <a className="block text-white hover:text-gray-200 underline-hover">
                     Company
                   </a>

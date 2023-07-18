@@ -10,12 +10,11 @@ export const Pagination = ({ totalCount }) => {
   return (
     <ul className="flex gap-8 mt-10">
       {range(1, Math.ceil(totalCount / PER_PAGE)).map((number, index) => (
-        <li
-          className="border p-2 px-5 hover:bg-blue-500 transition duration-300 ease-in-out"
-          key={index}
-        >
-          <Link href={`/blog/page/${number}`}>{number}</Link>
-        </li>
+        <Link key={index} href={`/blog/page/${number}`}>
+          <li className="border p-2 px-5 hover:bg-blue-500 transition duration-300 ease-in-out">
+            {number}
+          </li>
+        </Link>
       ))}
     </ul>
   );

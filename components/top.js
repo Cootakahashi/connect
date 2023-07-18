@@ -41,7 +41,7 @@ export function Top({ newestBlog }) {
                   <p
                     className={`text-white text-2xl px-4 font-semibold font-suns my-1 transform skew-x-6`}
                   >
-                    語学コミュニティ
+                    語学習得コミュニティ
                   </p>
                 </div>
               </div>
@@ -75,9 +75,11 @@ export function Top({ newestBlog }) {
           </p>
 
           <div className="mt-10 md:mt-0btns pt- grid justify-start md:flex gap-8 bg-whit">
-            <button className="whitespace-nowrap md:self-end bg-orange-500 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out">
-              無料英会話EVENT
-            </button>
+            <Link href="/events">
+              <button className="whitespace-nowrap md:self-end bg-orange-500 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out">
+                無料英会話EVENT
+              </button>
+            </Link>
             <Link
               href={`/blog/${
                 newestBlog.category.name === "Phrasal verb" ? "idioms/" : ""

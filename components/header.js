@@ -71,8 +71,10 @@ export function Blogheader() {
             >
               <Link legacyBehavior href="/category/k8pvv7ov1lje">
                 <a className="text-gray-800 relative group text-center">
-                  Vocabulary
-                  <p className="text-xs text-center opacity-70 pt-2">英単語</p>
+                  Phrasal verb
+                  <p className="text-xs text-center opacity-70 pt-2">
+                    フレーズ
+                  </p>
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
                 </a>
               </Link>
@@ -193,7 +195,7 @@ export function Blogheader() {
               </a>
             </Link>
             <Link legacyBehavior href="/category/k8pvv7ov1lje">
-              <a onClick={handleMenuToggle}>Vocabulary</a>
+              <a onClick={handleMenuToggle}>Phrasal verb</a>
             </Link>
             <Link legacyBehavior href="/blog/blogs">
               <a onClick={handleMenuToggle}>Blog</a>
@@ -204,12 +206,14 @@ export function Blogheader() {
             <Link legacyBehavior href="/prepare">
               <a onClick={handleMenuToggle}>Company</a>
             </Link>
-            <button
-              className="mt-8 whitespace-nowrap self-center bg-orange-500 text-gray-800 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out"
-              onClick={handleMenuToggle}
-            >
-              無料英会話EVENT
-            </button>
+            <Link legacyBehavior href="/events">
+              <button
+                className="mt-8 whitespace-nowrap self-center bg-orange-500 text-gray-800 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out"
+                onClick={handleMenuToggle}
+              >
+                無料英会話EVENT
+              </button>
+            </Link>
           </nav>
         </div>
       )}

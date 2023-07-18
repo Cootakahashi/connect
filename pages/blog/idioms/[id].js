@@ -10,12 +10,12 @@ import Link from "next/link";
 import Voice from "../../../components/aivoice";
 import Layoutwrap from "../../../components/Layoutcomp";
 import Head from "next/head";
-
+import Blogheader from "@/components/header";
 export default function BlogId({ blog, category, recommend }) {
   const microCMSLoader = ({ src, width, quality }) => {
     return `${src}?auto=format&fit=max&w=${width}`;
   };
-  const pathimage = blog.eyecatch?.url ? blog.eyecatch.url : `/wide/1.png`;
+  const pathimage = blog?.eyecatch?.url ? blog.eyecatch.url : `/wide/1.png`;
   const [scrollPosition, setScrollPosition] = useState(0);
   const [makeword, setMakeword] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -46,7 +46,7 @@ export default function BlogId({ blog, category, recommend }) {
 
   const plainText =
     "Come up with something what are you feel? I would like to make something cool";
-  const text = blog.content.replace(/<[^>]*>?/gm, "");
+  const text = blog?.content.replace(/<[^>]*>?/gm, "");
 
   const handleSubmit = async () => {
     const newMakeword = text + "," + input;
@@ -59,24 +59,23 @@ export default function BlogId({ blog, category, recommend }) {
   };
 
   // let blogContent = blog.content;
-  let blogHead1 = blog.head1;
-  let blogHead2 = blog.head2;
-  let blogHead3 = blog.head3;
+  let blogHead1 = blog?.head1;
+  let blogHead2 = blog?.head2;
+  let blogHead3 = blog?.head3;
   let textsArray = [];
 
-  const blogContent = blog.content.replace(/<[^>]*>?/gm, "");
+  const blogContent = blog?.content.replace(/<[^>]*>?/gm, "");
   // const blogHead1 = blog.head1.replace(/<[^>]*>?/gm, "");
   // const blogHead2 = blog.head2.replace(/<[^>]*>?/gm, "");
   // const blogHead3 = blog.head3.replace(/<[^>]*>?/gm, "");
-  const blogContent1 = blog.content1.replace(/<[^>]*>?/gm, "");
-  const blogContent2 = blog.content2.replace(/<[^>]*>?/gm, "");
-  const blogContent3 = blog.content3.replace(/<[^>]*>?/gm, "");
+  const blogContent1 = blog?.content1.replace(/<[^>]*>?/gm, "");
+  const blogContent2 = blog?.content2.replace(/<[^>]*>?/gm, "");
+  const blogContent3 = blog?.content3.replace(/<[^>]*>?/gm, "");
   // console.log(blogContent1);
   // textsArray.push(removeHTMLTags(blogContent));
   textsArray.push(removeHTMLTags(blogHead1));
   textsArray.push(removeHTMLTags(blogHead2));
   textsArray.push(removeHTMLTags(blogHead3));
-  console.log(textsArray[0]);
   return (
     <>
       <Head>
@@ -96,7 +95,9 @@ export default function BlogId({ blog, category, recommend }) {
 
         <link rel="canonical" href="https://beginrestart.com/" />
       </Head>
-
+      <div className="hidde z-50 mb-20">
+        <Blogheader />
+      </div>
       <div className="grid bg-gradient-to-br from-blue-800 via-blue-500 to-blue-900 h-full ">
         {" "}
         <main className="row-start-1 rounded md:col-start-1 text-center col-span-full md:col-span-4 mx-2 md:mx-20 md:px-20 bg-slate-100 text-gray-800 mt-8">
@@ -118,7 +119,7 @@ export default function BlogId({ blog, category, recommend }) {
                 </span>
               </div>
               <h1 className="text-2xl pb-8  text-blue-800 text-left font-san font-bold">
-                {blog.title}
+                {blog?.title}
               </h1>
             </div>
 
@@ -258,12 +259,12 @@ export default function BlogId({ blog, category, recommend }) {
           </div>
           <div className="section10 h-screen md:flex md:items-start md:justify-between md:px-6 border-y-2 border-blue-900 bg-gray-50">
             {/* Recommended Posts */}
-            <div className="md:w-1/2 bg-white p-6 ">
+            <div className="md:w-1/2 bg-white p-6 hidden">
               <h3 className="text-blue-800 text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3">
                 おすすめ記事
               </h3>
               <ul className="mt-6 text-gray-700">
-                {recommend.map((blog) => (
+                {recommend?.map((blog) => (
                   <li key={blog?.id} className="flex mb-4 items-center">
                     <Image
                       src={blog?.eyecatch?.url}
@@ -285,7 +286,7 @@ export default function BlogId({ blog, category, recommend }) {
               </ul>
             </div>
             {/* Profile */}
-            <div className="md:w-1/2 bg-white p-6 mt-6 md:mt-0 md:ml-6 hidden md:block">
+            <div className="md:w-1/2 bg-white p-6 mt-6 md:mt-0 md:ml-6 hidde md:block ">
               <div className="flex items-center mb-8">
                 <Image
                   src="/canva/1.png"
@@ -302,14 +303,14 @@ export default function BlogId({ blog, category, recommend }) {
                 {`私の人生はこんな筈じゃない。。\nそんな人が人生を再出発させることが\nできるのが英語！ \n やっぱり英語は喋らないと喋れない \n 英語イベントにポチッとワンクリックで参加してください。`}
               </p>
               <Link
-                href="/event"
+                href="/events"
                 className="mb-5 inline-block bg-yellow-400 text-blue-700 px-8 py-4 border-2 border-yellow-400 rounded-md transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
               >
                 無料英会話イベント
               </Link>
               {/* Add Line Button (Replace # with your line add URL) */}
               <Link
-                href="#"
+                href="https://lin.ee/NZsQoVp"
                 className="inline-block ml-4 bg-green-400 text-white px-8 py-4 border-2 border-green-400 rounded-md transition-colors duration-300 hover:bg-green-300 hover:text-black"
               >
                 Line追加
@@ -383,5 +384,5 @@ const Text = styled.span`
 `;
 
 function removeHTMLTags(str) {
-  return str.replace(/<[^>]*>?/gm, "");
+  return str?.replace(/<[^>]*>?/gm, "");
 }

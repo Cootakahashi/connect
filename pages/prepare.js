@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-
+import { Blogheader } from "../components/header";
 export default function Prepare() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-900">
@@ -8,7 +8,9 @@ export default function Prepare() {
         <title>Coming Soon</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <div className="hidde z-50 mb-20">
+        <Blogheader />
+      </div>
       <div className="flex flex-col items-center justify-center text-white">
         <h1 className="text-6xl font-bold mb-6">Coming Soon</h1>
         <p className="text-xl mb-8 text-center">

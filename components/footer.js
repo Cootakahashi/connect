@@ -85,7 +85,7 @@ export const Footer = () => {
             </div>
 
             <div>
-              <Link href="/">
+              <Link href="/events">
                 <p className="font-semibold tracking-wide text-teal-accent-400">
                   Event
                 </p>

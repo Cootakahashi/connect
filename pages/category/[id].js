@@ -96,13 +96,13 @@ export default function CategoryId({ blog, category, recommend }) {
                         blog.category?.name === "Phrasal verb" ? "idioms/" : ""
                       }${blog.id}`}
                     >
-                      <div className="bg-blue-20 rounded-x">
+                      <div className="bg-blue-20 rounded-x mx-auto m-full">
                         <Image
                           className="w-full z-1"
                           loader={microCMSLoader}
                           src={pathimage}
-                          height={500}
-                          width={500}
+                          height={400}
+                          width={750}
                           alt="thumbnail"
                           priority
                         />
@@ -139,12 +139,11 @@ export default function CategoryId({ blog, category, recommend }) {
             <ul className="space-y-2 font-bold">
               <Link href={`/category/${category.id}`}>ブログトップページ</Link>
               {category.map((category) => (
-                <li
-                  key={category.id}
-                  className="border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 md:px-3 py-2"
-                >
-                  <Link href={`/category/${category.id}`}>{category.name}</Link>
-                </li>
+                <Link key={category.id} href={`/category/${category.id}`}>
+                  <li className="border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 md:px-3 py-3">
+                    {category.name}
+                  </li>
+                </Link>
               ))}
             </ul>
           </div>
@@ -154,22 +153,25 @@ export default function CategoryId({ blog, category, recommend }) {
             </h3>
             <ul className="space-y-2 font-bold">
               {recommend.map((blog) => (
-                <li
+                <Link
                   key={blog?.id}
-                  className="flex border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2"
+                  href={`/blog/${blog?.id}`}
+                  className="mx-5 text-sm"
                 >
-                  {" "}
-                  <Image
-                    src={blog?.eyecatch?.url}
-                    alt="Profile Image"
-                    width={64}
-                    height={64}
-                    className="rounded-ful"
-                  />
-                  <Link href={`/blog/${blog?.id}`} className="mx-5 text-sm">
-                    {blog.title}
-                  </Link>
-                </li>
+                  <li className="flex border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2">
+                    {" "}
+                    <div className="relative w-[100px] h-[55px] ">
+                      <Image
+                        src={blog?.eyecatch?.url}
+                        alt="Profile Image"
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-ful"
+                      />
+                    </div>
+                    <div className="w-[150px] h-[80px] ml-5">{blog.title}</div>
+                  </li>
+                </Link>
               ))}
             </ul>
           </div>
@@ -193,7 +195,7 @@ export default function CategoryId({ blog, category, recommend }) {
               </p>
               <p className="mb-8 mt-12">
                 <Link
-                  href="/event"
+                  href="/events"
                   className="whitespace-nowrap md:self-end bg-orange-500 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out"
                 >
                   {" "}
