@@ -157,12 +157,13 @@ export default function BlogId({ blog, category, recommend }) {
               <div className="bg-red-200 p-1">
                 あなたにこの記事をおすすめします
               </div>
-              <Link className="" href={blog?.link} passHref>
-                <div className="mt-4 p-4 border-2 border-gray-200 rounded-md flex justify-between items-center bg-blue-50">
-                  <div className="text-blue-800 flex">
-                    <div>
-                      {" "}
-                      {/* <Image
+              {blog && blog?.link && (
+                <Link className="" href={blog?.link} passHref>
+                  <div className="mt-4 p-4 border-2 border-gray-200 rounded-md flex justify-between items-center bg-blue-50">
+                    <div className="text-blue-800 flex">
+                      <div>
+                        {" "}
+                        {/* <Image
                         src={blog?.}
                         className="w-full"
                         height={150}
@@ -171,25 +172,27 @@ export default function BlogId({ blog, category, recommend }) {
                         priority
                         loader={microCMSLoader}
                       /> */}
-                    </div>
-                    <div className="p-5">
-                      <h3 className="font-semibold text-sm">
-                        {blog?.linktitle}
-                      </h3>
-                      <p className="text-xs mt-2"> {blog?.linktitle}</p>
+                      </div>
+                      <div className="p-5">
+                        <h3 className="font-semibold text-sm">
+                          {blog?.linktitle}
+                        </h3>
+                        <p className="text-xs mt-2"> {blog?.linktitle}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              )}
               <div className="bg-blue-200 p-1 mt-5">
                 ネイティブがよく使う単語2つの組み合わせ(句動詞)の使い方をマスターしよう
               </div>
-              <Link className="" href={blog?.link} passHref>
-                <div className="mt-4 p-4 border-2 border-gray-200 rounded-md flex justify-between items-center bg-blue-50">
-                  <div className="text-blue-800 flex">
-                    <div>
-                      {" "}
-                      {/* <Image
+              {blog && blog?.link && (
+                <Link className="" href={blog?.link} passHref>
+                  <div className="mt-4 p-4 border-2 border-gray-200 rounded-md flex justify-between items-center bg-blue-50">
+                    <div className="text-blue-800 flex">
+                      <div>
+                        {" "}
+                        {/* <Image
                         src={blog?.}
                         className="w-full"
                         height={150}
@@ -198,16 +201,17 @@ export default function BlogId({ blog, category, recommend }) {
                         priority
                         loader={microCMSLoader}
                       /> */}
-                    </div>
-                    <div className="p-5">
-                      <h3 className="font-semibold text-sm">
-                        {blog?.linktitle}
-                      </h3>
-                      <p className="text-xs mt-2"> {blog?.linktitle}</p>
+                      </div>
+                      <div className="p-5">
+                        <h3 className="font-semibold text-sm">
+                          {blog?.linktitle}
+                        </h3>
+                        <p className="text-xs mt-2"> {blog?.linktitle}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              )}
             </div>
           </div>
           <div
@@ -257,7 +261,7 @@ export default function BlogId({ blog, category, recommend }) {
                       />
                     </div>
                     <Link
-                      href={`/english/${blog?.id}`}
+                      href={`/english/${blog?.category?.id}/${blog?.id}`}
                       className="mx-5 text-sm md:w-[105px] lg:w-[190px] flex items-center"
                     >
                       {blog.title}
@@ -325,9 +329,13 @@ export const getStaticProps = async (context) => {
 };
 export const getStaticPaths = async () => {
   const data = await client.get({ endpoint: "blogs" });
-  const paths = data.contents.map(
-    (content) => `/english/${content.category.id}/${content.id}`
-  );
+
+  const paths = data.contents.map((content) => ({
+    params: {
+      categoryId: content.category.id.toString(),
+      id: content.id.toString(),
+    },
+  }));
   return {
     paths,
     fallback: true,

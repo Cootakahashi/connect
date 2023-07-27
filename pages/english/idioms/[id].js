@@ -275,7 +275,9 @@ export default function BlogId({ blog, category, recommend }) {
                     />
                     <Link
                       href={`/english/${
-                        blog.category?.name === "Phrasal verb" ? "idioms/" : ""
+                        blog.category?.name === "Phrasal verb"
+                          ? "idioms/"
+                          : `${blog?.category?.id}/`
                       }${blog.id}`}
                       className="ml-4 text-lg"
                     >
