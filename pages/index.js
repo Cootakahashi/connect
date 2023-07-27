@@ -21,14 +21,15 @@ export default function Home({ blog, totalCount }) {
   const microCMSLoader = ({ src, width, quality }) => {
     return `${src}?auto=format&fit=max&w=${width}`;
   };
-  const eventNames = [];
-  {
-    blog.map((d) => {
-      if (d.category?.name === "event") {
-        return eventNames.push(d);
-      }
-    });
-  }
+  // const eventNames = [];
+  // {
+  //   blog.map((d) => {
+  //     if (d.category?.name === "event") {
+  //       return eventNames.push(d);
+  //     }
+  //   });
+  // }
+  const eventNames = blog.filter((d) => d.category?.name === "event");
 
   // console.log(eventNames);
   return (
@@ -64,8 +65,10 @@ export default function Home({ blog, totalCount }) {
               >
                 <Link
                   key={d.id}
-                  href={`/blog/${
-                    d.category?.name === "Phrasal verb" ? "idioms/" : ""
+                  href={`/english/${
+                    d.category?.name === "Phrasal verb"
+                      ? "idioms/"
+                      : `${d?.category?.id}/`
                   }${d.id}`}
                 >
                   <div className="bg-blue-20 rounded-">
@@ -123,7 +126,7 @@ export default function Home({ blog, totalCount }) {
         <div className="flex justify-center mt-20">
           {" "}
           <Link
-            href="/blog/blogs"
+            href="/english/blogs"
             className="whitespace-nowrap md:self-end bg-blue-500 text-white font-semibold py-3 px-8 border border-blue-700 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-500 ease-in-out"
           >
             <button>記事一覧を見る</button>

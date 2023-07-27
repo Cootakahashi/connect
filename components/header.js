@@ -78,7 +78,7 @@ export function Blogheader() {
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
                 </a>
               </Link>
-              <Link legacyBehavior href="/blog/blogs">
+              <Link legacyBehavior href="/english/blogs">
                 <a className="text-gray-800 relative group text-center">
                   Blog
                   <p className="text-xs text-center opacity-70 pt-2">
@@ -197,7 +197,7 @@ export function Blogheader() {
             <Link legacyBehavior href="/category/k8pvv7ov1lje">
               <a onClick={handleMenuToggle}>Phrasal verb</a>
             </Link>
-            <Link legacyBehavior href="/blog/blogs">
+            <Link legacyBehavior href="/english/blogs">
               <a onClick={handleMenuToggle}>Blog</a>
             </Link>
             <Link legacyBehavior href="/category">

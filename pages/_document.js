@@ -20,6 +20,12 @@ class MyDocument extends Document {
               `,
             }}
           />
+          {/* Google Search Console */}
+
+          <meta
+            name="google-site-verification"
+            content="F42nVh8HahbEixH2CwsPCdQ_7cWiOpbkbipa-3_jFW4"
+          />
         </Head>
         <body>
           <Main />

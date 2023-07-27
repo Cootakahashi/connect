@@ -75,7 +75,7 @@ export default function BlogPageId({ blog, totalCount }) {
                   </div>
                   <Link
                     key={blog.id}
-                    href={`/blog/${
+                    href={`/english/${
                       blog.category?.name === "Phrasal verb" ? "idioms/" : ""
                     }${blog.id}`}
                   >
@@ -124,7 +124,7 @@ export const getStaticPaths = async () => {
     [...Array(end - start + 1)].map((_, i) => start + i);
 
   const paths = range(1, Math.ceil(repos.totalCount / PER_PAGE)).map(
-    (repo) => `/blog/page/${repo}`
+    (repo) => `/english/page/${repo}`
   );
 
   return { paths, fallback: false };

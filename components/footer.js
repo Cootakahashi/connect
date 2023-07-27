@@ -67,7 +67,7 @@ export const Footer = () => {
               </ul>
             </div>
             <div>
-              <Link href="/blog/blogs">
+              <Link href="/english/blogs">
                 <p className="font-semibold tracking-wide text-teal-accent-400">
                   Blogs
                 </p>

@@ -274,7 +274,7 @@ export default function BlogId({ blog, category, recommend }) {
                       className="rounded-full"
                     />
                     <Link
-                      href={`/blog/${
+                      href={`/english/${
                         blog.category?.name === "Phrasal verb" ? "idioms/" : ""
                       }${blog.id}`}
                       className="ml-4 text-lg"
@@ -358,7 +358,7 @@ export const getStaticProps = async (context) => {
 export const getStaticPaths = async () => {
   const data = await client.get({ endpoint: "blogs" });
   const idiomContents = data.contents.filter((content) => content.idiom);
-  const paths = idiomContents.map((content) => `/blog/idioms/${content.id}`);
+  const paths = idiomContents.map((content) => `/english/idioms/${content.id}`);
 
   return {
     paths,

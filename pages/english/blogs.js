@@ -104,7 +104,7 @@ export default function allblog({ blog, category, recommend, totalCount }) {
                       </div>
                       <Link
                         key={blog.id}
-                        href={`/blog/${
+                        href={`/english/${
                           blog.category?.name === "Phrasal verb"
                             ? "idioms/"
                             : ""
@@ -187,7 +187,7 @@ export default function allblog({ blog, category, recommend, totalCount }) {
                       />
                     </div>
                     <Link
-                      href={`/blog/${blog?.id}`}
+                      href={`/english/${blog?.id}`}
                       className="mx-5 text-sm w-[150px]"
                     >
                       {blog.title}

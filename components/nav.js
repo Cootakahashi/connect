@@ -73,7 +73,7 @@ export function NavBar() {
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
               </a>
             </Link>
-            <Link legacyBehavior href="/blog/blogs">
+            <Link legacyBehavior href="/english/blogs">
               <a className="text-white relative group text-center">
                 Blog
                 <p className="text-xs text-center opacity-70 pt-2">
@@ -152,7 +152,7 @@ export function NavBar() {
                     Phrasal verb
                   </a>
                 </Link>
-                <Link legacyBehavior href="/blog/blogs">
+                <Link legacyBehavior href="/english/blogs">
                   <a className="block text-white hover:text-gray-200 underline-hover">
                     Blog
                   </a>

@@ -1,16 +1,15 @@
-import { client } from "../../libs/client";
-import { TableOfContents } from "../../components/TableOfContents"; // TableOfContentsをインポートする
-import styles from "../../styles/id.module.scss";
+import { client } from "../../../libs/client";
+// import { TableOfContents } from "../../components/TableOfContents"; // TableOfContentsをインポートする
+import styles from "../../../styles/id.module.scss";
 import Image from "next/legacy/image";
-import Layoutwrap from "../../components/Layoutcomp";
+import Layoutwrap from "../../../components/Layoutcomp";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { Footer } from "../../components/footer";
-import { Blogheader } from "../../components/header";
+import { Footer } from "../../../components/footer";
+import { Blogheader } from "../../../components/header";
 
 export default function BlogId({ blog, category, recommend }) {
   const [windowWidth, setWindowWidth] = useState(0);
-
   useEffect(() => {
     setWindowWidth(window.innerWidth);
 
@@ -120,8 +119,95 @@ export default function BlogId({ blog, category, recommend }) {
                       __html: blog?.[schemaNames[1] + (index + 1)],
                     }}
                   />
+                  {((index === 0 && blog?.linktitle) ||
+                    (index === 3 && blog?.linktitle2)) && (
+                    <Link
+                      className=""
+                      href={index === 0 ? blog?.link : blog?.link2}
+                      passHref
+                    >
+                      <div className="mt-4 p-4 border-2 border-gray-200 rounded-md flex justify-between items-center bg-blue-50">
+                        <div className="text-blue-800 flex">
+                          <div>
+                            <Image
+                              src={blog?.[schemaNames[2]]?.[index]?.url}
+                              className="w-full"
+                              height={150}
+                              width={200}
+                              alt="head image"
+                              priority
+                              loader={microCMSLoader}
+                            />
+                          </div>
+                          <div className="p-5">
+                            <h3 className="font-semibold text-sm">
+                              {index === 0 ? blog?.linktitle : blog?.linktitle2}
+                            </h3>
+                            <p className="text-xs mt-2">
+                              {" "}
+                              {index === 0 ? blog?.linkmain : blog?.linkmain2}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  )}
                 </section>
               ))}
+              <div className="bg-red-200 p-1">
+                あなたにこの記事をおすすめします
+              </div>
+              <Link className="" href={blog?.link} passHref>
+                <div className="mt-4 p-4 border-2 border-gray-200 rounded-md flex justify-between items-center bg-blue-50">
+                  <div className="text-blue-800 flex">
+                    <div>
+                      {" "}
+                      {/* <Image
+                        src={blog?.}
+                        className="w-full"
+                        height={150}
+                        width={200}
+                        alt="head image"
+                        priority
+                        loader={microCMSLoader}
+                      /> */}
+                    </div>
+                    <div className="p-5">
+                      <h3 className="font-semibold text-sm">
+                        {blog?.linktitle}
+                      </h3>
+                      <p className="text-xs mt-2"> {blog?.linktitle}</p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+              <div className="bg-blue-200 p-1 mt-5">
+                ネイティブがよく使う単語2つの組み合わせ(句動詞)の使い方をマスターしよう
+              </div>
+              <Link className="" href={blog?.link} passHref>
+                <div className="mt-4 p-4 border-2 border-gray-200 rounded-md flex justify-between items-center bg-blue-50">
+                  <div className="text-blue-800 flex">
+                    <div>
+                      {" "}
+                      {/* <Image
+                        src={blog?.}
+                        className="w-full"
+                        height={150}
+                        width={200}
+                        alt="head image"
+                        priority
+                        loader={microCMSLoader}
+                      /> */}
+                    </div>
+                    <div className="p-5">
+                      <h3 className="font-semibold text-sm">
+                        {blog?.linktitle}
+                      </h3>
+                      <p className="text-xs mt-2"> {blog?.linktitle}</p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
           <div
@@ -171,7 +257,7 @@ export default function BlogId({ blog, category, recommend }) {
                       />
                     </div>
                     <Link
-                      href={`/blog/${blog?.id}`}
+                      href={`/english/${blog?.id}`}
                       className="mx-5 text-sm md:w-[105px] lg:w-[190px] flex items-center"
                     >
                       {blog.title}
@@ -217,6 +303,7 @@ export default function BlogId({ blog, category, recommend }) {
 }
 
 export const getStaticProps = async (context) => {
+  const categoryId = context.params.categoryId;
   const id = context.params.id;
   const datas = await client.get({ endpoint: "blogs" });
   const grammarPracticeIds = datas.contents
@@ -238,10 +325,11 @@ export const getStaticProps = async (context) => {
 };
 export const getStaticPaths = async () => {
   const data = await client.get({ endpoint: "blogs" });
-  const paths = data.contents.map((content) => `/blog/${content.id}`);
+  const paths = data.contents.map(
+    (content) => `/english/${content.category.id}/${content.id}`
+  );
   return {
     paths,
-    // fallbackでpathがなければ404を返す
     fallback: true,
   };
 };

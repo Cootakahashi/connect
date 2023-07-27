@@ -92,7 +92,7 @@ export default function CategoryId({ blog, category, recommend }) {
                     </div>
                     <Link
                       key={blog.id}
-                      href={`/blog/${
+                      href={`/english/${
                         blog.category?.name === "Phrasal verb" ? "idioms/" : ""
                       }${blog.id}`}
                     >
@@ -155,7 +155,7 @@ export default function CategoryId({ blog, category, recommend }) {
               {recommend.map((blog) => (
                 <Link
                   key={blog?.id}
-                  href={`/blog/${blog?.id}`}
+                  href={`/english/${blog?.id}`}
                   className="mx-5 text-sm"
                 >
                   <li className="flex border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2">
