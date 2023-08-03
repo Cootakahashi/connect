@@ -32,21 +32,7 @@ export default function CategoryId({ blog, category, recommend }) {
   const pathimage0 = blog.eyecatch?.url;
 
   return (
-    <Layoutwrap
-      metadata={{
-        title: blog?.title,
-        description: blog?.description,
-        ogTitle: blog?.title,
-        ogDescription: blog?.description,
-        ogImage: pathimage0,
-        ogUrl: "https://beginrestart.com/",
-        twitterSite: "@Tokoenglish",
-        canonicalUrl: "https://beginrestart.com/",
-      }}
-    >
-      <div className="hidde z-50 mb-20">
-        <Blogheader />
-      </div>
+    <>
       <div className="md:flex">
         {/* <div className="flex-grow " style={{ flexBasis: "61.8%" }}> */}{" "}
         <ul>
@@ -207,8 +193,7 @@ export default function CategoryId({ blog, category, recommend }) {
           </div>
         </div>
       </div>
-      <Footer />
-    </Layoutwrap>
+    </>
   );
 }
 
