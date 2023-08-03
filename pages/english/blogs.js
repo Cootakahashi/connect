@@ -139,7 +139,7 @@ export default function allblog({ blog, category, recommend, totalCount }) {
                 })}
               </div>
             </ul>
-            <Pagination totalCount={4} />
+            <Pagination totalCount={32} />
           </div>
           <div
             className="flex-grow"
