@@ -5,7 +5,7 @@ import Image from "next/legacy/image";
 import Layoutwrap from "../../../components/Layoutcomp";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { Footer } from "../../../components/footer";
+// import { Footer } from "../../../components/footer";
 import { Blogheader } from "../../../components/header";
 
 export default function BlogId({ blog, category, recommend }) {
@@ -301,7 +301,7 @@ export default function BlogId({ blog, category, recommend }) {
           </div>
         </div>
       </Layoutwrap>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

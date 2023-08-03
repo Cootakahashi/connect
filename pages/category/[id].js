@@ -93,7 +93,9 @@ export default function CategoryId({ blog, category, recommend }) {
                     <Link
                       key={blog.id}
                       href={`/english/${
-                        blog.category?.name === "Phrasal verb" ? "idioms/" : ""
+                        blog.category?.name === "Phrasal verb"
+                          ? "idioms/"
+                          : `${blog?.category?.id}/`
                       }${blog.id}`}
                     >
                       <div className="bg-blue-20 rounded-x mx-auto m-full">
