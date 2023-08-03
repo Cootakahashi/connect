@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { client } from "../../libs/client";
-import Image from "next/image";
+// import Image from "next/image";
 import Layoutwrap from "../../components/Layoutcomp";
 import React, { useState, useEffect } from "react";
 import { Footer } from "../../components/footer";
@@ -99,7 +99,7 @@ export default function CategoryId({ blog, category, recommend }) {
                       }${blog.id}`}
                     >
                       <div className="bg-blue-20 rounded-x mx-auto m-full">
-                        <Image
+                        {/* <Image
                           className="w-full z-1"
                           loader={microCMSLoader}
                           src={pathimage}
@@ -107,7 +107,7 @@ export default function CategoryId({ blog, category, recommend }) {
                           width={750}
                           alt="thumbnail"
                           priority
-                        />
+                        /> */}
                       </div>
 
                       <div className=" mx-3">
@@ -163,13 +163,13 @@ export default function CategoryId({ blog, category, recommend }) {
                   <li className="flex border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2">
                     {" "}
                     <div className="relative w-[100px] h-[55px] ">
-                      <Image
+                      {/* <Image
                         src={blog?.eyecatch?.url}
                         alt="Profile Image"
                         layout="fill"
                         objectFit="cover"
                         className="rounded-ful"
-                      />
+                      /> */}
                     </div>
                     <div className="w-[150px] h-[80px] ml-5">{blog.title}</div>
                   </li>
@@ -180,13 +180,13 @@ export default function CategoryId({ blog, category, recommend }) {
 
           <div className="md:ml-20 text-gray-700 py-4 md:px-6 font-bold mb-4 border-y-2 border-blue-900 pb-3 text-blue-800 mt-20">
             <div className="mb-4 flex">
-              <Image
+              {/* <Image
                 src="/canva/1.png"
                 alt="Profile Image"
                 width={64}
                 height={64}
                 className="rounded-full"
-              />{" "}
+              />{" "} */}
               <h3 className="text-xl font-bold mb-2 text-blue-900 mt-auto">
                 Restart運営
               </h3>
