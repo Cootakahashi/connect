@@ -9,6 +9,20 @@ import { Footer } from "../../../components/footer";
 import { Blogheader } from "../../../components/header";
 
 export default function BlogId({ blog, category, recommend }) {
+  const [windowWidth, setWindowWidth] = useState(0);
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const microCMSLoader = ({ src, width, quality, hello }) => {
     return `${src}?auto=format&fit=max&w=${width}`;
   };
@@ -37,7 +51,7 @@ export default function BlogId({ blog, category, recommend }) {
         }}
       >
         <div className="md:flex">
-          <div className="flex-grow ">
+          <div className="flex-grow " style={{ flexBasis: "61.8%" }}>
             {/* Main content goes here */}
 
             <div className={`${styles.m}`}>
@@ -46,7 +60,6 @@ export default function BlogId({ blog, category, recommend }) {
                   <div className="mt-8 mb-6">
                     <span className="text-sm">
                       {" "}
-                      aaaaaa
                       {new Date(blog?.publishedAt)
                         .toLocaleDateString("ja-JP", {
                           year: "numeric",
@@ -201,7 +214,10 @@ export default function BlogId({ blog, category, recommend }) {
               )}
             </div>
           </div>
-          <div className="flex-grow">
+          <div
+            className="flex-grow"
+            style={{ flexBasis: windowWidth <= 768 ? "100%" : "38.2%" }}
+          >
             {/* Sidebar goes here */}
             <div className="md:ml-20 text-gray-700 py-4 md:px-6">
               <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3 text-blue-800 ">
