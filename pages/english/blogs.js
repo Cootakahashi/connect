@@ -234,27 +234,29 @@ export default function allblog({ blog, category, recommend, totalCount }) {
 }
 
 export const getStaticProps = async () => {
-  const data = await client.get({
-    endpoint: "blogs",
-    queries: { offset: 0, limit: 5 },
-  });
-  const datas = await client.get({
-    endpoint: "blogs",
-    queries: { offset: 0, limit: 5 },
-  });
+  try {
+    const data = await client.get({
+      endpoint: "blogs",
+      queries: { offset: 0, limit: 5 },
+    });
 
-  //get category content
-  const categoryData = await client.get({ endpoint: "categories" });
-  const recommendBlogs = data.contents.filter(
-    (content) => content.recommend === true
-  );
-  return {
-    props: {
-      blog: data.contents,
-      blogs: datas.contents,
-      totalCount: datas.totalCount,
-      category: categoryData.contents,
-      recommend: recommendBlogs,
-    },
-  };
+    //get category content
+    const categoryData = await client.get({ endpoint: "categories" });
+    const recommendBlogs = data.contents.filter(
+      (content) => content.recommend === true
+    );
+    return {
+      props: {
+        blog: data.contents,
+        totalCount: data.totalCount,
+        category: categoryData.contents,
+        recommend: recommendBlogs,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return {
+      notFound: true, // このページを404ページとして扱う
+    };
+  }
 };

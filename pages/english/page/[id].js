@@ -76,7 +76,9 @@ export default function BlogPageId({ blog, totalCount }) {
                   <Link
                     key={blog.id}
                     href={`/english/${
-                      blog.category?.name === "Phrasal verb" ? "idioms/" : ""
+                      blog.category?.name === "Phrasal verb"
+                        ? "idioms/"
+                        : `${blog?.category?.id}/`
                     }${blog.id}`}
                   >
                     <div className="bg-blue-20 rounded-x mx-auto m-full">
@@ -118,13 +120,15 @@ export default function BlogPageId({ blog, totalCount }) {
 
 // 動的なページを作成
 export const getStaticPaths = async () => {
+  const PER_PAGE = 5; // ここで同じ値に設定
+
   const repos = await client.get({ endpoint: "blogs" });
 
   const range = (start, end) =>
     [...Array(end - start + 1)].map((_, i) => start + i);
 
   const paths = range(1, Math.ceil(repos.totalCount / PER_PAGE)).map(
-    (repo) => `/english/page/${repo}`
+    (page) => `/english/page/${page}`
   );
 
   return { paths, fallback: false };
@@ -132,11 +136,11 @@ export const getStaticPaths = async () => {
 
 // データを取得
 export const getStaticProps = async (context) => {
-  const id = context.params.id;
+  const id = context.params.id; // ページ番号を取得
 
   const data = await client.get({
     endpoint: "blogs",
-    queries: { offset: (id - 1) * 5, limit: 5 },
+    queries: { offset: (id - 1) * PER_PAGE, limit: PER_PAGE }, // ページングに基づくクエリを設定
   });
 
   return {
