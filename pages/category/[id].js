@@ -75,16 +75,9 @@ export default function CategoryId({ blog, category, recommend }) {
                       {blog.category?.name}
                     </span>
                   </div>
-                  <Link
-                    key={blog.id}
-                    href={`/english/${
-                      blog.category?.name === "Phrasal verb"
-                        ? "idioms/"
-                        : `${blog?.category?.id}/`
-                    }${blog.id}`}
-                  >
-                    <div className="bg-blue-20 rounded-x mx-auto m-full">
-                      {/* <Image
+
+                  <div className="bg-blue-20 rounded-x mx-auto m-full">
+                    {/* <Image
                           className="w-full z-1"
                           loader={microCMSLoader}
                           src={pathimage}
@@ -93,20 +86,19 @@ export default function CategoryId({ blog, category, recommend }) {
                           alt="thumbnail"
                           priority
                         /> */}
-                    </div>
+                  </div>
 
-                    <div className=" mx-3">
-                      <h2 className="font-light text-center　flex opacity-70 px-5 pt-7 pb-5">
-                        {blog?.description?.substring(0, 111)}...
-                      </h2>
-                    </div>
-                    <button
-                      href="/event"
-                      className="mx-auto mb-10 flex justify-center text-blue-700  bg-gray-00 px-12 py-4 border-2   transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
-                    >
-                      Read More
-                    </button>
-                  </Link>
+                  <div className=" mx-3">
+                    <h2 className="font-light text-center　flex opacity-70 px-5 pt-7 pb-5">
+                      {blog?.description?.substring(0, 111)}...
+                    </h2>
+                  </div>
+                  <button
+                    href="/event"
+                    className="mx-auto mb-10 flex justify-center text-blue-700  bg-gray-00 px-12 py-4 border-2   transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
+                  >
+                    Read More
+                  </button>
                 </div>
               );
             })}
@@ -123,44 +115,13 @@ export default function CategoryId({ blog, category, recommend }) {
             <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3 text-blue-800 ">
               カテゴリー
             </h3>
-            <ul className="space-y-2 font-bold">
-              <Link href={`/category/${category.id}`}>ブログトップページ</Link>
-              {category.map((category) => (
-                <Link key={category.id} href={`/category/${category.id}`}>
-                  <li className="border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 md:px-3 py-3">
-                    {category.name}
-                  </li>
-                </Link>
-              ))}
-            </ul>
+            <ul className="space-y-2 font-bold"></ul>
           </div>
           <div className="md:ml-20 text-gray-700 py-4 md:px-6">
             <h3 className="mt-10 text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3 text-blue-800 ">
               おすすめ記事
             </h3>
-            <ul className="space-y-2 font-bold">
-              {recommend.map((blog) => (
-                <Link
-                  key={blog?.id}
-                  href={`/english/${blog?.id}`}
-                  className="mx-5 text-sm"
-                >
-                  <li className="flex border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2">
-                    {" "}
-                    <div className="relative w-[100px] h-[55px] ">
-                      {/* <Image
-                        src={blog?.eyecatch?.url}
-                        alt="Profile Image"
-                        layout="fill"
-                        objectFit="cover"
-                        className="rounded-ful"
-                      /> */}
-                    </div>
-                    <div className="w-[150px] h-[80px] ml-5">{blog.title}</div>
-                  </li>
-                </Link>
-              ))}
-            </ul>
+            <ul className="space-y-2 font-bold"></ul>
           </div>
 
           <div className="md:ml-20 text-gray-700 py-4 md:px-6 font-bold mb-4 border-y-2 border-blue-900 pb-3 text-blue-800 mt-20">
@@ -180,15 +141,7 @@ export default function CategoryId({ blog, category, recommend }) {
               <p className="mb-4 whitespace-pre-line">
                 {`私の人生はこんな筈じゃない。。\nそんな人が人生を再出発させることが\nできるのが英語！ \n やっぱり英語は喋らないと喋れない \n 英語イベントにポチッとワンクリックで参加してください。`}
               </p>
-              <p className="mb-8 mt-12">
-                <Link
-                  href="/events"
-                  className="whitespace-nowrap md:self-end bg-orange-500 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-500 ease-in-out"
-                >
-                  {" "}
-                  <button>無料英会話EVENT</button>
-                </Link>
-              </p>
+              <p className="mb-8 mt-12"></p>
             </div>
           </div>
         </div>
