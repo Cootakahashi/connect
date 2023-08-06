@@ -45,9 +45,6 @@ export function Top({ newestBlog }) {
                   </p>
                 </div>
               </div>
-              {/* <button className="mt-4 px-8 py-2 bg-blue-500 text-white rounded-full shadow-lg">
-                Click me
-              </button> */}
             </div>
           </div>
         </div>
