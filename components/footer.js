@@ -23,7 +23,7 @@ export const Footer = () => {
                   className={`-translate-y- inline-flex items-center rounded-xl`}
                   src="/logo/logo-black1.png"
                   width={170}
-                  height={90}
+                  height={60}
                   alt="Logo"
                 />
               </a>

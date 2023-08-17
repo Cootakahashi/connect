@@ -127,7 +127,7 @@ export default function Home({ blog, totalCount }) {
           {" "}
           <Link
             href="/english/blogs"
-            className="whitespace-nowrap md:self-end bg-blue-500 text-white font-semibold py-3 px-8 border border-blue-700 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-500 ease-in-out"
+            className="whitespace-nowrap md:self-end bg-blue-500 text-white font-semibold py-3 px-8 border border-blue-700 rounded-lg shadow-md md:hover:bg-blue-700 md:focus:outline-none md:focus:ring-2 md:focus:ring-offset-2 md:focus:ring-blue-500 md:transition md:duration-500 md:ease-in-out"
           >
             <button>記事一覧を見る</button>
           </Link>

@@ -1,6 +1,6 @@
 import EventCard from "../../components/lp/EventCard"; // EventCardコンポーネントをインポート
 import { client } from "../../libs/client";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link"; // 追加：Linkが未定義だったため
 
 import Layoutwrap from "../../components/Layoutcomp";
@@ -58,13 +58,14 @@ export default function Event({
             <div className="flex-grow mt-10" style={{ flexBasis: "61.8%" }}>
               {" "}
               <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-8 overflow-hidde">
-                <Image
-                  src={event.image.url}
-                  alt={event.title}
-                  width={300}
-                  height={200}
-                  className="w-1/2 md:px-10 md:py-3 "
-                />
+                <div className="relative h-[400px] w-[700px]">
+                  <Image
+                    src={event.image.url}
+                    alt={event.title}
+                    fill
+                    className="w-1/2 md:px-10 md:py-3 "
+                  />
+                </div>
                 <div className="p-3 md:p-6">
                   <h2 className="font-bold md:text-2xl mb-2">{event.title}</h2>
 
@@ -152,7 +153,6 @@ export default function Event({
         <div className="w-full shadow-xl sticky bottom-0 z-10 flex bg-gray-100 justify-center md:justify-between py-2 items-center px-20 h-28">
           <div className="hidden md:block">
             <p className="text-gray-700 md:text-lg mb-2">{event.date}</p>
-
             <div>
               <h2 className="font-bold">{event.title}</h2>
             </div>
