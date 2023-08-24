@@ -1,6 +1,7 @@
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { Link as ScrollLink } from "react-scroll";
 
 export function NavBar() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
@@ -107,11 +108,11 @@ export function NavBar() {
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
               </a>
             </Link>
-            <Link legacyBehavior href="/events">
+            <ScrollLink to="formSection" smooth={true} duration={500}>
               <button className="whitespace-nowrap self-end bg-orange-500 text-white font-semibold py-3 px-8 rounded-lg shadow-md md:hover:bg-orange-700 md:focus:outline-none md:focus:ring-2 md:focus:ring-offset-2 md:focus:ring-orange-500 md:transition duration-500 ease-in-out">
                 無料英会話EVENT
               </button>
-            </Link>
+            </ScrollLink>
           </nav>
 
           <div className="md:hidden">
