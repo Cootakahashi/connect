@@ -31,20 +31,11 @@ export function Introduction() {
           よくある失敗談
         </div>
       </div>
-      <div className="text-center my-10 mx-2 grid gap-5">
-        <div>
-          「最初は毎日レッスンを受けるつもりだったが、数週間でモチベーションが下がり、最終的には全くレッスンを受けなくなった。」{" "}
-        </div>
-
-        <div>
-          「自分の間違いを恐れて発言することを避けてしまい、アクティブに会話に参加できなかった。」
-        </div>
-        <div>
-          「ただ英語を話せるようになりたいと思って始めたが、具体的な目標がなかったため、進捗を感じることができずに挫折した。」{" "}
-        </div>
-        <div>
-          「レッスンのたびに何を話すかを考えていなかったので、沈黙が多くなり、有意義な時間を過ごせなかった。」{" "}
-        </div>
+      <div className="text-center my-10 mx-3 grid gap-5">
+        <div>「最初は意欲的だったが、すぐにレッスンを受けなくなった。」</div>
+        <div>「間違いを恐れ、アクティブに参加できなかった。」</div>
+        <div>「具体的な目標がなく、挫折した。」</div>
+        <div>「話題がなく、沈黙が多かった。」</div>
         <div className="relative h-[410px] w-[500px] mx-auto my-5 hidden md:block">
           <Image
             className="rounded "

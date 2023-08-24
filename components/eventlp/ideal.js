@@ -7,7 +7,7 @@ export function Ideal() {
       </div>
       <div className="bg-red-500 w-40 h-[2px] rounded mx-auto my-5"></div>
 
-      <div className="grid justify-center  md:mx-0 md:w-full gap-3 font-light mt-10">
+      <div className="grid justify-center  md:mx-0 md:w-full gap-3 font-light mt-10 mx-3">
         <div className="flex items-center mb-3">
           <span className="text-orange-500 bg-orange-200 text-2xl border w-[40px] h-[40px] flex justify-center items-center">
             ✔
