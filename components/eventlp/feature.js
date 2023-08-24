@@ -44,7 +44,7 @@ export function Feature() {
             </div>
           </div>
 
-          <div className="md:flex justify-center gap-5">
+          <div className="md:flex justify-center gap-5 mx-3">
             <div className="relative w-full h-[200px] md:w-[300px]">
               <Image
                 className="rounded "
@@ -71,7 +71,7 @@ export function Feature() {
             </div>
           </div>
 
-          <div className="md:flex justify-center gap-5">
+          <div className="md:flex justify-center gap-5 mx-3">
             <div className="relative w-full h-[200px] md:w-[300px]">
               <Image
                 className="rounded "

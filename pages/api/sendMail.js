@@ -1,8 +1,10 @@
 import mailgun from "mailgun-js";
 
 const mg = mailgun({
-  apiKey: process.env.MAILGUN_API_KEY,
-  domain: process.env.MAILGUN_DOMAIN,
+  // apiKey: process.env.MAILGUN_API_KEY,
+  // domain: process.env.MAILGUN_DOMAIN,
+  apiKey: process.env.NEXT_PUBLIC_MAILGUN_API_KEY,
+  domain: process.env.NEXT_PUBLIC_MAILGUN_DOMAIN,
 });
 
 export default async (req, res) => {

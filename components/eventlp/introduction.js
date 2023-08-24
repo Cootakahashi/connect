@@ -65,7 +65,7 @@ export function Introduction() {
         </div>
       </div>
       <div
-        className="relative h-[1790px] md:h-[1550px] bg-cover bg-center text-white font-bold text-xl bg-custom-image md:bg-custom-image-md"
+        className="relative h-[1890px] md:h-[1550px] bg-cover bg-center text-white font-bold text-xl bg-custom-image md:bg-custom-image-md"
         // style={{ backgroundImage: "url(/lpevent/backscreen/3.jpg)" }}
       >
         {" "}
