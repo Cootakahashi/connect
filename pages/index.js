@@ -106,7 +106,7 @@ export default function Home({ blog, totalCount }) {
                       {" "}
                       {d.title}
                     </h1>
-                    <h2 className="font-light text-left　flex opacity-70">
+                    <div className="font-light text-left　flex opacity-70">
                       {d?.description?.substring(0, 88)}...
                       <div className="text-slate-700  opacity-80 mt-2  flex justify-e mb-8">
                         <svg
@@ -124,11 +124,11 @@ export default function Home({ blog, totalCount }) {
                           />
                         </svg>
 
-                        <p>{datetime.getFullYear()}.</p>
+                        {/* <p>{datetime.getFullYear()}.</p>
                         <p>{datetime.getMonth() + 1}.</p>
-                        <p>{datetime.getDate()}</p>
+                        <p>{datetime.getDate()}</p> */}
                       </div>
-                    </h2>
+                    </div>
                   </div>
                 </Link>
               </div>
