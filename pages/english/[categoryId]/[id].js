@@ -244,14 +244,11 @@ export default function BlogId({ blog, category, recommend }) {
                   ブログトップページ
                 </Link>
                 {category?.map((category) => (
-                  <li
-                    key={category.id}
-                    className="border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 md:px-3 py-2"
-                  >
-                    <Link href={`/category/${category.id}`}>
+                  <Link href={`/category/${category.id}`} key={category.id}>
+                    <li className="border-b rounded-md transition-colors duration-300 md:hover:bg-gray-800 hover:text-blue-500 md:px-3 py-2">
                       {category.name}
-                    </Link>
-                  </li>
+                    </li>
+                  </Link>
                 ))}
               </ul>
             </div>
@@ -289,7 +286,7 @@ export default function BlogId({ blog, category, recommend }) {
             <div className="md:ml-20 text-gray-700 py-4 md:px-6 font-bold mb-4 border-y-2 border-blue-900 pb-3 text-blue-800 mt-20">
               <div className="mb-4 flex">
                 <Image
-                  src="/canva/1.png"
+                  src="/logo/Restart.png"
                   alt="Profile Image"
                   width={64}
                   height={64}

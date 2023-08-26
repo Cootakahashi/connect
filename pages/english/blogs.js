@@ -200,7 +200,7 @@ export default function allblog({ blog, category, recommend, totalCount }) {
             <div className="md:ml-20 text-gray-700 py-4 md:px-6 font-bold mb-4 border-y-2 border-blue-900 pb-3 text-blue-800 mt-20">
               <div className="mb-4 flex">
                 <Image
-                  src="/canva/1.png"
+                  src="/logo/Restart.png"
                   alt="Profile Image"
                   width={64}
                   height={64}

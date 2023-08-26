@@ -1,6 +1,6 @@
 export function Toc({ blog }) {
   return (
-    <div className="bg-white p-4 rounded-md shadow-md w-full lg:w-64 border-2 mb-20">
+    <div className="bg-white p-4 rounded-md shadow-md w-full lg:w-[500px] border-2 mb-20 mx-auto">
       <h5 className="text-lg font-bold mb-4">目次</h5>
       <ul>
         {blog.head1 && (
@@ -25,7 +25,7 @@ export function Toc({ blog }) {
           </li>
         )}
         {blog.head4 && (
-          <li className="mt-3">
+          <li className="mt-3 pb-3">
             <a href="#head4" className="text-blue-600 hover:underline">
               4: {blog.head4}
             </a>
