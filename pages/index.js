@@ -96,49 +96,51 @@ export default function Home({ blog, totalCount }) {
                       : `${d?.category?.id}/`
                   }${d.id}`}
                 >
-                  <div className="bg-blue-20 rounded-">
-                    <div className="text-left z-20 absolute">
-                      <span className="ml-3 text-slate-100 bg-blue-800 text-sm px-3 py-1">
-                        {d.category?.name}
-                      </span>
+                  <div>
+                    <div className="bg-blue-20 rounded-">
+                      <div className="text-left z-20 absolute">
+                        <span className="ml-3 text-slate-100 bg-blue-800 text-sm px-3 py-1">
+                          {d.category?.name}
+                        </span>
+                      </div>
+
+                      <Image
+                        className="w-full z-1 rounded-t-xl"
+                        loader={microCMSLoader}
+                        src={pathimage}
+                        height={300}
+                        width={500}
+                        alt="thumbnail"
+                        priority
+                      />
                     </div>
 
-                    <Image
-                      className="w-full z-1 rounded-t-xl"
-                      loader={microCMSLoader}
-                      src={pathimage}
-                      height={300}
-                      width={500}
-                      alt="thumbnail"
-                      priority
-                    />
-                  </div>
-
-                  <div className=" mx-3">
-                    <div className="text-2xl pt-5 pb-8  text-blue-800 text-left font-san font-bold ">
-                      {" "}
-                      {d.title}
-                    </div>
-                    <div className="font-light text-left　flex opacity-70">
-                      {d?.description?.substring(0, 88)}...
-                      <div className="text-slate-700  opacity-80 mt-2  flex justify-e mb-8">
-                        <div>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-4 h-4 mt-1 mr-2"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                          </svg>
+                    <div className=" mx-3">
+                      <div className="text-2xl pt-5 pb-8  text-blue-800 text-left font-san font-bold ">
+                        {" "}
+                        {d.title}
+                      </div>
+                      <div className="font-light text-left　flex opacity-70">
+                        {d?.description?.substring(0, 88)}...
+                        <div className="text-slate-700  opacity-80 mt-2  flex justify-e mb-8">
+                          <div>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-4 h-4 mt-1 mr-2"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
+                            </svg>
+                          </div>
+                          {aa && aa[index] ? aa[index] : ""}
                         </div>
-                        {aa && aa[index] ? aa[index] : ""}
                       </div>
                     </div>
                   </div>
