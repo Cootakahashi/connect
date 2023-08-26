@@ -58,6 +58,7 @@ export function Top({ newestBlog }) {
             width={1920}
             height={1080}
             alt="logo"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black to-transparent opacity-30"></div>
         </div>
