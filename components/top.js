@@ -64,7 +64,7 @@ export function Top({ newestBlog }) {
         </div>
 
         <div className="col-span-full col-start-1 row-start-1 text-slate-800 ml-10 mt-20 z-20">
-          <p className="text-orange-500 bg-white px-3 py-1 -translate-y-8 inline-block">
+          <p className="text-orange-500 bg-white px-3 py-1 -translate-y-8 inline-block text-xl">
             無料オンライングループ英会話も毎週無料で開催！
           </p>
           <h1 className="text-4xl text-slate-100 font-semibold hidden md:block md:text-slate-100 whitespace-pre-line w-3/5 tracking-wide	leading-normal	">

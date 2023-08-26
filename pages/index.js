@@ -7,14 +7,34 @@ import { client } from "../libs/client";
 import { Footer } from "../components/footer";
 import { Event } from "../components/event";
 
+// export const getStaticProps = async () => {
+//   const data = await client.get({ endpoint: "blogs" });
+//   return {
+//     props: {
+//       blog: data.contents,
+//       totalCount: data.totalCount,
+//     },
+//   };
+// };
+
 export const getStaticProps = async () => {
-  const data = await client.get({ endpoint: "blogs" });
-  return {
-    props: {
-      blog: data.contents,
-      totalCount: data.totalCount,
-    },
-  };
+  try {
+    const data = await client.get({ endpoint: "blogs" });
+    return {
+      props: {
+        blog: data.contents,
+        totalCount: data.totalCount,
+      },
+    };
+  } catch (error) {
+    console.log("API call error: ", error);
+    return {
+      props: {
+        blog: [],
+        totalCount: 0,
+      },
+    };
+  }
 };
 
 export default function Home({ blog, totalCount }) {
