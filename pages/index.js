@@ -6,7 +6,7 @@ import Link from "next/link";
 import { client } from "../libs/client";
 import { Footer } from "../components/footer";
 import { Event } from "../components/event";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // export const getStaticProps = async () => {
 //   const data = await client.get({ endpoint: "blogs" });
@@ -43,6 +43,7 @@ export default function Home({ blog, totalCount }) {
     return `${src}?auto=format&fit=max&w=${width}`;
   };
   const eventNames = blog.filter((d) => d.category?.name === "event");
+  const [aa, setAa] = useState([]);
 
   useEffect(() => {
     const formattedDates = blog.slice(0, 3).map((d) => {
@@ -54,10 +55,10 @@ export default function Home({ blog, totalCount }) {
       }
       return "Initial Date";
     });
-    let aa;
-    aa = formattedDates;
-    console.log(formattedDates);
-  }, []);
+
+    // useStateのsetter関数を使用してaaの状態を更新
+    setAa(formattedDates);
+  }, [blog]);
 
   return (
     <>
