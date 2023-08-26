@@ -62,7 +62,9 @@ export default function Home({ blog, totalCount }) {
       </div>
       <div className="mx-3 md:mx-20 ">
         <div className="md:grid grid-cols-3  gap-8 w-ful">
-          {/* {blog.slice(0, 3).map((d) => {
+          {blog.slice(0, 3).map((d) => {
+            if (!d.category?.id || !d.eyecatch?.url) return null; // categoryやeyecatchが存在しない場合、レンダリングしない
+
             const pathimage = d.eyecatch?.url;
             const datetime = new Date(d.createdAt);
             return (
@@ -128,7 +130,7 @@ export default function Home({ blog, totalCount }) {
                 </Link>
               </div>
             );
-          })} */}
+          })}
         </div>
         <div className="flex justify-center mt-20">
           {" "}
