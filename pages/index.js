@@ -62,7 +62,7 @@ export default function Home({ blog, totalCount }) {
       </div>
       <div className="mx-3 md:mx-20 ">
         <div className="md:grid grid-cols-3  gap-8 w-ful">
-          {blog.slice(0, 3).map((d) => {
+          {/* {blog.slice(0, 3).map((d) => {
             const pathimage = d.eyecatch?.url;
             const datetime = new Date(d.createdAt);
             return (
@@ -85,7 +85,7 @@ export default function Home({ blog, totalCount }) {
                       </span>
                     </div>
 
-                    {/* <Image
+                    <Image
                       className="w-full z-1 rounded-t-xl"
                       loader={microCMSLoader}
                       src={pathimage}
@@ -93,7 +93,7 @@ export default function Home({ blog, totalCount }) {
                       width={500}
                       alt="thumbnail"
                       priority
-                    /> */}
+                    />
                   </div>
 
                   <div className=" mx-3">
@@ -128,7 +128,7 @@ export default function Home({ blog, totalCount }) {
                 </Link>
               </div>
             );
-          })}
+          })} */}
         </div>
         <div className="flex justify-center mt-20">
           {" "}
