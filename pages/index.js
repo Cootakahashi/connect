@@ -79,23 +79,20 @@ export default function Home({ blog, totalCount }) {
           Newest Article
         </h2>
 
-        <div className="md:grid grid-cols-3  gap-8 w-ful">
+        <div className="md:grid grid-cols-3 gap-8 w-full">
           {blog.slice(0, 3).map((d, index) => {
             const pathimage = d.eyecatch?.url;
+            const categoryPath =
+              d.category?.name === "Phrasal verb"
+                ? "idioms/"
+                : `${d?.category?.id}/`;
 
             return (
               <div
                 key={d.id}
-                className="mb-20 mb:mb-0 h-full bg-slate-20 rounded-xl md:px- border shadow-xl hover:shadow-2xl hover:scale-105 transition duration-500 ease-in-out"
+                className="mb-20 md:mb-0 h-full bg-slate-20 rounded-xl md:px- border shadow-xl hover:shadow-2xl hover:scale-105 transition duration-500 ease-in-out"
               >
-                <Link
-                  key={d.id}
-                  href={`/english/${
-                    d.category?.name === "Phrasal verb"
-                      ? "idioms/"
-                      : `${d?.category?.id}/`
-                  }${d.id}`}
-                >
+                <Link href={`/english/${categoryPath}${d.id}`}>
                   <div>
                     <div className="bg-blue-20 rounded-">
                       <div className="text-left z-20 absolute">
@@ -115,14 +112,14 @@ export default function Home({ blog, totalCount }) {
                       />
                     </div>
 
-                    <div className=" mx-3">
-                      <div className="text-2xl pt-5 pb-8  text-blue-800 text-left font-san font-bold ">
-                        {" "}
+                    <div className="mx-3">
+                      <div className="text-2xl pt-5 pb-8 text-blue-800 text-left font-san font-bold">
                         {d.title}
                       </div>
-                      <div className="font-light text-left　flex opacity-70">
+
+                      <div className="font-light text-left flex opacity-70 grid">
                         {d?.description?.substring(0, 88)}...
-                        <div className="text-slate-700  opacity-80 mt-2  flex justify-e mb-8">
+                        <div className="text-slate-700 opacity-80 mt-2 flex mb-8">
                           <div>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
