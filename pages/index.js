@@ -73,8 +73,8 @@ export default function Home({ blog, totalCount }) {
 
             const datetime = new Date(d.createdAt);
             console.log("datetime:", datetime);
-
-            const formattedDate = `${datetime.getFullYear()}.${
+            let formattedDate = "Initial Date";
+            formattedDate = `${datetime.getFullYear()}.${
               datetime.getMonth() + 1
             }.${datetime.getDate()}`;
             console.log("formattedDate:", formattedDate);
@@ -134,7 +134,7 @@ export default function Home({ blog, totalCount }) {
                         </svg>
                         <div>{"Test Date"}</div>
 
-                        {/* <div>{formattedDate && formattedDate}</div> */}
+                        <div>{formattedDate}</div>
                       </div>
                     </div>
                   </div>
