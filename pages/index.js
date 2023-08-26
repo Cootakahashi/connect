@@ -72,14 +72,14 @@ export default function Home({ blog, totalCount }) {
             console.log("createdAt:", d.createdAt);
 
             const datetime = new Date(d.createdAt);
-            console.log("datetime:", datetime);
+
             let formattedDate = "Initial Date";
-            formattedDate = `${datetime.getFullYear()}.${
-              datetime.getMonth() + 1
-            }.${datetime.getDate()}`;
-            console.log(typeof formattedDate);
-            console.log("formattedDate:", formattedDate);
-            const formattedDat = "2023.8.27";
+
+            if (!isNaN(datetime.getTime())) {
+              formattedDate = `${datetime.getFullYear()}.${
+                datetime.getMonth() + 1
+              }.${datetime.getDate()}`;
+            }
 
             return (
               <div
@@ -134,9 +134,8 @@ export default function Home({ blog, totalCount }) {
                             d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                           />
                         </svg>
-                        <div>{"Test Date"}</div>
 
-                        <div>{formattedDat}</div>
+                        <div>{formattedDate}</div>
                       </div>
                     </div>
                   </div>
