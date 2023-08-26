@@ -124,9 +124,9 @@ export default function Home({ blog, totalCount }) {
                           />
                         </svg>
 
-                        <div>{datetime.getFullYear()}.</div>
+                        {/* <div>{datetime.getFullYear()}.</div>
                         <div>{datetime.getMonth() + 1}.</div>
-                        <div>{datetime.getDate()}</div>
+                        <div>{datetime.getDate()}</div> */}
                       </div>
                     </div>
                   </div>
