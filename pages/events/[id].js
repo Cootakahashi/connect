@@ -1,4 +1,3 @@
-import EventCard from "../../components/lp/EventCard"; // EventCardコンポーネントをインポート
 import { client } from "../../libs/client";
 import Image from "next/image";
 import Link from "next/link"; // 追加：Linkが未定義だったため
