@@ -132,9 +132,7 @@ export default function Home({ blog, totalCount }) {
                           />
                         </svg>
 
-                        <div key={d.id || d.createdAt || Date.now()}>
-                          {formattedDate}
-                        </div>
+                        {formattedDate && <div>{formattedDate}</div>}
                       </div>
                     </div>
                   </div>
