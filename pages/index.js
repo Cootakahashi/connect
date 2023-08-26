@@ -69,10 +69,14 @@ export default function Home({ blog, totalCount }) {
         <div className="md:grid grid-cols-3  gap-8 w-ful">
           {blog.slice(0, 3).map((d) => {
             const pathimage = d.eyecatch?.url;
-            const datetime = new Date(d.createdAt);
-            const formattedDate = `${datetime.getFullYear()}.${
-              datetime.getMonth() + 1
-            }.${datetime.getDate()}`;
+            if (d.createdAt) {
+              const datetime = new Date(d.createdAt);
+              if (!isNaN(datetime.getTime())) {
+                formattedDate = `${datetime.getFullYear()}.${
+                  datetime.getMonth() + 1
+                }.${datetime.getDate()}`;
+              }
+            }
 
             return (
               <div
@@ -128,7 +132,9 @@ export default function Home({ blog, totalCount }) {
                           />
                         </svg>
 
-                        {/* <div>{formattedDate}</div> */}
+                        <div key={d.id || d.createdAt || Date.now()}>
+                          {formattedDate}
+                        </div>
                       </div>
                     </div>
                   </div>
