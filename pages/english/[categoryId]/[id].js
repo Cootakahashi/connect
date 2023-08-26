@@ -90,9 +90,9 @@ export default function BlogId({ blog, category, recommend }) {
                       {blog?.category?.name}
                     </span>
                   </div>
-                  <h1 className=" text-2xl pb-8  text-blue-800 text-left font-san font-bold	">
+                  <h1 className=" text-2xl pb-8  text-blue-800 text-left font-san font-bold	whitespace-pre-line">
                     {blog?.title}
-                    <br />
+
                     {blog?.title2}
                   </h1>
                 </div>
@@ -161,13 +161,13 @@ export default function BlogId({ blog, category, recommend }) {
                             />
                           </div>
                           <div className="p-5">
-                            <h3 className="font-semibold text-sm">
+                            <div className="font-semibold text-sm">
                               {index === 0 ? blog?.linktitle : blog?.linktitle2}
-                            </h3>
-                            <p className="text-xs mt-2">
+                            </div>
+                            <div className="text-xs mt-2">
                               {" "}
                               {index === 0 ? blog?.linkmain : blog?.linkmain2}
-                            </p>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -195,7 +195,7 @@ export default function BlogId({ blog, category, recommend }) {
                         <h3 className="font-semibold text-sm">
                           {blog?.linktitle}
                         </h3>
-                        <p className="text-xs mt-2"> {blog?.linktitle}</p>
+                        <div className="text-xs mt-2"> {blog?.linktitle}</div>
                       </div>
                     </div>
                   </div>
@@ -223,7 +223,7 @@ export default function BlogId({ blog, category, recommend }) {
                         <h3 className="font-semibold text-sm">
                           {blog?.linktitle}
                         </h3>
-                        <p className="text-xs mt-2"> {blog?.linktitle}</p>
+                        <div className="text-xs mt-2"> {blog?.linktitle}</div>
                       </div>
                     </div>
                   </div>
@@ -237,9 +237,9 @@ export default function BlogId({ blog, category, recommend }) {
           >
             {/* Sidebar goes here */}
             <div className="md:ml-20 text-gray-700 py-4 md:px-6">
-              <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3 text-blue-800 ">
+              <div className="text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3 text-blue-800 ">
                 カテゴリー
-              </h3>
+              </div>
               <ul className="space-y-2 font-bold">
                 <Link href={`/category/${category?.id}`}>
                   ブログトップページ
@@ -254,9 +254,9 @@ export default function BlogId({ blog, category, recommend }) {
               </ul>
             </div>
             <div className="md:ml-20 text-gray-700 py-4 md:px-6">
-              <h3 className="mt-10 text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3 text-blue-800 ">
+              <div className="mt-10 text-xl font-bold mb-4 border-b-2 border-blue-900 pb-3 text-blue-800 ">
                 おすすめ記事
-              </h3>
+              </div>
               <ul className="space-y-2 font-bold">
                 {recommend?.map((blog) => (
                   <li
@@ -298,17 +298,17 @@ export default function BlogId({ blog, category, recommend }) {
                 </h3>
               </div>
               <div>
-                <p className="mb-4 whitespace-pre-line">
+                <div className="mb-4 whitespace-pre-line">
                   {`私の人生はこんな筈じゃない。。\nそんな人が人生を再出発させることが\nできるのが英語！ \n やっぱり英語は喋らないと喋れない \n 英語イベントにポチッとワンクリックで参加してください。`}
-                </p>
-                <p className="mb-8 mt-12">
+                </div>
+                <div className="mb-8 mt-12">
                   <Link
                     href="/events/explain"
                     className="text-white  bg-orange-500 px-8 py-4 border-2 border-red-400 rounded-md transition-colors duration-300 md:hover:bg-orange-800 md:hover:text-blue-500"
                   >
                     無料英会話イベント
                   </Link>
-                </p>
+                </div>
               </div>
             </div>
           </div>
