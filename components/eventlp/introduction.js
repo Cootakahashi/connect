@@ -31,7 +31,7 @@ export function Introduction() {
           よくある失敗談
         </div>
       </div>
-      <div className="text-center my-10 mx-3 grid gap-5">
+      <div className="text-center my-10 grid gap-5 ">
         <div>「最初は意欲的だったが、すぐにレッスンを受けなくなった。」</div>
         <div>「間違いを恐れ、アクティブに参加できなかった。」</div>
         <div>「具体的な目標がなく、挫折した。」</div>
@@ -56,7 +56,7 @@ export function Introduction() {
         </div>
       </div>
       <div
-        className="relative h-[1890px] md:h-[1550px] bg-cover bg-center text-white font-bold text-xl bg-custom-image md:bg-custom-image-md"
+        className="relative h-[1550px] md:h-[1550px] bg-cover bg-center text-white font-bold text-xl bg-custom-image md:bg-custom-image-md"
         // style={{ backgroundImage: "url(/lpevent/backscreen/3.jpg)" }}
       >
         {" "}
@@ -116,31 +116,15 @@ export function Introduction() {
           <div className="bg-white p-4 rounded-xl shadow-md md:w-96 my-5 mx-auto">
             <div className="flex items-center mb-3">
               <span className="text-orange-500 text-2xl">・</span>
-              <p className="ml-3 text-black">謙虚な日本の心を世界に伝える</p>
+              <p className="ml-3 text-black">日本の心を世界に伝える</p>
             </div>
             <div className="flex items-center mb-3">
               <span className="text-orange-500 text-2xl">・</span>
-              <p className="ml-3 text-black">最先端の技術で業界に稲妻を</p>
+              <p className="ml-3 text-black">最先端の技術で効率化</p>
             </div>
             <div className="flex items-center mb-3">
               <span className="text-orange-500 text-2xl">・</span>
               <p className="ml-3 text-black">みんなで学べば楽しい</p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-3">
-            <div>英語が喋れるようになるのは</div>
-
-            <div>決して簡単じゃない</div>
-            <div>3ヶ月でペラペラになったりしないし</div>
-            <div>会話をしないで喋れるようになったりもしない</div>
-
-            <div>でも「やり直したい。」「変わりたい。」</div>
-            <div>もしそう思うなら再出発できる</div>
-            <div>今がその時、待ってても絶対変わらない</div>
-
-            <div>
-              さあ、一緒に
-              <span className="text-orange-500 text-3xl">RESTART</span>しよう
             </div>
           </div>
         </div>{" "}

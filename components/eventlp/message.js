@@ -10,7 +10,7 @@ export function Message() {
         />
       </Head>
       <div className="relative border-t mt-20 h-[1280px] md:h-[880px]">
-        <div className="text-center text-3xl my-20 font-seri	">
+        <div className="text-center text-3xl my-20">
           <h1 className="text-5xl">Message</h1>
           <h2 className="text-orange-500 my-5">日本と世界の架け橋に</h2>
         </div>
@@ -25,9 +25,9 @@ export function Message() {
                 className="hidde"
               />
             </div>
-            <div className="absolute top-full md:top-10 md:left-12 grid gap-3 font-semibold text-2xl md:text-3xl w-auto z-30 mx-5">
+            <div className="absolute top-full md:top-10 md:left-12 grid gap-3 font-semibold text-2xl md:text-3xl w-auto z-30 mx-3">
               <div>
-                <span className="px-3 py-1 bg-black text-white w-auto">
+                <span className="px-3 py-1 bg-black text-white w-auto whitespace-nowrap">
                   実際に世界で通用する英語を
                 </span>
               </div>
@@ -56,11 +56,11 @@ export function Message() {
             </div>
           </div>
         </div>
-        <div className="text-center text-md md:px-40 z-20 relative top-1/4 md:top-20 mx-5">
+        <div className="text-center text-md md:px-40 z-20 relative top-1/4 md:top-20 mx-3">
           <div className="hidden md:block relative w-[790px] h-[480px] mx-auto">
             <Image src={"/lpevent/letter/4.jpg"} fill priority alt="letter" />
           </div>
-          <div className=" md:hidden relative w-[350px] h-[580px] mx-auto -translate-y-20">
+          <div className=" md:hidden relative w-[340px] h-[580px] mx-auto -translate-y-20 ">
             <Image src={"/lpevent/letter/3.jpg"} fill priority alt="letter" />
           </div>
         </div>

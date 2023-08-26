@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-export default function Layoutwrap({ children, metadata }) {
+export default function Layoutwrap({ children, metadata, isMargin = false }) {
   return (
     <div>
       <Head>
@@ -30,7 +30,7 @@ export default function Layoutwrap({ children, metadata }) {
         <link rel="canonical" href={metadata.canonicalUrl} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <main className="mx-4 md:mx-20">{children}</main>
+      <main className={`${isMargin ? "mx-4 md:mx-20" : ""}`}>{children}</main>
     </div>
   );
 }

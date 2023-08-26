@@ -32,7 +32,7 @@ export function Resolve() {
 
         <div className="md:flex md:justify-center md:gap-5 md:gap-y-3">
           <div className="items-center md:gap-8 mb-8 md:mb-auto">
-            <div className="relative w-[340px] h-[260px] md:h-[210px] md:w-[350px] mx-auto">
+            <div className="relative w-[320px] h-[260px] md:h-[210px] md:w-[350px] mx-auto">
               <Image
                 className="rounded "
                 src="/lpevent/tool/1.jpg"
@@ -50,7 +50,7 @@ export function Resolve() {
             </div>
           </div>
           <div className="items-center md:gap-8 mb-8 md:mb-auto">
-            <div className="relative w-[340px] h-[260px] md:h-[210px] md:w-[350px] mx-auto">
+            <div className="relative w-[320px] h-[260px] md:h-[210px] md:w-[350px] mx-auto">
               <Image
                 className="rounded"
                 src="/lpevent/tool/2.jpg"
@@ -71,7 +71,7 @@ export function Resolve() {
           </div>
 
           <div className="items-center md:gap-8 mb-8 md:mb-auto">
-            <div className="relative w-[340px] h-[260px] md:h-[210px] md:w-[350px] mx-auto">
+            <div className="relative w-[320px] h-[260px] md:h-[210px] md:w-[350px] mx-auto">
               <Image
                 className="rounded"
                 src="/lpevent/tool/3.jpg"

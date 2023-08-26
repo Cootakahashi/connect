@@ -21,7 +21,7 @@ export function Top({ newestBlog }) {
               <div className="mx-auto px-3 text-xl flex justify-center w-60 text-center bg-slate-100 text-orange-600 px-1 py-[1px] rounded-l shadow mx-3 -translate-y-4">
                 毎週2回無料で開催！
               </div>
-              <div className="text-slate-100 text-2xl font-bold text-center translate-y-10">
+              <div className="text-slate-100 text-2xl font-bold text-center translate-y-10 whitespace-nowrap">
                 もう
                 <span className="text-orange-500 text-3xl">英語</span>
                 で時間を無駄にしない
@@ -45,7 +45,7 @@ export function Top({ newestBlog }) {
                     グループオンライン英会話
                   </p>
                 </div>
-                <div className="font-light px-3 text-base flex justify-center w-full text-center bg-slate-10 text-slate-900 px-1 py-[1px] rounded-l shadow mx-3 translate-y-10">
+                <div className="font-light text-base flex justify-center w-ful text-center bg-slate-10 text-slate-900 px- py-[1px] rounded-l shadow mx-3 translate-y-10">
                   ※定員には限りがあります
                 </div>
               </div>
@@ -83,14 +83,14 @@ export function Top({ newestBlog }) {
             className={`transform -skew-x-6 bg-slate-800 inline-bloc w-[480px] mb-1 py-1 `}
           >
             <p
-              className={`text-white text-2xl px-4 font-semibold font-suns my-1 transform skew-x-6 text-4xl`}
+              className={`text-white whitespace-nowrap text-2xl px-4 font-semibold font-suns my-1 transform skew-x-6 text-4xl`}
             >
               超初心者のためのAIを使った
             </p>
           </div>
           <div className={`transform -skew-x-6 bg-slate-800 inline-block`}>
             <p
-              className={`text-white text-2xl px-4 font-semibold font-suns my-2 transform skew-x-6 text-4xl py-1`}
+              className={`text-white whitespace-nowrap text-2xl px-4 font-semibold font-suns my-2 transform skew-x-6 text-4xl py-1`}
             >
               グループオンライン英会話
             </p>

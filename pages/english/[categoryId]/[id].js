@@ -39,6 +39,7 @@ export default function BlogId({ blog, category, recommend }) {
         <Blogheader />
       </div>
       <Layoutwrap
+        isMargin={true}
         metadata={{
           title: blog?.title,
           description: blog?.description,
