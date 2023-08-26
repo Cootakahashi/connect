@@ -115,10 +115,10 @@ export default function Home({ blog, totalCount }) {
                   </div>
 
                   <div className=" mx-3">
-                    <h1 className="text-2xl pt-5 pb-8  text-blue-800 text-left font-san font-bold ">
+                    <div className="text-2xl pt-5 pb-8  text-blue-800 text-left font-san font-bold ">
                       {" "}
                       {d.title}
-                    </h1>
+                    </div>
                     <div className="font-light text-left　flex opacity-70">
                       {d?.description?.substring(0, 88)}...
                       <div className="text-slate-700  opacity-80 mt-2  flex justify-e mb-8">
@@ -139,7 +139,7 @@ export default function Home({ blog, totalCount }) {
                           </svg>
                         </div>
                         <div>2023.8.27</div>
-                        {/* <div>{formattedDates[index]}</div> */}
+                        {formattedDates[index]}
                       </div>
                     </div>
                   </div>
