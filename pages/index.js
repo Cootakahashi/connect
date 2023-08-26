@@ -95,7 +95,7 @@ export default function Home({ blog, totalCount }) {
             return (
               <div
                 key={d.id}
-                className="mb-20 md:mb-0 h-full bg-slate-20 rounded-xl md:px- border shadow-xl hover:shadow-2xl hover:scale-105 transition duration-500 ease-in-out"
+                className="mb-20 md:mb-0 h-full bg-slate-20 rounded-xl md:px-3 border shadow-xl hover:shadow-2xl md:hover:scale-105 transition duration-500 ease-in-out"
               >
                 <Link href={`/english/${categoryPath}${d.id}`}>
                   <div>
@@ -107,7 +107,7 @@ export default function Home({ blog, totalCount }) {
                       </div>
 
                       <Image
-                        className="w-full z-1 rounded-t-xl"
+                        className="w-full z-1 rounded-t-xl mx-auto"
                         loader={microCMSLoader}
                         src={pathimage}
                         height={300}

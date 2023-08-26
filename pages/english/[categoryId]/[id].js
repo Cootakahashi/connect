@@ -4,12 +4,15 @@ import styles from "../../../styles/id.module.scss";
 import Image from "next/image";
 import Layoutwrap from "../../../components/Layoutcomp";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
 import { Footer } from "../../../components/footer";
 import { Blogheader } from "../../../components/header";
 import { Toc } from "../../../components/toc";
+import React, { useState, useEffect } from "react";
+
 export default function BlogId({ blog, category, recommend }) {
   const [windowWidth, setWindowWidth] = useState(0);
+  const [formattedDate, setFormattedDate] = useState("");
+
   useEffect(() => {
     setWindowWidth(window.innerWidth);
 
@@ -23,6 +26,21 @@ export default function BlogId({ blog, category, recommend }) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  useEffect(() => {
+    // blogのpublishedAtを使用して日付を整形
+    const dateStr = blog?.publishedAt
+      ? new Date(blog.publishedAt)
+          .toLocaleDateString("ja-JP", {
+            year: "numeric",
+            month: "numeric",
+            day: "numeric",
+          })
+          .replace(/\//g, ".")
+      : "";
+
+    // 整形された日付を状態変数に格納
+    setFormattedDate(dateStr);
+  }, [blog]);
   useEffect(() => {
     const smoothScroll = (e) => {
       if (
@@ -76,16 +94,7 @@ export default function BlogId({ blog, category, recommend }) {
               <div className="">
                 <div className="text-slate-800">
                   <div className="mt-8 mb-6">
-                    <span className="text-sm">
-                      {" "}
-                      {new Date(blog?.publishedAt)
-                        .toLocaleDateString("ja-JP", {
-                          year: "numeric",
-                          month: "numeric",
-                          day: "numeric",
-                        })
-                        .replace(/\//g, ".")}
-                    </span>
+                    <span className="text-sm">{formattedDate}</span>
                     <span className="ml-5 text-slate-100 bg-blue-800 text-sm px-3 py-1">
                       {blog?.category?.name}
                     </span>
