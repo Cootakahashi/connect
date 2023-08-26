@@ -6,6 +6,7 @@ import Link from "next/link";
 import { client } from "../libs/client";
 import { Footer } from "../components/footer";
 import { Event } from "../components/event";
+import { useEffect } from "react";
 
 // export const getStaticProps = async () => {
 //   const data = await client.get({ endpoint: "blogs" });
@@ -43,18 +44,21 @@ export default function Home({ blog, totalCount }) {
   };
   const eventNames = blog.filter((d) => d.category?.name === "event");
 
-  const formattedDates = blog.slice(0, 3).map((d) => {
-    const datetime = new Date(d.createdAt);
-    if (!isNaN(datetime.getTime())) {
-      return `${datetime.getFullYear()}.${
-        datetime.getMonth() + 1
-      }.${datetime.getDate()}`;
-    }
-    return "Initial Date";
-  });
-  let aa;
-  aa = formattedDates;
-  console.log(formattedDates);
+  useEffect(() => {
+    const formattedDates = blog.slice(0, 3).map((d) => {
+      const datetime = new Date(d.createdAt);
+      if (!isNaN(datetime.getTime())) {
+        return `${datetime.getFullYear()}.${
+          datetime.getMonth() + 1
+        }.${datetime.getDate()}`;
+      }
+      return "Initial Date";
+    });
+    let aa;
+    aa = formattedDates;
+    console.log(formattedDates);
+  }, []);
+
   return (
     <>
       <Head>
