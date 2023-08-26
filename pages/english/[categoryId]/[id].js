@@ -7,7 +7,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { Footer } from "../../../components/footer";
 import { Blogheader } from "../../../components/header";
-
+import { Toc } from "../../../components/toc";
 export default function BlogId({ blog, category, recommend }) {
   const [windowWidth, setWindowWidth] = useState(0);
   useEffect(() => {
@@ -23,14 +23,29 @@ export default function BlogId({ blog, category, recommend }) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  useEffect(() => {
+    const smoothScroll = (e) => {
+      if (
+        e.target.tagName === "A" &&
+        e.target.getAttribute("href").startsWith("#")
+      ) {
+        e.preventDefault();
+        const id = e.target.getAttribute("href");
+        document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    document.addEventListener("click", smoothScroll);
+
+    return () => {
+      document.removeEventListener("click", smoothScroll);
+    };
+  }, []);
   const microCMSLoader = ({ src, width, quality, hello }) => {
     return `${src}?auto=format&fit=max&w=${width}`;
   };
   const pathimage = blog?.eyecatch?.url ? blog?.eyecatch?.url : `/wide/1.png`;
   const schemaNames = ["head", "content", "images"];
-
-  // const htmlText = marked(blog.content3);
-
   const [visible, setVisible] = useState(true);
 
   return (
@@ -91,7 +106,7 @@ export default function BlogId({ blog, category, recommend }) {
                   />
                 </div>
                 <div className="mt-20">
-                  {blog?.toc_visible && <TableOfContents toc={toc} />}
+                  {blog?.toc_visible && <Toc blog={blog} />}
                 </div>
                 <div
                   className={`${styles.post} `}
@@ -101,7 +116,7 @@ export default function BlogId({ blog, category, recommend }) {
             </div>
             <div className="">
               {Array.from({ length: 4 }, (_, index) => (
-                <section className="mb-8" key={index}>
+                <section className="mb-8" key={index} id={`head${index + 1}`}>
                   <h1 className="text-xl font-bold bg-gray-100 py-4 pl-4 border-l-4 border-blue-400 mt-10 mb-6">
                     {blog?.[schemaNames[0] + (index + 1)]}
                   </h1>
@@ -128,13 +143,16 @@ export default function BlogId({ blog, category, recommend }) {
                       passHref
                     >
                       <div className="mt-4 p-4 border-2 border-gray-200 rounded-md flex justify-between items-center bg-blue-50">
-                        <div className="text-blue-800 flex">
-                          <div>
+                        <div className="text-blue-800 flex items-center">
+                          <div className="relative h-[80px] w-[220px] md:h-[200px] md:w-[300px]">
                             <Image
-                              src={blog?.[schemaNames[2]]?.[index]?.url}
+                              src={
+                                index === 0
+                                  ? blog?.linkimage?.url
+                                  : blog?.linkimage2?.url
+                              }
                               className="w-full"
-                              height={150}
-                              width={200}
+                              layout="fill"
                               alt="head image"
                               priority
                               loader={microCMSLoader}
@@ -155,24 +173,21 @@ export default function BlogId({ blog, category, recommend }) {
                   )}
                 </section>
               ))}
-              <div className="bg-red-200 p-1">
-                あなたにこの記事をおすすめします
-              </div>
+              <div className="bg-red-200 p-1">この記事がおすすめです</div>
               {blog && blog?.link && (
                 <Link className="" href={blog?.link} passHref>
                   <div className="mt-4 p-4 border-2 border-gray-200 rounded-md flex justify-between items-center bg-blue-50">
-                    <div className="text-blue-800 flex">
-                      <div>
+                    <div className="text-blue-800 flex items-center">
+                      <div className="relative h-[80px] w-[200px] md:h-[200px] md:w-[300px]">
                         {" "}
-                        {/* <Image
-                        src={blog?.}
-                        className="w-full"
-                        height={150}
-                        width={200}
-                        alt="head image"
-                        priority
-                        loader={microCMSLoader}
-                      /> */}
+                        <Image
+                          src={blog?.linkimage?.url}
+                          className="w-full"
+                          layout="fill"
+                          alt="head image"
+                          priority
+                          loader={microCMSLoader}
+                        />
                       </div>
                       <div className="p-5">
                         <h3 className="font-semibold text-sm">
@@ -248,22 +263,21 @@ export default function BlogId({ blog, category, recommend }) {
                 {recommend?.map((blog) => (
                   <li
                     key={blog?.id}
-                    className="flex border-b rounded-md transition-colors duration-300 hover:bg-gray-800 hover:text-blue-500 px-3 py-2"
+                    className="flex items-center border-b rounded-md transition-colors duration-300 md:hover:bg-gray-800 md:hover:text-blue-500 px-3 py-2"
                   >
                     {" "}
-                    <div className="bg-black md:w-[75px] md:h-[65px] lg:w-[100px] lg:h-[90px] relative">
+                    <div className="bg-black w-[95px] h-[65px] md:w-[75px] md:h-[65px] lg:w-[100px] lg:h-[90px] relative">
                       <Image
                         src={blog?.eyecatch?.url ?? "/canva/1.png"}
                         alt="Profile Image"
                         layout="fill"
-                        objectFit="cover" // width={250}
-                        // height={300}
+                        objectFit="cover"
                         className=""
                       />
                     </div>
                     <Link
                       href={`/english/${blog?.category?.id}/${blog?.id}`}
-                      className="mx-5 text-sm md:w-[105px] lg:w-[190px] flex items-center"
+                      className="mx-5 text-sm h-[105px] w-[190px]  md:w-[105px] lg:w-[190px] flex items-center"
                     >
                       {blog.title}
                     </Link>
@@ -291,8 +305,8 @@ export default function BlogId({ blog, category, recommend }) {
                 </p>
                 <p className="mb-8 mt-12">
                   <Link
-                    href="/events"
-                    className="text-blue-700  bg-yellow-400 px-8 py-4 border-2 border-yellow-400 rounded-md transition-colors duration-300 hover:bg-yellow-300 hover:text-blue-500"
+                    href="/events/explain"
+                    className="text-white  bg-orange-500 px-8 py-4 border-2 border-red-400 rounded-md transition-colors duration-300 md:hover:bg-orange-800 md:hover:text-blue-500"
                   >
                     無料英会話イベント
                   </Link>

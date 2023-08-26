@@ -12,8 +12,8 @@ export default function Layoutwrap({ children, metadata, isMargin = false }) {
           href="/sitemap.xml"
         />
         <title>{metadata.title}</title>
-        <meta charset="UTF-8" />
-        <meta http-equiv="Content-Language" content="ja" />
+        <meta charSet="UTF-8" />
+        <meta httpEquiv="Content-Language" content="ja" />
         <meta name="description" content={metadata.description} />
         <meta property="og:title" content={metadata.ogTitle} />
         <meta property="og:description" content={metadata.ogDescription} />
