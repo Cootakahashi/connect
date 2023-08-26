@@ -7,35 +7,35 @@ import { client } from "../libs/client";
 import { Footer } from "../components/footer";
 import { Event } from "../components/event";
 
-// export const getStaticProps = async () => {
-//   const data = await client.get({ endpoint: "blogs" });
-//   return {
-//     props: {
-//       blog: data.contents,
-//       totalCount: data.totalCount,
-//     },
-//   };
-// };
-
 export const getStaticProps = async () => {
-  try {
-    const data = await client.get({ endpoint: "blogs" });
-    return {
-      props: {
-        blog: data.contents,
-        totalCount: data.totalCount,
-      },
-    };
-  } catch (error) {
-    console.log("API call error: ", error);
-    return {
-      props: {
-        blog: [],
-        totalCount: 0,
-      },
-    };
-  }
+  const data = await client.get({ endpoint: "blogs" });
+  return {
+    props: {
+      blog: data.contents,
+      totalCount: data.totalCount,
+    },
+  };
 };
+
+// export const getStaticProps = async () => {
+//   try {
+//     const data = await client.get({ endpoint: "blogs" });
+//     return {
+//       props: {
+//         blog: data.contents,
+//         totalCount: data.totalCount,
+//       },
+//     };
+//   } catch (error) {
+//     console.log("API call error: ", error);
+//     return {
+//       props: {
+//         blog: [],
+//         totalCount: 0,
+//       },
+//     };
+//   }
+// };
 
 export default function Home({ blog, totalCount }) {
   const microCMSLoader = ({ src, width, quality }) => {
@@ -53,20 +53,14 @@ export default function Home({ blog, totalCount }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="hidde z-50 mb-10 bg-blue-200 mb-20">
+      <div className="z-50 mb-10 bg-blue-200 mb-20">
         <NavBar />
       </div>
 
-      <div className="hidde">
-        {" "}
+      <div className="">
         <Top newestBlog={blog[0]} />
       </div>
-      {/* <Pagination totalCount={totalCount} /> */}
       <div className="mx-3 md:mx-20 ">
-        <h2 className="m-5 p-5 text-center font-sans font-thin text-5xl">
-          {/* Newest Article */}
-        </h2>
-
         <div className="md:grid grid-cols-3  gap-8 w-ful">
           {blog.slice(0, 3).map((d) => {
             const pathimage = d.eyecatch?.url;
@@ -91,7 +85,7 @@ export default function Home({ blog, totalCount }) {
                       </span>
                     </div>
 
-                    <Image
+                    {/* <Image
                       className="w-full z-1 rounded-t-xl"
                       loader={microCMSLoader}
                       src={pathimage}
@@ -99,7 +93,7 @@ export default function Home({ blog, totalCount }) {
                       width={500}
                       alt="thumbnail"
                       priority
-                    />
+                    /> */}
                   </div>
 
                   <div className=" mx-3">
