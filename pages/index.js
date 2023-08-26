@@ -67,9 +67,8 @@ export default function Home({ blog, totalCount }) {
         </h2>
 
         <div className="md:grid grid-cols-3  gap-8 w-ful">
-          {blog.slice(0, 3).map((d) => {
+          {blog.slice(0, 3).map((d, index) => {
             const pathimage = d.eyecatch?.url;
-            console.log("createdAt:", d.createdAt);
             const datetime = new Date(d.createdAt);
             let formattedDate = "Initial Date";
             if (!isNaN(datetime.getTime())) {
@@ -77,6 +76,8 @@ export default function Home({ blog, totalCount }) {
                 datetime.getMonth() + 1
               }.${datetime.getDate()}`;
             }
+            console.log(index);
+            console.log(formattedDate);
 
             return (
               <div
@@ -117,22 +118,24 @@ export default function Home({ blog, totalCount }) {
                     <div className="font-light text-left　flex opacity-70">
                       {d?.description?.substring(0, 88)}...
                       <div className="text-slate-700  opacity-80 mt-2  flex justify-e mb-8">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-4 h-4 mt-1 mr-2"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
+                        <div>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-4 h-4 mt-1 mr-2"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                          </svg>
+                        </div>
 
-                        {/* <div>{formattedDate}</div> */}
+                        <div>{formattedDate}</div>
                       </div>
                     </div>
                   </div>
