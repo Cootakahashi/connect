@@ -52,6 +52,7 @@ export default function Home({ blog, totalCount }) {
     }
     return "Initial Date";
   });
+  console.log(formattedDates);
   return (
     <>
       <Head>
@@ -139,7 +140,9 @@ export default function Home({ blog, totalCount }) {
                           </svg>
                         </div>
                         <div>2023.8.27</div>
-                        {formattedDates[index]}
+                        {formattedDates && formattedDates[index]
+                          ? formattedDates[index]
+                          : ""}
                       </div>
                     </div>
                   </div>
