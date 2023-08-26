@@ -69,10 +69,15 @@ export default function Home({ blog, totalCount }) {
         <div className="md:grid grid-cols-3  gap-8 w-ful">
           {blog.slice(0, 3).map((d) => {
             const pathimage = d.eyecatch?.url;
+            console.log("createdAt:", d.createdAt);
+
             const datetime = new Date(d.createdAt);
+            console.log("datetime:", datetime);
+
             const formattedDate = `${datetime.getFullYear()}.${
               datetime.getMonth() + 1
             }.${datetime.getDate()}`;
+            console.log("formattedDate:", formattedDate);
 
             return (
               <div
@@ -127,6 +132,7 @@ export default function Home({ blog, totalCount }) {
                             d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                           />
                         </svg>
+                        <div>{"Test Date"}</div>
 
                         {/* <div>{formattedDate && formattedDate}</div> */}
                       </div>
