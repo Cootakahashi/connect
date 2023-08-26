@@ -70,6 +70,10 @@ export default function Home({ blog, totalCount }) {
           {blog.slice(0, 3).map((d) => {
             const pathimage = d.eyecatch?.url;
             const datetime = new Date(d.createdAt);
+            const formattedDate = `${datetime.getFullYear()}.${
+              datetime.getMonth() + 1
+            }.${datetime.getDate()}`;
+
             return (
               <div
                 key={d.id}
@@ -124,9 +128,7 @@ export default function Home({ blog, totalCount }) {
                           />
                         </svg>
 
-                        {/* <div>{datetime.getFullYear()}.</div>
-                        <div>{datetime.getMonth() + 1}.</div>
-                        <div>{datetime.getDate()}</div> */}
+                        <div>{formattedDate}.</div>
                       </div>
                     </div>
                   </div>
