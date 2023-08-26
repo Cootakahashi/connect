@@ -7,6 +7,8 @@ export function Form({ eventurl, event }) {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [emailConfirmation, setEmailConfirmation] = useState("");
+  const [isSending, setIsSending] = useState(false);
+
   const date = event.date;
   const memberNum = `${event.membernum}名`;
   const title = event.title;
@@ -18,6 +20,7 @@ export function Form({ eventurl, event }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!emailMatches) return;
+    setIsSending(true);
 
     const formData = new FormData(event.target);
     const name = formData.get("name");
@@ -43,6 +46,7 @@ export function Form({ eventurl, event }) {
     if (response.status === 200) {
       router.push("/events/success");
     }
+    setIsSending(false);
   };
 
   return (
@@ -183,9 +187,15 @@ export function Form({ eventurl, event }) {
             <button
               type="submit"
               className="w-full bg-gray-600 text-white p-2 rounded-md hover:bg-gray-700 active:bg-gray-800 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-200 focus:ring-opacity-50 transition duration-300 ease-in-out"
-              disabled={!emailMatches}
+              disabled={!emailMatches || isSending} // isSending の間、ボタンを無効化
             >
-              参加Linkを受け取る
+              {isSending ? (
+                <>
+                  <span className="animate-spin mr-2">🔄</span> 送信中...
+                </>
+              ) : (
+                "参加Linkを受け取る"
+              )}{" "}
             </button>
           </div>
           <input
