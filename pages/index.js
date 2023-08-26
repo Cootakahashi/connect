@@ -7,35 +7,35 @@ import { client } from "../libs/client";
 import { Footer } from "../components/footer";
 import { Event } from "../components/event";
 
-export const getStaticProps = async () => {
-  const data = await client.get({ endpoint: "blogs" });
-  return {
-    props: {
-      blog: data.contents,
-      totalCount: data.totalCount,
-    },
-  };
-};
-
 // export const getStaticProps = async () => {
-//   try {
-//     const data = await client.get({ endpoint: "blogs" });
-//     return {
-//       props: {
-//         blog: data.contents,
-//         totalCount: data.totalCount,
-//       },
-//     };
-//   } catch (error) {
-//     console.log("API call error: ", error);
-//     return {
-//       props: {
-//         blog: [],
-//         totalCount: 0,
-//       },
-//     };
-//   }
+//   const data = await client.get({ endpoint: "blogs" });
+//   return {
+//     props: {
+//       blog: data.contents,
+//       totalCount: data.totalCount,
+//     },
+//   };
 // };
+
+export const getStaticProps = async () => {
+  try {
+    const data = await client.get({ endpoint: "blogs" });
+    return {
+      props: {
+        blog: data.contents,
+        totalCount: data.totalCount,
+      },
+    };
+  } catch (error) {
+    console.log("API call error: ", error);
+    return {
+      props: {
+        blog: [],
+        totalCount: 0,
+      },
+    };
+  }
+};
 
 export default function Home({ blog, totalCount }) {
   const microCMSLoader = ({ src, width, quality }) => {
@@ -58,13 +58,16 @@ export default function Home({ blog, totalCount }) {
       </div>
 
       <div className="">
+        {" "}
         <Top newestBlog={blog[0]} />
       </div>
       <div className="mx-3 md:mx-20 ">
+        <h2 className="m-5 p-5 text-center font-sans font-thin text-5xl">
+          Newest Article
+        </h2>
+
         <div className="md:grid grid-cols-3  gap-8 w-ful">
           {blog.slice(0, 3).map((d) => {
-            if (!d.category?.id || !d.eyecatch?.url) return null; // categoryやeyecatchが存在しない場合、レンダリングしない
-
             const pathimage = d.eyecatch?.url;
             const datetime = new Date(d.createdAt);
             return (
