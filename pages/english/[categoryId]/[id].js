@@ -97,7 +97,7 @@ export default function BlogId({ blog, category, recommend }) {
                   </h1>
                 </div>
                 <div className="">
-                  {/* <Image
+                  <Image
                     className="w-full"
                     loader={microCMSLoader}
                     src={pathimage}
@@ -105,7 +105,7 @@ export default function BlogId({ blog, category, recommend }) {
                     width={1000}
                     alt="thumbnail"
                     priority
-                  /> */}
+                  />
                 </div>
                 <div className="mt-20">
                   {blog?.toc_visible && <Toc blog={blog} />}
@@ -122,7 +122,7 @@ export default function BlogId({ blog, category, recommend }) {
                   <h1 className="text-xl font-bold bg-gray-100 py-4 pl-4 border-l-4 border-blue-400 mt-10 mb-6">
                     {blog?.[schemaNames[0] + (index + 1)]}
                   </h1>
-                  {/* <Image
+                  <Image
                     src={blog?.[schemaNames[2]]?.[index]?.url}
                     className="w-full"
                     height={550}
@@ -130,7 +130,7 @@ export default function BlogId({ blog, category, recommend }) {
                     alt="head image"
                     priority
                     loader={microCMSLoader}
-                  /> */}
+                  />
                   <div
                     className={`${styles.content} my-20 leading-8 text-md whitespace-pre-line`}
                     dangerouslySetInnerHTML={{
@@ -209,16 +209,15 @@ export default function BlogId({ blog, category, recommend }) {
                   <div className="mt-4 p-4 border-2 border-gray-200 rounded-md flex justify-between items-center bg-blue-50">
                     <div className="text-blue-800 flex">
                       <div>
-                        {" "}
                         {/* <Image
-                        src={blog?.}
-                        className="w-full"
-                        height={150}
-                        width={200}
-                        alt="head image"
-                        priority
-                        loader={microCMSLoader}
-                      /> */}
+                          src={blog?.linkimage?.url}
+                          className="w-full"
+                          height={150}
+                          width={200}
+                          alt="head image"
+                          priority
+                          loader={microCMSLoader}
+                        /> */}
                       </div>
                       <div className="p-5">
                         <h3 className="font-semibold text-sm">
@@ -321,33 +320,22 @@ export default function BlogId({ blog, category, recommend }) {
 }
 
 export const getStaticProps = async (context) => {
-  try {
-    const categoryId = context.params.categoryId;
-    const id = context.params.id;
-    const datas = await client.get({ endpoint: "blogs" });
-    const grammarPracticeIds = datas.contents
-      .filter((content) => content.grammarPractice)
-      .map((content) => `${content.id}`);
-    const data = await client.get({ endpoint: "blogs", contentId: id });
-    const categoryData = await client.get({ endpoint: "categories" });
-    const recommendBlogs = datas.contents.filter(
-      (content) => content.recommend === true
-    );
-
-    return {
-      props: {
-        blog: data ?? {},
-        ids: grammarPracticeIds ?? [],
-        category: categoryData.contents ?? [],
-        recommend: recommendBlogs ?? [],
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return { props: {} };
-  }
+  const categoryId = context.params.categoryId;
+  const id = context.params.id;
+  const datas = await client.get({ endpoint: "blogs" });
+  const data = await client.get({ endpoint: "blogs", contentId: id });
+  const categoryData = await client.get({ endpoint: "categories" });
+  const recommendBlogs = datas.contents.filter(
+    (content) => content.recommend === true
+  );
+  return {
+    props: {
+      blog: data,
+      category: categoryData.contents,
+      recommend: recommendBlogs,
+    },
+  };
 };
-
 export const getStaticPaths = async () => {
   const data = await client.get({ endpoint: "blogs" });
 
