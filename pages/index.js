@@ -21,17 +21,7 @@ export default function Home({ blog, totalCount }) {
   const microCMSLoader = ({ src, width, quality }) => {
     return `${src}?auto=format&fit=max&w=${width}`;
   };
-  // const eventNames = [];
-  // {
-  //   blog.map((d) => {
-  //     if (d.category?.name === "event") {
-  //       return eventNames.push(d);
-  //     }
-  //   });
-  // }
   const eventNames = blog.filter((d) => d.category?.name === "event");
-
-  // console.log(eventNames);
   return (
     <>
       <Head>

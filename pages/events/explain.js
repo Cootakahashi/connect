@@ -55,14 +55,17 @@ export default function Home({ event, eventurl }) {
   return (
     <>
       <Head>
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <title>Restart Online</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="Content-Language" content="ja" />
+        <meta httpEquiv="Content-Language" content="ja" />
         <meta name="description" content="無料オンライングループ英会話" />
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content="/lpevent/top/1.jpg" />
+        <meta
+          property="og:image"
+          content="https://beginrestart.com/lpevent/top/1.jpg"
+        />
         <meta
           property="og:url"
           content="https://beginrestart.com/events/explain"
@@ -77,7 +80,10 @@ export default function Home({ event, eventurl }) {
           name="twitter:description"
           content="参加URLもここから受け取れます"
         />
-        <meta name="twitter:image" content="/lpevent/top/1.jpg" />
+        <meta
+          name="twitter:image"
+          content="https://beginrestart.com/lpevent/top/1.jpg"
+        />
       </Head>
       {/* <div className="hidde z-50 mb-10 bg-blue-200">
         <NavBar />
