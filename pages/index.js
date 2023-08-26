@@ -138,8 +138,8 @@ export default function Home({ blog, totalCount }) {
                             />
                           </svg>
                         </div>
-
-                        <div>{formattedDates[index]}</div>
+                        <div>2023.8.27</div>
+                        {/* <div>{formattedDates[index]}</div> */}
                       </div>
                     </div>
                   </div>
