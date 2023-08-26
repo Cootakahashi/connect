@@ -77,7 +77,9 @@ export default function Home({ blog, totalCount }) {
             formattedDate = `${datetime.getFullYear()}.${
               datetime.getMonth() + 1
             }.${datetime.getDate()}`;
+            console.log(typeof formattedDate);
             console.log("formattedDate:", formattedDate);
+            const formattedDat = "2023.8.27";
 
             return (
               <div
@@ -134,7 +136,7 @@ export default function Home({ blog, totalCount }) {
                         </svg>
                         <div>{"Test Date"}</div>
 
-                        <div>{formattedDate}</div>
+                        <div>{formattedDat}</div>
                       </div>
                     </div>
                   </div>
