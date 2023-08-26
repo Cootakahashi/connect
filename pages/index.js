@@ -70,11 +70,8 @@ export default function Home({ blog, totalCount }) {
           {blog.slice(0, 3).map((d) => {
             const pathimage = d.eyecatch?.url;
             console.log("createdAt:", d.createdAt);
-
             const datetime = new Date(d.createdAt);
-
             let formattedDate = "Initial Date";
-
             if (!isNaN(datetime.getTime())) {
               formattedDate = `${datetime.getFullYear()}.${
                 datetime.getMonth() + 1
@@ -135,7 +132,7 @@ export default function Home({ blog, totalCount }) {
                           />
                         </svg>
 
-                        <div>{formattedDate}</div>
+                        {/* <div>{formattedDate}</div> */}
                       </div>
                     </div>
                   </div>
