@@ -73,7 +73,7 @@ export default function BlogId({ blog, category, recommend }) {
             {/* Main content goes here */}
 
             <div className={`${styles.m}`}>
-              <main className="">
+              <div className="">
                 <div className="text-slate-800">
                   <div className="mt-8 mb-6">
                     <span className="text-sm">
@@ -114,11 +114,11 @@ export default function BlogId({ blog, category, recommend }) {
                   className={`${styles.post} `}
                   dangerouslySetInnerHTML={{ __html: `${blog?.content}` }}
                 ></div>
-              </main>
+              </div>
             </div>
             <div className="">
               {Array.from({ length: 4 }, (_, index) => (
-                <section className="mb-8" key={index} id={`head${index + 1}`}>
+                <div className="mb-8" key={index} id={`head${index + 1}`}>
                   <h1 className="text-xl font-bold bg-gray-100 py-4 pl-4 border-l-4 border-blue-400 mt-10 mb-6">
                     {blog?.[schemaNames[0] + (index + 1)]}
                   </h1>
@@ -173,7 +173,7 @@ export default function BlogId({ blog, category, recommend }) {
                       </div>
                     </Link>
                   )}
-                </section>
+                </div>
               ))}
               <div className="bg-red-200 p-1">この記事がおすすめです</div>
               {blog && blog?.link && (
