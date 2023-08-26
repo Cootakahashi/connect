@@ -42,6 +42,16 @@ export default function Home({ blog, totalCount }) {
     return `${src}?auto=format&fit=max&w=${width}`;
   };
   const eventNames = blog.filter((d) => d.category?.name === "event");
+
+  const formattedDates = blog.slice(0, 3).map((d) => {
+    const datetime = new Date(d.createdAt);
+    if (!isNaN(datetime.getTime())) {
+      return `${datetime.getFullYear()}.${
+        datetime.getMonth() + 1
+      }.${datetime.getDate()}`;
+    }
+    return "Initial Date";
+  });
   return (
     <>
       <Head>
@@ -69,15 +79,9 @@ export default function Home({ blog, totalCount }) {
         <div className="md:grid grid-cols-3  gap-8 w-ful">
           {blog.slice(0, 3).map((d, index) => {
             const pathimage = d.eyecatch?.url;
-            const datetime = new Date(d.createdAt);
-            let formattedDate = "Initial Date";
-            if (!isNaN(datetime.getTime())) {
-              formattedDate = `${datetime.getFullYear()}.${
-                datetime.getMonth() + 1
-              }.${datetime.getDate()}`;
-            }
+
             console.log(index);
-            console.log(formattedDate);
+            console.log(formattedDates[index]);
 
             return (
               <div
@@ -135,7 +139,7 @@ export default function Home({ blog, totalCount }) {
                           </svg>
                         </div>
 
-                        <div>{formattedDate}</div>
+                        <div>{formattedDates[index]}</div>
                       </div>
                     </div>
                   </div>
