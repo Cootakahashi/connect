@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { Top } from "../components/top";
 import { NavBar } from "../components/nav";
 import Link from "next/link";
@@ -80,9 +80,6 @@ export default function Home({ blog, totalCount }) {
         <div className="md:grid grid-cols-3  gap-8 w-ful">
           {blog.slice(0, 3).map((d, index) => {
             const pathimage = d.eyecatch?.url;
-
-            console.log(index);
-            console.log(formattedDates[index]);
 
             return (
               <div
