@@ -23,7 +23,7 @@ export default async (req, res) => {
 
     const data = {
       from: "Restart運営 <online@restart.email>",
-      to: email,
+      to: [email, "jonandcoo2022@gmail.com"],
       subject: "Restart Onlineへの参加リンクになります",
       text: `こんにちは ${name}さん参加申込みありがとうございます。
       「Restart online」への参加リンクはこちらとなります。 
