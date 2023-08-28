@@ -8,6 +8,9 @@ import { Footer } from "../../components/footer";
 import { Blogheader } from "../../components/header";
 
 export default function allblog({ blog, category, recommend, totalCount }) {
+  // let idforsitmap;
+  // console.log((idforsitmap = blog.map((blog) => blog.id)));
+
   const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
@@ -237,7 +240,7 @@ export const getStaticProps = async () => {
   try {
     const data = await client.get({
       endpoint: "blogs",
-      queries: { offset: 0, limit: 5 },
+      queries: { offset: 0, limit: 20 },
     });
 
     //get category content

@@ -154,8 +154,8 @@ export default function BlogId({ blog, category, recommend }) {
                       passHref
                     >
                       <div className="mt-4 p-4 border-2 border-gray-200 rounded-md flex justify-between items-center bg-blue-50">
-                        <div className="text-blue-800 flex items-center">
-                          <div className="relative h-[80px] w-[220px] md:h-[200px] md:w-[300px]">
+                        <div className="text-blue-800 md:flex items-center grid">
+                          <div className="relative h-[150px] w-[250px] md:h-[200px] md:w-[300px] mx-auto">
                             <Image
                               src={
                                 index === 0
@@ -163,13 +163,13 @@ export default function BlogId({ blog, category, recommend }) {
                                   : blog?.linkimage2?.url
                               }
                               className="w-full"
-                              layout="fill"
+                              fill
                               alt="head image"
                               priority
                               loader={microCMSLoader}
                             />
                           </div>
-                          <div className="p-5">
+                          <div className="p-3 mt-1 md:p-5 md:w-80">
                             <div className="font-semibold text-sm">
                               {index === 0 ? blog?.linktitle : blog?.linktitle2}
                             </div>
@@ -188,8 +188,8 @@ export default function BlogId({ blog, category, recommend }) {
               {blog && blog?.link && (
                 <Link className="" href={blog?.link} passHref>
                   <div className="mt-4 p-4 border-2 border-gray-200 rounded-md flex justify-between items-center bg-blue-50">
-                    <div className="text-blue-800 flex items-center">
-                      <div className="relative h-[80px] w-[200px] md:h-[200px] md:w-[300px]">
+                    <div className="text-blue-800 md:flex items-center grid">
+                      <div className="relative h-[150px] w-[250px] md:h-[200px] md:w-[300px] mx-auto">
                         {" "}
                         <Image
                           src={blog?.linkimage?.url}
@@ -200,7 +200,7 @@ export default function BlogId({ blog, category, recommend }) {
                           loader={microCMSLoader}
                         />
                       </div>
-                      <div className="p-5">
+                      <div className="p-3 mt-1 md:p-5 md:w-80">
                         <h3 className="font-semibold text-sm">
                           {blog?.linktitle}
                         </h3>
@@ -277,8 +277,7 @@ export default function BlogId({ blog, category, recommend }) {
                       <Image
                         src={blog?.eyecatch?.url ?? "/canva/1.png"}
                         alt="Profile Image"
-                        layout="fill"
-                        objectFit="cover"
+                        fill
                         className=""
                       />
                     </div>

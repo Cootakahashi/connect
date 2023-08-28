@@ -2,17 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://beginrestart.com/</loc>
-    <changefreq>daily</changefreq> <priority>1.0</priority></url>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+        <url>
+        <loc>https://beginrestart.com/events/explain</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/category</loc>
-    <changefreq>weekly</changefreq> <priority>0.5</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/category/linguistics</loc>
-    <changefreq>daily</changefreq> <priority>1.0</priority></url>
-    <url>
-       <loc>https://beginrestart.com/category/k8pvv7ov1lje</loc>
         <changefreq>daily</changefreq>
-        <priority>0.9</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://beginrestart.com/events</loc>
@@ -24,109 +30,96 @@
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
+
+    <!-- こちらから指定されたIDのURLを追加します -->
     <url>
-        <loc>https://beginrestart.com/english/linguistics/0gx95881o</loc>
-    <changefreq>weekly</changefreq> <priority>0.5</priority></url>
+        <loc>https://beginrestart.com/english/linguistics/k2dx6f8h0</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://beginrestart.com/english/linguistics/5gidbg82hb9h</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://beginrestart.com/english/linguistics/7ybuhw_ug6x</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/olcli9gf7b2</loc>
-    <changefreq>weekly</changefreq> <priority>0.6</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/d1vk1l6h2b</loc>
-    <changefreq>weekly</changefreq> <priority>0.5</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/b0qcgifyko</loc>
-    <changefreq>weekly</changefreq> <priority>0.7</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/xditxb6p0bm</loc>
-    <changefreq>weekly</changefreq> <priority>0.7</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/7euh6-97uo</loc>
-    <changefreq>weekly</changefreq> <priority>0.8</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/linguistics/m2kk_gkfsnn4</loc>
-    <changefreq>weekly</changefreq> <priority>0.8</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/hc469i7gpd</loc>
-    <changefreq>weekly</changefreq> <priority>0.8</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/h9wmrqx7jo</loc>
-    <changefreq>weekly</changefreq> <priority>0.8</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/il2_ih9h9rw</loc>
-    <changefreq>weekly</changefreq> <priority>0.8</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/z3f-mvwhw</loc>
-    <changefreq>weekly</changefreq> <priority>0.7</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/tuxibe37xc1n</loc>
-    <changefreq>weekly</changefreq> <priority>0.8</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/q-4dm3jx9te</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/dainigengo</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/ymrogrxk0w</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/15gdmiqy-v4</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/apsvslfkxwic</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/00ewrofmbm</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/dxdi6m1t1u</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/8f97z8bclkpp</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/p39or89ub</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/rlpj3a6rjsvb</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/ich-ee311m</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/yuywq8s-txv</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/b0dz6hmzh1</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/rm4z2kl156</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/o3jlitqdcx</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/ril-4vaar</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/ceewxgrvw</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/mib0tj62x23i</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/z1n8zq7a5e</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
     <url>
         <loc>https://beginrestart.com/english/linguistics/grs95g222</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
-    <url>
-        <loc>https://beginrestart.com/english/idioms/f2otxt9bg2d</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
-    <url>
-        <loc>https://beginrestart.com/category/k8pvv7ov1lje</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
-    <url>
-        <loc>https://beginrestart.com/category/linguistics</loc>
-    <changefreq>weekly</changefreq> <priority>0.9</priority></url>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
 </urlset>
