@@ -33,7 +33,7 @@ export function Top({ newestBlog }) {
                   <p
                     className={`text-white text-2xl px-4 font-semibold font-suns my-1 transform skew-x-6`}
                   >
-                    超初心者のためのAIを使った
+                    初心者でも安心 AIを使った
                   </p>
                 </div>
                 <div
@@ -85,7 +85,7 @@ export function Top({ newestBlog }) {
             <p
               className={`text-white whitespace-nowrap text-2xl px-4 font-semibold font-suns my-1 transform skew-x-6 text-4xl`}
             >
-              超初心者のためのAIを使った
+              初心者でも安心 AIを使った
             </p>
           </div>
           <div className={`transform -skew-x-6 bg-slate-800 inline-block`}>
